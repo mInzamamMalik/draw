@@ -1,0 +1,18 @@
+{
+  "name": "draw",
+  "version": "0.0.0",
+  "homepage": "https://github.com/malikasinger1/draw",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-material": "~0.11.0",
+    "angularfire": "~1.1.2",
+    "firebase": "~2.2.9"
+  }
+}
