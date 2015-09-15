@@ -4,9 +4,10 @@
     </div>
 </md-toolbar>
 
+<form ng-submit="add()">
     <md-input-container flex-30>
         <label>Full Name</label>
-        <input ng-model="name">
+        <input required ng-model="name">
     </md-input-container>
     <md-input-container flex-30>
         <label>Card Number (required)</label>
@@ -15,12 +16,86 @@
 
     <md-input-container flex-30>
         <label>Mobile Number (required)</label>
-        <input required type="number" ng-model="mobile">
+        <input required type="text" ng-model="mobile">
     </md-input-container>
-
 
 <md-button class="md-raised md-primary" ng-click="add();">Submit</md-button>
 
+</form>
 
+
+<!--
+<ol>
+    <li ng-repeat="item in guests">
+        <span>{{item.name}}</span> <br />
+        <h4>{{item.number}}<br />
+            {{item.mobile}}</h4>
+
+        <md-divider></md-divider>
+
+    </li>
+</ol>
+-->
+<!--
+<table>
+    <tr>
+        <th>s#</th> <th>name</th> <th>card number</th> <th>mobile number</th>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+
+</table>
+-->
+<!--
+<md-list>
+    <md-subheader class="md-no-sticky">guests list present in the hall</md-subheader>
+    <md-list-item class="md-3-line" ng-repeat="item in guests">
+        <div class="md-list-item-text" layout="column">
+            <h3>{{ item.name }}</h3>
+            <h4>{{ item.number }}</h4>
+            <p>{{ item.mobile }}</p>
+        </div>
+    </md-list-item>
+</md-list>-->
+<md-toolbar class="md-active">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex">WellCome to jeeto karachi</h2>
+    </div>
+</md-toolbar>
+
+
+<md-data-table-container>
+
+    <table md-data-table>
+
+        <thead md-order="order">
+        <!-- this cell will order by the name property -->
+
+        <th order-by="name" name="name"></th>
+
+        <!-- this cell will not change the order when clicked -->
+        <th order-by="number" name="Card number"></th>
+        <th order-by="mobile" name="mobile number"></th>
+
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in guests | orderBy: order">
+
+            <td>{{item.name}}</td>
+            <td>{{item.number}}</td>
+            <td>{{item.mobile}}</td>
+            <td>
+                <md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="del($index)">
+                        <img class="png-icon" src="png/512/ios7-close-empty.png" width="30px">
+                </md-button>
+                <!--<img src="png/512/ios7-close-empty.png" width="28px " ng-click="alert('dhgds');">-->
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</md-data-table-container>
 
 
