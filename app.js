@@ -11,7 +11,9 @@ app.config(function($stateProvider,$urlRouterProvider){
     $stateProvider
     .state("entry",{
         url : "/entry",
+        controller : "entryController",
         templateUrl : "views/entry/entry.html"
+
 
     })
     .state("draw",{
@@ -27,22 +29,4 @@ app.config(function($stateProvider,$urlRouterProvider){
 
 });
 
-app.controller("appController",function($scope,$firebaseArray){
 
-    var ref = new Firebase("https://markone-drawapp.firebaseio.com/guests");
-    // create a synchronized array
-    // click on `index.html` above to see it used in the DOM!
-    $scope.guests = $firebaseArray(ref);
-
-
-    $scope.name = "";
-    $scope.number = "";
-
-    $scope.add = function(){
-        $scope.guests.$add({
-            name : $scope.name,
-            number : $scope.number
-        });
-    }
-
-});

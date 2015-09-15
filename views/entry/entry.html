@@ -1,6 +1,26 @@
+<md-toolbar class="md-active">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex">WellCome to jeeto karachi</h2>
+    </div>
+</md-toolbar>
+
+    <md-input-container flex-30>
+        <label>Full Name</label>
+        <input ng-model="name">
+    </md-input-container>
+    <md-input-container flex-30>
+        <label>Card Number (required)</label>
+        <input required type="number"  ng-model="number">
+    </md-input-container>
+
+    <md-input-container flex-30>
+        <label>Mobile Number (required)</label>
+        <input required type="number" ng-model="mobile">
+    </md-input-container>
+
+
+<md-button class="md-raised md-primary" ng-click="add();">Submit</md-button>
 
 
 
-<input type="text" ng-model="name"/>
-<input type="number" ng-model="number"/>
-<button ng-click="add();">add</button>
+
