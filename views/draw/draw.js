@@ -9,9 +9,17 @@ angular.module("drawApp")
     $scope.showPasswordForm = true;
     $scope.showPageContent = false;
     $scope.errorText= '';
+    $scope.winners  = [
+        35353,
+        35354,
+        35355,
+        35356,
+        35357
+    ];
 
 
     $scope.checkPassword = function(){
+        console.log($scope.password);
         if($scope.password == $scope.hardCodedPassword){
             $scope.showPasswordForm = false;
             $scope.showPageContent = true;

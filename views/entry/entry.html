@@ -9,11 +9,11 @@
 <form ng-submit="add()">
     <md-input-container flex-30>
         <label>Full Name</label>
-        <input required ng-model="name">
+        <input required ng-model="name" maxlength="20">
     </md-input-container>
     <md-input-container flex-30>
         <label>Card Number (required)</label>
-        <input required type="number"  ng-model="number">
+        <input required type="number"  ng-model="number" min="10" max="99999">
     </md-input-container>
 
     <md-input-container flex-30>
