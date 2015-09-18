@@ -1,30 +1,57 @@
 <md-toolbar class="md-active">
-    <div class="md-toolbar-tools">
-        <h2 class="md-flex">WellCome to jeeto karachi</h2>
-
+    <div class="md-toolbar-tools" layout="row" layout-warp>
+        <h2 class="md-flex" flex>WellCome to jeeto karachi</h2>
+        <md-button class="md-raised md-warn" ui-sref="draw" flex="25">Goto Lucky Draw Page >></md-button>
     </div>
-    <md-button ui-sref="draw">Goto Lucky Draw Page</md-button>
 </md-toolbar>
 
-<form ng-submit="add()">
-    <md-input-container flex-30>
-        <label>Full Name</label>
-        <input required ng-model="name" maxlength="20">
-    </md-input-container>
-    <md-input-container flex-30>
-        <label>Card Number (required)</label>
-        <input required type="number"  ng-model="number" min="10" max="99999">
-    </md-input-container>
 
-    <md-input-container flex-30>
-        <label>Mobile Number (required)</label>
-        <input required type="text" ng-model="mobile">
-    </md-input-container>
 
-<md-button class="md-raised md-primary" ng-click="add();">Submit</md-button>
 
+<form ng-submit="add()" >
+    <div layout="column">
+
+        <div layout="row">
+            <md-input-container flex>
+                <label>Full Name</label>
+                <input required type="text"
+                       ng-model="name"
+                       maxlength="20"
+                       pattern="[A-Za-z\s]{3,20}"
+                       title="name must have atleast 3 characters(exclude spaces)
+and only a-z (no symbol allowed) ">
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Card Number (required)</label>
+                <input required type="text"
+                       ng-model="number"
+                       pattern="(?!0)[0-9]{1,5}"
+                       maxlength="5"
+                       title="card number must in digits, maximum 5 digits allowed">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Mobile Number (required)</label>
+                <input required type="text"
+                       name="phone number"
+                       ng-model="mobile"
+                       pattern="03[0-9]{2}(?!1234567)(?!7654321)(?!1111111)(?!2222222)(?!3333333)(?!4444444)(?!5555555)(?!6666666)(?!7777777)(?!8888888)(?!9999999)[0-9]{7}"
+                       title="mobile number must have 11 digits and starting from '03'
+e.g: 03xxXXXXXXX
+NOTE: An artificial intelligence is installed for wrong numbers detection which will not accept fake numbers like 03007654321
+So kindly use your own mobile number "
+                       >
+
+            </md-input-container>
+        </div>
+
+
+        <md-button class="md-raised "  ng-click="add();">Submit</md-button>
+    </div>
 </form>
-
+<br />
+<br />
+<br />
 
 <!--
 <ol>

@@ -22,15 +22,21 @@
 <!--ng-show="showPageContent"-->
 <div  ng-show="true">
     <md-toolbar>
-        <div class="md-toolbar-tools">
-            <span>Jeeto Karachi Lucky Draw</span>
+        <div class="md-toolbar-tools" layout="row" layout-warp>
+            <div class="md-flex" flex>Jeeto Karachi Lucky Draw</div>
+            <div class="md-raised md-warn" ui-sref="draw" flex>{{guests.length + " &nbsp; Pepoles Attended Jeeto Karachi Till Now"}}</div>
+
         </div>
     </md-toolbar>
 
     <div layout="row" layout-warp>
         <span offset="33"></span>
 
-        <md-button class="md-primary md-raised " flex="33">
+        <md-button ng-hide="guests.length" class=" md-raised" flex="33">
+            <span class="md-display-1">wait...</span>
+        </md-button>
+
+        <md-button ng-show="guests.length" class="md-primary md-raised " flex="33" ng-click="doDraw();">
             <span class="md-display-1">Lucky Draw</span>
         </md-button>
 
@@ -55,3 +61,49 @@
     </md-list>
 
 </div>
+
+
+<!--guests list-->
+<md-toolbar class="md-active">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex">{{guests.length + " &nbsp; Pepoles Attended Jeeto Karachi Till Now"}}</h2>
+    </div>
+</md-toolbar>
+
+
+<md-data-table-container>
+
+    <table md-data-table>
+
+        <thead md-order="order">
+        <!-- this cell will order by the name property -->
+
+        <th order-by="name" name="name"></th>
+
+        <!-- this cell will not change the order when clicked -->
+        <th order-by="number" name="Card number"></th>
+        <th order-by="mobile" name="mobile number"></th>
+
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in guests | orderBy: order">
+
+            <td><b>{{item.name}}</b></td>
+            <td>{{item.number}}</td>
+            <td>{{item.mobile}}</td>
+            <td>
+                <md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="edit($index)">
+                    <img class="png-icon" src="png/512/compose.png" width="30px">
+                </md-button>
+                {{item.name}}
+                <md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="del($index)">
+                    <img class="png-icon" src="png/512/ios7-close-empty.png" width="30px">
+                </md-button>
+                <!--<img src="png/512/ios7-close-empty.png" width="28px " ng-click="alert('dhgds');">-->
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</md-data-table-container>

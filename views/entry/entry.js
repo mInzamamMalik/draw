@@ -3,7 +3,7 @@
  */
 angular.module("drawApp")
 
-.controller("entryController",function($scope,$firebaseArray, $mdToast){
+.controller("entryController",function($scope,$mdToast,dataService){
 
 //toast code start
         var last = {
@@ -40,10 +40,10 @@ angular.module("drawApp")
 //toast code end
 
 //firebase code start
-    var ref = new Firebase("https://markone-drawapp.firebaseio.com/guests");
+//    var ref = new Firebase("https://markone-drawapp.firebaseio.com/guests");
     // create a synchronized array
     // click on `index.html` above to see it used in the DOM!
-    $scope.guests = $firebaseArray(ref);
+    $scope.guests = dataService.guests;
 //firebase code end
 
 //page logic code start
@@ -54,12 +54,11 @@ angular.module("drawApp")
 
     $scope.add = function(){
 
+
         $mdToast.hide();
 
-        var alreadyExist = null;
-        var empty = null;
-        var wrongNumber = null;
-        $scope.alertText = '';
+        var alreadyExist = 0;
+        var empty = 0;
 
 
         for(i=0 ; i<$scope.guests.length ; i++){
@@ -69,33 +68,24 @@ angular.module("drawApp")
 
             }
         }
-        if($scope.mobile.length != 11){
-            wrongNumber = 1;
-          //  alert("moble number must have 11 digit");
-            $scope.showSimpleToast("moble number must have 11 digit");
-        }
+
         if($scope.name == '' || $scope.number == '' || $scope.mobile == ''){
             empty = 1;
             $scope.showSimpleToast('you can not leave any box empty');
-
         }
 
-        if(!alreadyExist && !empty && !wrongNumber){
-            if($scope.mobile.toString().length == 11 ) {
+        if(!alreadyExist && !empty){
                 $scope.guests.$add({
                     name: $scope.name,
                     number: $scope.number,
                     mobile: $scope.mobile
                 });
 
-                $scope.showSimpleToast('Thank you ' + $scope.name);
+                $scope.showSimpleToast('Thank you for coming ' + $scope.name);
 
                 $scope.name = "";
                 $scope.number = "";
                 $scope.mobile = "";
-
-
-            }
         }
     };
 
