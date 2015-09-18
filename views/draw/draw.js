@@ -5,7 +5,7 @@ angular.module("drawApp")
 
 .controller("drawController",function($scope,dataService, $mdToast){
     $scope.password = "";
-    $scope.hardCodedPassword = "pakistanpakistan";
+        var hardCodedPassword = "pakistanpakistan";
     $scope.showPasswordForm = true;
     $scope.showPageContent = false;
     $scope.errorText= '';
@@ -15,22 +15,47 @@ angular.module("drawApp")
 
 
     $scope.checkPassword = function(){
-        console.log($scope.password);
-        if($scope.password == $scope.hardCodedPassword){
+        if($scope.password == hardCodedPassword){
             $scope.showPasswordForm = false;
             $scope.showPageContent = true;
         }else{
             $scope.errorText = 'You have entered wrong password';
 
+            setTimeout(function(){
+
+                $scope.errorText = ''
+
+            },3000);
+
         }
     };
 
     $scope.doDraw = function(){
+        var randNumb;
+        var matched = 0;
+
         if($scope.guests.length == 0){
             alert("data is retriving from server try few seconds latter,if constant check internet connection");
         }else{
-            alert($scope.guests[Math.floor(Math.random() * $scope.guests.length)].number);
+            randNumb = Math.floor(Math.random() * $scope.guests.length);
 
+
+            for(var i = 0 ; i < $scope.winners.length ; i++){
+
+                if($scope.winners[i].number == $scope.guests[randNumb].number){
+                    matched =1;
+                }
+
+
+
+            }
+            if(matched != 1) {
+                $scope.winners.push($scope.guests[randNumb]);
+            }else if($scope.winners.length < $scope.guests.length){
+                $scope.doDraw();
+            }else{
+                alert("can't do more draw, maximum limit reached");
+            }
         }
     };
 
