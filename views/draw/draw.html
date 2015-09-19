@@ -8,19 +8,25 @@
     </div>
 </md-toolbar>
 
+<form ng-submit="checkPassword()" >
+    <div layout="row" layout-warp>
 
-    <form ng-submit="checkPassword()" >
-    <div layout="row" layout-warp >
+
         <md-input-container flex="70" class="md-display-1">
             <label>Password</label>
             <input type="password" ng-model="password" placeholder="Enter your password here"/>
         </md-input-container>
-        <md-button flex="30" class="md-primary" ng-click="checkPassword()" >
-            <span class="md-display-1">submit</span>
+
+        <md-button flex  class="md-primary" ng-click="checkPassword()">
+            <span  class="md-display-1">submit</span>
+            <div ng-bind="errorText" class="md-accent" flex="66">sdds</div>
         </md-button>
-</div>
-    <span ng-bind="errorText"></span>
+    </div>
 </form>
+
+
+
+
 </div>
 
 

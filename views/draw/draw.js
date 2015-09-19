@@ -19,7 +19,7 @@ angular.module("drawApp")
             $scope.showPasswordForm = false;
             $scope.showPageContent = true;
         }else{
-            $scope.errorText = 'You have entered wrong password';
+            $scope.errorText = 'Sorry wrong password';
 
             setTimeout(function(){
 
