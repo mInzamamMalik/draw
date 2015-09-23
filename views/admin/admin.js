@@ -7,7 +7,7 @@ angular.module("drawApp")
 
         $scope.showPasswordForm = true;
         $scope.showPageContent = false;
-        var hardCodedPassword = "pakistanpakistan";
+        var hardCodedPassword = "natsikap";
 
         $scope.checkPassword = function(){
             if($scope.password == hardCodedPassword){
