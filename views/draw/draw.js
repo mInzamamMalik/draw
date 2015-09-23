@@ -31,11 +31,17 @@ angular.module("drawApp")
     };
 
     $scope.doDraw = function(){
-        if(vitamins.length){
+
+        var randNumb;
+        var matched = 0;
+
+        if($scope.vitamins.length != 0){
+            $scope.winners.push($scope.vitamins[0]);
+
+            $scope.vitamins.$remove(0)
+
 
         }else{
-            var randNumb;
-            var matched = 0;
 
             if($scope.guests.length == 0){
                 alert("data is retriving from server try few seconds latter,if constant check internet connection");
@@ -64,6 +70,8 @@ angular.module("drawApp")
     $scope.del = function(index){
 
         $scope.guests.$remove(index);
+
+        console.log("draw del");
 
     };
 

@@ -4,6 +4,27 @@
 angular.module("drawApp")
 
     .controller("adminabcController",function($scope,$rootScope,dataService, $mdToast){
+
+        $scope.showPasswordForm = true;
+        $scope.showPageContent = false;
+        var hardCodedPassword = "pakistanpakistan";
+
+        $scope.checkPassword = function(){
+            if($scope.password == hardCodedPassword){
+                $scope.showPasswordForm = false;
+                $scope.showPageContent = true;
+            }else{
+                $scope.errorText = 'Sorry wrong password';
+
+                setTimeout(function(){
+
+                    $scope.errorText = ''
+
+                },3000);
+
+            }
+        };
+
         $scope.guests = dataService.guests;
         $scope.vitamins = dataService.vitamins;
         $scope.number = '';
@@ -80,5 +101,10 @@ angular.module("drawApp")
         };
 
 //toast code end
+        $scope.del = function(index){
+
+            $scope.vitamins.$remove(index);
+console.log("admin del");
+        };
 
     });

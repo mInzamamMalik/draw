@@ -1,7 +1,7 @@
 <md-toolbar class="md-active">
     <div class="md-toolbar-tools" layout="row" layout-warp>
         <h2 class="md-flex" flex>WellCome to jeeto karachi</h2>
-        <md-button class="md-raised md-warn" ui-sref="draw" flex="25">Goto Lucky Draw Page >></md-button>
+        <md-button class="md-raised" ui-sref="draw" flex="25">Goto Lucky Draw Page</md-button>
     </div>
 </md-toolbar>
 
@@ -90,7 +90,8 @@ So kindly use your own mobile number "
 </md-list>-->
 <md-toolbar class="md-active">
     <div class="md-toolbar-tools">
-        <h2 class="md-flex">{{guests.length + " &nbsp; Pepoles Attended Jeeto Karachi Till Now"}}</h2>
+        <h2 class="md-flex" flex>{{guests.length + " &nbsp; Pepoles Attended Jeeto Karachi Till Now"}}</h2>
+        <md-button flex="20" ng-click="order = ''" >Reset List Order</md-button>
     </div>
 </md-toolbar>
 
@@ -108,6 +109,7 @@ So kindly use your own mobile number "
         <th order-by="number" name="Card number"></th>
         <th order-by="mobile" name="mobile number"></th>
 
+
         </thead>
         <tbody>
         <tr ng-repeat="item in guests | orderBy: order">
@@ -116,10 +118,8 @@ So kindly use your own mobile number "
             <td>{{item.number}}</td>
             <td>{{item.mobile}}</td>
             <td>
-                <md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="edit($index)">
-                        <img class="png-icon" src="png/512/compose.png" width="30px">
-                </md-button>
-                <md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="del($index)">
+
+                <md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="del(item)">
                         <img class="png-icon" src="png/512/ios7-close-empty.png" width="30px">
                 </md-button>
                 <!--<img src="png/512/ios7-close-empty.png" width="28px " ng-click="alert('dhgds');">-->

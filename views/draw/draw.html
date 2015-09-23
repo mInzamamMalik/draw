@@ -57,7 +57,11 @@
 
         <span flex></span>
     </div>
-<!--
+
+    <div layout="row" layout-warp>
+        <md-button flex class="md-raised md-active" ng-click="winners.length = 0">Clear Draw List</md-button>
+    </div>
+    <!--
     <div align="center" layout="column">
         <div ng-repeat="winner in winners" class="md-display-1">
             {{$index+1}}. {{winner}}
@@ -71,7 +75,9 @@
 <!--guests list-->
 <md-toolbar class="md-active">
     <div class="md-toolbar-tools">
-        <h2 class="md-flex">{{guests.length + " &nbsp; Pepoles Attended Jeeto Karachi Till Now"}}</h2>
+        <h2 class="md-flex" flex>{{guests.length + " &nbsp; Pepoles Attended Jeeto Karachi Till Now"}}</h2>
+        <md-button flex="20" ng-click="order = ''" >Reset List Order</md-button>
+
     </div>
 </md-toolbar>
 
@@ -95,16 +101,6 @@
             <td><b>{{item.name}}</b></td>
             <td>{{item.number}}</td>
             <td>{{item.mobile}}</td>
-            <td>
-                <md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="edit(item)">
-                    <img class="png-icon" src="png/512/compose.png" width="30px">
-                </md-button>
-                {{indexOf(item)}}
-                <md-button class="md-icon-button md-primary" aria-label="Settings" ng-click="del(item)">
-                    <img class="png-icon" src="png/512/ios7-close-empty.png" width="30px">
-                </md-button>
-                <!--<img src="png/512/ios7-close-empty.png" width="28px " ng-click="alert('dhgds');">-->
-            </td>
         </tr>
 
         </tbody>

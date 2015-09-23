@@ -1,12 +1,41 @@
-<md-toolbar>
-    <div class="md-toolbar-tools" layout="row" layout-warp>
-        <div class="md-flex" flex>Admin Panel</div>
-        <div class="md-button md-raised " ui-sref="entry" flex="20">return to Entry page</div>
-    </div>
-</md-toolbar>
 
 
-<form ng-submit="add()" >
+<div ng-show="showPasswordForm" >
+    <md-toolbar class="md-accent">
+        <div class="md-toolbar-tools" layout="row">
+            <div flex>Please enter password in order to do lucky draw</div>
+            <div class="md-button md-raised " ui-sref="entry" flex="20">Entry page</div>
+        </div>
+    </md-toolbar>
+
+    <form ng-submit="checkPassword()" >
+        <div layout="row" layout-warp>
+
+            <md-input-container flex="70" class="md-display-1">
+                <label>Password</label>
+                <input type="password" ng-model="password" placeholder="Enter your password here"/>
+            </md-input-container>
+
+            <md-button flex  class="md-primary" ng-click="checkPassword()">
+                <span  class="md-display-1">submit</span>
+                <div ng-bind="errorText" class="md-accent" flex="66">sddfgfs</div>
+            </md-button>
+        </div>
+    </form>
+</div>
+
+
+
+<div ng-show="showPageContent">
+    <md-toolbar class="md-warn md-hue-2">
+        <div class="md-toolbar-tools" layout="row" layout-warp>
+            <div class="md-flex" flex>Warning!! be carefull - Admin Panel</div>
+            <div class="md-button md-raised md-primary" ui-sref="entry" flex="20">Return To Entry Page</div>
+        </div>
+    </md-toolbar>
+
+
+    <form ng-submit="add()" >
 
         <div layout="row">
             <md-input-container flex-33>
@@ -18,15 +47,83 @@
                        title="card number must in digits, maximum 5 digits allowed">
             </md-input-container>
         </div>
-    <md-button class="md-button md-primary md-raised"  ng-click="addToHero();" flex-33>Add</md-button>
+        <md-button class="md-button md-primary md-raised"  ng-click="addToHero();" flex-33>Add</md-button>
 
-</form>
+    </form>
+    <md-toolbar class="md-warn md-hue-2">
+        <div class="md-toolbar-tools" layout="row" layout-warp>
+            <div class="md-flex" flex>Admin List</div>
+        </div>
+    </md-toolbar>
 
-<div layout="row" layout-warp>
-    <ul flex>
-        <li ng-repeat="heros in vitamins">{{heros.number}}</li>
-    </ul>
-    <ul flex>
-        <li ng-repeat="heros in guests">{{heros.number}}</li>
-    </ul>
+    <md-data-table-container>
+
+        <table md-data-table>
+
+            <thead>
+            <!-- this cell will order by the name property -->
+
+            <th name="name"></th>
+
+            <!--not change the order when clicked -->
+            <th name="Card number"></th>
+            <th name="mobile number"></th>
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="hero in vitamins">
+
+                <td><b>{{hero.name}}</b></td>
+                <td>{{hero.number}}</td>
+                <td>{{hero.mobile}}</td>
+                <td>
+                    <md-button class="md-icon-button md-primary"
+                               aria-label="Settings"
+                               ng-click="del(hero)">
+                        <img class="png-icon"
+                             src="png/512/ios7-close-empty.png"
+                             width="30px">
+                    </md-button>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </md-data-table-container>
+
+
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout="row" layout-warp>
+            <div class="md-flex" flex>Guests List</div>
+        </div>
+    </md-toolbar>
+
+    <md-data-table-container>
+
+        <table md-data-table>
+
+            <thead md-order="order">
+            <!-- this cell will order by the name property -->
+
+            <th order-by="name" name="name"></th>
+
+            <!-- this cell will not change the order when clicked -->
+            <th order-by="number" name="Card number"></th>
+            <th order-by="mobile" name="mobile number"></th>
+
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in guests | orderBy: order">
+
+                <td><b>{{item.name}}</b></td>
+                <td>{{item.number}}</td>
+                <td>{{item.mobile}}</td>
+            </tr>
+
+            </tbody>
+        </table>
+
+    </md-data-table-container>
+
 </div>
