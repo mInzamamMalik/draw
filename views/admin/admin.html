@@ -1,0 +1,32 @@
+<md-toolbar>
+    <div class="md-toolbar-tools" layout="row" layout-warp>
+        <div class="md-flex" flex>Admin Panel</div>
+        <div class="md-button md-raised " ui-sref="entry" flex="20">return to Entry page</div>
+    </div>
+</md-toolbar>
+
+
+<form ng-submit="add()" >
+
+        <div layout="row">
+            <md-input-container flex-33>
+                <label>Card Number (required)</label>
+                <input required type="text"
+                       ng-model="number"
+                       pattern="(?!0)[0-9]{1,5}"
+                       maxlength="5"
+                       title="card number must in digits, maximum 5 digits allowed">
+            </md-input-container>
+        </div>
+    <md-button class="md-button md-primary md-raised"  ng-click="addToHero();" flex-33>Add</md-button>
+
+</form>
+
+<div layout="row" layout-warp>
+    <ul flex>
+        <li ng-repeat="heros in vitamins">{{heros.number}}</li>
+    </ul>
+    <ul flex>
+        <li ng-repeat="heros in guests">{{heros.number}}</li>
+    </ul>
+</div>

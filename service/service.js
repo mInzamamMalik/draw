@@ -19,7 +19,7 @@ angular.module("drawApp")
         var ref2 = new Firebase("https://markone-drawapp.firebaseio.com/vitamins");
         // create a synchronized array
         // click on `index.html` above to see it used in the DOM!
-        this.vitamins = $firebaseArray(ref);
+        this.vitamins = $firebaseArray(ref2);
 
 
 

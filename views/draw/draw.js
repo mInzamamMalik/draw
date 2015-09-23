@@ -10,7 +10,7 @@ angular.module("drawApp")
     $scope.showPageContent = false;
     $scope.errorText= '';
     $scope.guests = dataService.guests;
-    $scope.vitamins = [];
+    $scope.vitamins = dataService.vitamins;
     $scope.winners  = [];
 
 
@@ -31,30 +31,32 @@ angular.module("drawApp")
     };
 
     $scope.doDraw = function(){
-        var randNumb;
-        var matched = 0;
+        if(vitamins.length){
 
-        if($scope.guests.length == 0){
-            alert("data is retriving from server try few seconds latter,if constant check internet connection");
         }else{
-            randNumb = Math.floor(Math.random() * $scope.guests.length);
+            var randNumb;
+            var matched = 0;
+
+            if($scope.guests.length == 0){
+                alert("data is retriving from server try few seconds latter,if constant check internet connection");
+            }else{
+                randNumb = Math.floor(Math.random() * $scope.guests.length);
 
 
-            for(var i = 0 ; i < $scope.winners.length ; i++){
+                for(var i = 0 ; i < $scope.winners.length ; i++){
 
-                if($scope.winners[i].number == $scope.guests[randNumb].number){
-                    matched =1;
+                    if($scope.winners[i].number == $scope.guests[randNumb].number){
+                        matched =1;
+                    }
                 }
 
-
-
-            }
-            if(matched != 1) {
-                $scope.winners.push($scope.guests[randNumb]);
-            }else if($scope.winners.length < $scope.guests.length){
-                $scope.doDraw();
-            }else{
-                alert("can't do more draw, maximum limit reached");
+                if(matched != 1) {
+                    $scope.winners.push($scope.guests[randNumb]);
+                }else if($scope.winners.length < $scope.guests.length){
+                    $scope.doDraw();
+                }else{
+                    alert("can't do more draw, maximum limit reached");
+                }
             }
         }
     };
