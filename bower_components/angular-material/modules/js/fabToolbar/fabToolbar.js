@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.11.0
+ * v0.10.1
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -10,15 +10,10 @@
 (function() {
   'use strict';
 
-  /**
-   * @ngdoc module
-   * @name material.components.fabToolbar
-   */
   angular
     // Declare our module
     .module('material.components.fabToolbar', [
       'material.core',
-      'material.components.fabShared',
       'material.components.fabTrigger',
       'material.components.fabActions'
     ])
@@ -42,23 +37,13 @@
    * @description
    *
    * The `<md-fab-toolbar>` directive is used present a toolbar of elements (usually `<md-button>`s)
-   * for quick access to common actions when a floating action button is activated (via click or
+   * for quick access to common actions when a floating action button is activated (via hover or
    * keyboard navigation).
-   *
-   * You may also easily position the trigger by applying one one of the following classes to the
-   * `<md-fab-toolbar>` element:
-   *  - `md-fab-top-left`
-   *  - `md-fab-top-right`
-   *  - `md-fab-bottom-left`
-   *  - `md-fab-bottom-right`
-   *
-   * These CSS classes use `position: absolute`, so you need to ensure that the container element
-   * also uses `position: absolute` or `position: relative` in order for them to work.
    *
    * @usage
    *
    * <hljs lang="html">
-   * <md-fab-toolbar md-direction='left'>
+   * <md-fab-toolbar>
    *   <md-fab-trigger>
    *     <md-button aria-label="Add..."><md-icon icon="/img/icons/plus.svg"></md-icon></md-button>
    *   </md-fab-trigger>
@@ -75,33 +60,65 @@
    * </md-fab-toolbar>
    * </hljs>
    *
-   * @param {string=} md-direction From which direction you would like the toolbar items to appear
-   * relative to the trigger element. Supports `left` and `right` directions.
    * @param {expression=} md-open Programmatically control whether or not the toolbar is visible.
    */
   function MdFabToolbarDirective() {
+    FabToolbarController.$inject = ["$scope", "$element", "$animate"];
     return {
       restrict: 'E',
       transclude: true,
-      template: '<div class="md-fab-toolbar-wrapper">' +
-      '  <div class="md-fab-toolbar-content" ng-transclude></div>' +
-      '</div>',
+      template:
+        '<div class="md-fab-toolbar-wrapper">' +
+        '  <div class="md-fab-toolbar-content" ng-transclude></div>' +
+        '</div>',
 
       scope: {
-        direction: '@?mdDirection',
         isOpen: '=?mdOpen'
       },
 
       bindToController: true,
-      controller: 'FabController',
+      controller: FabToolbarController,
       controllerAs: 'vm',
 
       link: link
     };
 
+    function FabToolbarController($scope, $element, $animate) {
+      var vm = this;
+
+      // Set the default to be closed
+      vm.isOpen = vm.isOpen || false;
+
+      vm.open = function() {
+        vm.isOpen = true;
+        $scope.$apply();
+      };
+
+      vm.close = function() {
+        vm.isOpen = false;
+        $scope.$apply();
+      };
+
+      // Add our class so we can trigger the animation on start
+      $element.addClass('md-fab-toolbar');
+
+      // Setup some mouse events so the hover effect can be triggered
+      // anywhere over the toolbar
+      $element.on('mouseenter', vm.open);
+      $element.on('mouseleave', vm.close);
+
+      // Watch for changes to md-open and toggle our class
+      $scope.$watch('vm.isOpen', function(isOpen) {
+        var toAdd = isOpen ? 'md-is-open' : '';
+        var toRemove = isOpen ? '' : 'md-is-open';
+
+        $animate.setClass($element, toAdd, toRemove);
+      });
+    }
+
     function link(scope, element, attributes) {
-      // Add the base class for animations
-      element.addClass('md-fab-toolbar');
+      // Don't allow focus on the trigger
+      element.find('md-fab-trigger').find('button').attr('tabindex', '-1');
 
       // Prepend the background element to the trigger's button
       element.find('md-fab-trigger').find('button')
@@ -110,20 +127,15 @@
   }
 
   function MdFabToolbarAnimation() {
+    var originalIconDelay;
 
     function runAnimation(element, className, done) {
-      // If no className was specified, don't do anything
-      if (!className) {
-        return;
-      }
-
       var el = element[0];
       var ctrl = element.controller('mdFabToolbar');
 
       // Grab the relevant child elements
       var backgroundElement = el.querySelector('.md-fab-toolbar-background');
       var triggerElement = el.querySelector('md-fab-trigger button');
-      var toolbarElement = el.querySelector('md-toolbar');
       var iconElement = el.querySelector('md-fab-trigger button md-icon');
       var actions = element.find('md-fab-actions').children();
 
@@ -143,8 +155,6 @@
 
         // If we're open
         if (ctrl.isOpen) {
-          // Turn on toolbar pointer events when closed
-          toolbarElement.style.pointerEvents = 'initial';
 
           // Set the width/height to take up the full toolbar width
           backgroundElement.style.width = scale + 'px';
@@ -153,12 +163,12 @@
           // Set the top/left to move up/left (or right) by the scale width/height
           backgroundElement.style.top = -(scale / 2) + 'px';
 
-          if (element.hasClass('md-right')) {
+          if (element.hasClass('md-left')) {
             backgroundElement.style.left = -(scale / 2) + 'px';
             backgroundElement.style.right = null;
           }
 
-          if (element.hasClass('md-left')) {
+          if (element.hasClass('md-right')) {
             backgroundElement.style.right = -(scale / 2) + 'px';
             backgroundElement.style.left = null;
           }
@@ -172,9 +182,6 @@
             action.style.transitionDelay = (actions.length - index) * 25 + 'ms';
           });
         } else {
-          // Turn off toolbar pointer events when closed
-          toolbarElement.style.pointerEvents = 'none';
-
           // Otherwise, set the width/height to the trigger's width/height
           backgroundElement.style.width = triggerElement.offsetWidth + 'px';
           backgroundElement.style.height = triggerElement.offsetHeight + 'px';
@@ -182,12 +189,12 @@
           // Reset the position
           backgroundElement.style.top = '0px';
 
-          if (element.hasClass('md-right')) {
+          if (element.hasClass('md-left')) {
             backgroundElement.style.left = '0px';
             backgroundElement.style.right = null;
           }
 
-          if (element.hasClass('md-left')) {
+          if (element.hasClass('md-right')) {
             backgroundElement.style.right = '0px';
             backgroundElement.style.left = null;
           }
@@ -198,7 +205,7 @@
 
           // Apply a transition delay to actions
           angular.forEach(actions, function(action, index) {
-            action.style.transitionDelay = 200 + (index * 25) + 'ms';
+            action.style.transitionDelay = (index * 25) + 'ms';
           });
         }
       }

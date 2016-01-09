@@ -1,0 +1,109 @@
+
+<!--ng-show="showPasswordForm"-->
+<div ng-show="showPasswordForm" >
+<md-toolbar>
+    <div class="md-toolbar-tools" layout="row">
+        <div flex>Please enter password in order to do lucky draw</div>
+        <div class="md-button md-raised " ui-sref="entry" flex="20">Entry page</div>
+    </div>
+</md-toolbar>
+
+<form ng-submit="checkPassword()" >
+    <div layout="row" layout-warp>
+
+        <md-input-container flex="70" class="md-display-1">
+            <label>Password</label>
+            <input type="password" ng-model="password" placeholder="Enter your password here"/>
+        </md-input-container>
+
+        <md-button flex  class="md-primary" ng-click="checkPassword()">
+            <span  class="md-display-1">submit</span>
+            <div ng-bind="errorText" class="md-accent" flex="66">sdds</div>
+        </md-button>
+    </div>
+</form>
+</div>
+
+<!--ng-show="showPageContent"-->
+<div  ng-show="showPageContent">
+
+    <md-toolbar>
+        <div class="md-toolbar-tools" layout="row" layout-warp>
+            <div class="md-flex" flex>Jeeto Karachi Lucky Draw</div>
+            <div class="md-button md-raised " ui-sref="entry" flex="20">Entry page</div>
+
+        </div>
+    </md-toolbar>
+
+    <md-list>
+        <md-list-item class="md-3-line" ng-repeat="item in winners ">
+            <div class="md-display-3">
+                <span>{{$index+1}}. {{item.name}} - {{item.number}}</span>
+            </div>
+            <md-divider ng-if="!$last"></md-divider>
+        </md-list-item>
+    </md-list>
+
+    <div layout="row" layout-warp>
+        <span flex></span>
+
+        <md-button ng-hide="guests.length" class=" md-raised" flex="44">
+            <span class="md-display-1">wait...</span>
+        </md-button>
+
+        <md-button ng-show="guests.length" class="md-primary md-raised" flex="44" ng-click="doDraw();">
+            <span class="md-display-2">Lucky Draw</span>
+        </md-button>
+
+        <span flex></span>
+    </div>
+
+    <div layout="row" layout-warp>
+        <md-button flex class="md-raised md-active" ng-click="winners.length = 0">Clear Draw List</md-button>
+    </div>
+    <!--
+    <div align="center" layout="column">
+        <div ng-repeat="winner in winners" class="md-display-1">
+            {{$index+1}}. {{winner}}
+        </div>
+    </div>
+-->
+
+</div>
+
+
+<!--guests list-->
+<md-toolbar class="md-active">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex" flex>{{guests.length + " &nbsp; Pepoles Attended Jeeto Karachi Till Now"}}</h2>
+        <md-button flex="20" ng-click="order = ''" >Reset List Order</md-button>
+
+    </div>
+</md-toolbar>
+
+<md-data-table-container>
+
+    <table md-data-table>
+
+        <thead md-order="order">
+        <!-- this cell will order by the name property -->
+
+        <th order-by="name" name="name"></th>
+
+        <!-- this cell will not change the order when clicked -->
+        <th order-by="number" name="Card number"></th>
+        <th order-by="mobile" name="mobile number"></th>
+
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in guests | orderBy: order">
+
+            <td><b>{{item.name}}</b></td>
+            <td>{{item.number}}</td>
+            <td>{{item.mobile}}</td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</md-data-table-container>

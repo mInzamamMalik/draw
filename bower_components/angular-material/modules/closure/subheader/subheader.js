@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.11.0
+ * v0.10.1
  */
 goog.provide('ng.material.components.subheader');
 goog.require('ng.material.components.sticky');
@@ -25,11 +25,10 @@ goog.require('ng.material.core');
  *  > To improve the visual grouping of content, use the system color for your subheaders.
  *
  */
-angular
-  .module('material.components.subheader', [
-    'material.core',
-    'material.components.sticky'
-  ])
+angular.module('material.components.subheader', [
+  'material.core',
+  'material.components.sticky'
+])
   .directive('mdSubheader', MdSubheaderDirective);
 
 /**
@@ -50,56 +49,45 @@ angular
  * </hljs>
  */
 
-function MdSubheaderDirective($mdSticky, $compile, $mdTheming, $mdUtil) {
+function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
   return {
     restrict: 'E',
     replace: true,
     transclude: true,
-    template: (
-    '<div class="md-subheader">' +
-    '  <div class="md-subheader-inner">' +
-    '    <span class="md-subheader-content"></span>' +
-    '  </div>' +
-    '</div>'
-    ),
-    link: function postLink(scope, element, attr, controllers, transclude) {
-      $mdTheming(element);
-      var outerHTML = element[0].outerHTML;
+    template: 
+      '<h2 class="md-subheader">' +
+        '<div class="md-subheader-inner">' +
+          '<span class="md-subheader-content"></span>' +
+        '</div>' +
+      '</h2>',
+    compile: function(element, attr, transclude) {
+      return function postLink(scope, element, attr) {
+        $mdTheming(element);
+        var outerHTML = element[0].outerHTML;
 
-      function getContent(el) {
-        return angular.element(el[0].querySelector('.md-subheader-content'));
-      }
+        function getContent(el) {
+          return angular.element(el[0].querySelector('.md-subheader-content'));
+        }
 
-      // Transclude the user-given contents of the subheader
-      // the conventional way.
-      transclude(scope, function(clone) {
-        getContent(element).append(clone);
-      });
-
-      // Create another clone, that uses the outer and inner contents
-      // of the element, that will be 'stickied' as the user scrolls.
-      if (!element.hasClass('md-no-sticky')) {
+        // Transclude the user-given contents of the subheader
+        // the conventional way.
         transclude(scope, function(clone) {
-          // If the user adds an ng-if or ng-repeat directly to the md-subheader element, the
-          // compiled clone below will only be a comment tag (since they replace their elements with
-          // a comment) which cannot be properly passed to the $mdSticky; so we wrap it in our own
-          // DIV to ensure we have something $mdSticky can use
-          var wrapperHtml = '<div class="md-subheader-wrapper">' + outerHTML + '</div>';
-          var stickyClone = $compile(wrapperHtml)(scope);
-
-          // Append the sticky
-          $mdSticky(scope, element, stickyClone);
-
-          // Delay initialization until after any `ng-if`/`ng-repeat`/etc has finished before
-          // attempting to create the clone
-          $mdUtil.nextTick(function() {
-            getContent(stickyClone).append(clone);
-          });
+          getContent(element).append(clone);
         });
-      }
+
+        // Create another clone, that uses the outer and inner contents
+        // of the element, that will be 'stickied' as the user scrolls.
+        if (!element.hasClass('md-no-sticky')) {
+          transclude(scope, function(clone) {
+            var stickyClone = $compile(angular.element(outerHTML))(scope);
+            getContent(stickyClone).append(clone);
+            $mdSticky(scope, element, stickyClone);
+          });
+        }
+      };
     }
-  }
+  };
 }
-MdSubheaderDirective.$inject = ["$mdSticky", "$compile", "$mdTheming", "$mdUtil"];
+MdSubheaderDirective.$inject = ["$mdSticky", "$compile", "$mdTheming"];
 
 ng.material.components.subheader = angular.module("material.components.subheader");

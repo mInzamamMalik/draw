@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v0.11.0
+ * v0.10.1
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -127,7 +127,8 @@ function MdTab () {
 
   function postLink (scope, element, attr, ctrl) {
     if (!ctrl) return;
-    var index = ctrl.getTabElementIndex(element),
+    var tabs  = element.parent()[ 0 ].getElementsByTagName('md-tab'),
+        index = Array.prototype.indexOf.call(tabs, element[ 0 ]),
         body  = element.find('md-tab-body').eq(0).remove(),
         label = element.find('md-tab-label').eq(0).remove(),
         data  = ctrl.insertTab({
@@ -146,7 +147,7 @@ function MdTab () {
     scope.$watch('disabled', function () { ctrl.refreshIndex(); });
     scope.$watch(
         function () {
-          return ctrl.getTabElementIndex(element);
+          return Array.prototype.indexOf.call(tabs, element[ 0 ]);
         },
         function (newIndex) {
           data.index = newIndex;
@@ -207,7 +208,7 @@ angular
  * ngInject
  */
 function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipple,
-                           $mdUtil, $animateCss, $attrs, $compile, $mdTheming) {
+                           $mdUtil, $animate, $attrs, $compile, $mdTheming) {
   // define private properties
   var ctrl      = this,
       locked    = false,
@@ -260,7 +261,6 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
   ctrl.canPageBack        = canPageBack;
   ctrl.refreshIndex       = refreshIndex;
   ctrl.incrementIndex     = incrementIndex;
-  ctrl.getTabElementIndex = getTabElementIndex;
   ctrl.updateInkBarStyles = $mdUtil.debounce(updateInkBarStyles, 100);
   ctrl.updateTabOrder     = $mdUtil.debounce(updateTabOrder, 100);
 
@@ -416,7 +416,7 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
    */
   function handleSelectedIndexChange (newValue, oldValue) {
     if (newValue === oldValue) return;
-    
+
     ctrl.selectedIndex     = getNearestSafeIndex(newValue);
     ctrl.lastSelectedIndex = oldValue;
     ctrl.updateInkBarStyles();
@@ -425,11 +425,6 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
     $scope.$broadcast('$mdTabsChanged');
     ctrl.tabs[ oldValue ] && ctrl.tabs[ oldValue ].scope.deselect();
     ctrl.tabs[ newValue ] && ctrl.tabs[ newValue ].scope.select();
-  }
-
-  function getTabElementIndex(tabEl){
-    var tabs = $element[0].getElementsByTagName('md-tab');
-    return Array.prototype.indexOf.call(tabs, tabEl[0]);
   }
 
   /**
@@ -836,41 +831,17 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
         newHeight     = contentHeight + tabsHeight,
         currentHeight = $element.prop('clientHeight');
     if (currentHeight === newHeight) return;
-
-    // Lock during animation so the user can't change tabs
     locked = true;
-
-    var fromHeight = { height: currentHeight + 'px'},
-        toHeight = { height: newHeight + 'px' };
-
-    // Set the height to the current, specific pixel height to fix a bug on iOS where the height
-    // first animates to 0, then back to the proper height causing a visual glitch
-    $element.css(fromHeight);
-
-    // Animate the height from the old to the new
-    $animateCss($element, {
-      from: fromHeight,
-      to: toHeight,
-      easing: 'cubic-bezier(0.35, 0, 0.25, 1)',
-      duration: 0.5
-    }).start().done(function () {
-      // Then (to fix the same iOS issue as above), disable transitions and remove the specific
-      // pixel height so the height can size with browser width/content changes, etc.
-      $element.css({
-        transition: 'none',
-        height: ''
-      });
-
-      // In the next tick, re-allow transitions (if we do it all at once, $element.css is "smart"
-      // enough to batch it for us instead of doing it immediately, which undoes the original
-      // transition: none)
-      $mdUtil.nextTick(function() {
-        $element.css('transition', '');
-      });
-
-      // And unlock so tab changes can occur
-      locked = false;
-    });
+    $animate
+        .animate(
+        $element,
+        { height: currentHeight + 'px' },
+        { height: newHeight + 'px' }
+    )
+        .then(function () {
+                $element.css('height', '');
+                locked = false;
+              });
   }
 
   /**
@@ -878,10 +849,7 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
    * @returns {*}
    */
   function updateInkBarStyles () {
-    if (!elements.tabs[ ctrl.selectedIndex ]) {
-      angular.element(elements.inkBar).css({ left: 'auto', right: 'auto' });
-      return;
-    }
+    if (!elements.tabs[ ctrl.selectedIndex ]) return;
     if (!ctrl.tabs.length) return queue.push(ctrl.updateInkBarStyles);
     // if the element is not visible, we will not be able to calculate sizes until it is
     // we should treat that as a resize event rather than just updating the ink bar
@@ -939,7 +907,7 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
     $mdTabInkRipple.attach(scope, element, options);
   }
 }
-MdTabsController.$inject = ["$scope", "$element", "$window", "$mdConstant", "$mdTabInkRipple", "$mdUtil", "$animateCss", "$attrs", "$compile", "$mdTheming"];
+MdTabsController.$inject = ["$scope", "$element", "$window", "$mdConstant", "$mdTabInkRipple", "$mdUtil", "$animate", "$attrs", "$compile", "$mdTheming"];
 
 /**
  * @ngdoc directive
@@ -1092,7 +1060,7 @@ function MdTabs () {
                   ng-disabled="tab.scope.disabled"\
                   md-swipe-left="$mdTabsCtrl.nextPage()"\
                   md-swipe-right="$mdTabsCtrl.previousPage()"\
-                  md-tabs-template="::tab.label"\
+                  md-template="::tab.label"\
                   md-scope="::tab.parent"></md-tab-item>\
               <md-ink-bar></md-ink-bar>\
             </md-pagination-wrapper>\
@@ -1108,7 +1076,7 @@ function MdTabs () {
                   ng-focus="$mdTabsCtrl.hasFocus = true"\
                   ng-blur="$mdTabsCtrl.hasFocus = false"\
                   ng-repeat="tab in $mdTabsCtrl.tabs"\
-                  md-tabs-template="::tab.label"\
+                  md-template="::tab.label"\
                   md-scope="::tab.parent"></md-dummy-tab>\
             </div>\
           </md-tabs-canvas>\
@@ -1130,7 +1098,7 @@ function MdTabs () {
                 \'md-no-scroll\':     $mdTabsCtrl.dynamicHeight\
               }">\
             <div\
-                md-tabs-template="::tab.template"\
+                md-template="::tab.template"\
                 md-connected-if="tab.isActive()"\
                 md-scope="::tab.parent"\
                 ng-if="$mdTabsCtrl.enableDisconnect || tab.shouldRender()"></div>\
@@ -1146,14 +1114,14 @@ function MdTabs () {
 
 angular
     .module('material.components.tabs')
-    .directive('mdTabsTemplate', MdTabsTemplate);
+    .directive('mdTemplate', MdTemplate);
 
-function MdTabsTemplate ($compile, $mdUtil) {
+function MdTemplate ($compile, $mdUtil) {
   return {
     restrict: 'A',
     link:     link,
     scope:    {
-      template:     '=mdTabsTemplate',
+      template:     '=mdTemplate',
       connected:    '=?mdConnectedIf',
       compileScope: '=mdScope'
     },
@@ -1184,6 +1152,6 @@ function MdTabsTemplate ($compile, $mdUtil) {
     }
   }
 }
-MdTabsTemplate.$inject = ["$compile", "$mdUtil"];
+MdTemplate.$inject = ["$compile", "$mdUtil"];
 
 })(window, window.angular);

@@ -1,26 +1,134 @@
 <md-toolbar class="md-active">
-    <div class="md-toolbar-tools">
-        <h2 class="md-flex">WellCome to jeeto karachi</h2>
+    <div class="md-toolbar-tools" layout="row" layout-warp>
+        <h2 class="md-flex" flex>WellCome to jeeto karachi</h2>
+        <md-button class="md-raised" ui-sref="draw" flex="25">Goto Lucky Draw Page</md-button>
     </div>
 </md-toolbar>
 
-    <md-input-container flex-30>
-        <label>Full Name</label>
-        <input ng-model="name">
-    </md-input-container>
-    <md-input-container flex-30>
-        <label>Card Number (required)</label>
-        <input required type="number"  ng-model="number">
-    </md-input-container>
-
-    <md-input-container flex-30>
-        <label>Mobile Number (required)</label>
-        <input required type="number" ng-model="mobile">
-    </md-input-container>
 
 
-<md-button class="md-raised md-primary" ng-click="add();">Submit</md-button>
+
+<form ng-submit="add()" >
+    <div layout="column">
+
+        <div layout="row">
+            <md-input-container flex>
+                <label>Full Name</label>
+                <input required type="text"
+                       ng-model="name"
+                       maxlength="20"
+                       pattern="[A-Za-z\s]{3,20}"
+                       title="name must have atleast 3 characters(exclude spaces)
+and only a-z (no symbol allowed) ">
+            </md-input-container>
+
+            <md-input-container flex>
+                <label>Card Number (required)</label>
+                <input required type="text"
+                       ng-model="number"
+                       pattern="(?!0)[0-9]{1,5}"
+                       maxlength="5"
+                       title="card number must in digits, maximum 5 digits allowed">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Mobile Number (required)</label>
+                <input required type="text"
+                       name="phone number"
+                       ng-model="mobile"
+                       pattern="03[0-9]{2}(?!1234567)(?!7654321)(?!1111111)(?!2222222)(?!3333333)(?!4444444)(?!5555555)(?!6666666)(?!7777777)(?!8888888)(?!9999999)[0-9]{7}"
+                       title="mobile number must have 11 digits and starting from '03'
+e.g: 03xxXXXXXXX
+NOTE: An artificial intelligence is installed for wrong numbers detection which will not accept fake numbers like 03007654321
+So kindly use your own mobile number "
+                       >
+
+            </md-input-container>
+        </div>
+        <div align="center" flex>
+            <md-button class="md-raised md-primary"  ng-click="add();">Submit</md-button>
+        </div>
+
+    </div>
+</form>
+<br />
+<br />
+<br />
+
+<!--
+<ol>
+    <li ng-repeat="item in guests">
+        <span>{{item.name}}</span> <br />
+        <h4>{{item.number}}<br />
+            {{item.mobile}}</h4>
+
+        <md-divider></md-divider>
+
+    </li>
+</ol>
+-->
+<!--
+<table>
+    <tr>
+        <th>s#</th> <th>name</th> <th>card number</th> <th>mobile number</th>
+    </tr>
+    <tr>
+        <td></td>
+    </tr>
+
+</table>
+-->
+<!--
+<md-list>
+    <md-subheader class="md-no-sticky">guests list present in the hall</md-subheader>
+    <md-list-item class="md-3-line" ng-repeat="item in guests">
+        <div class="md-list-item-text" layout="column">
+            <h3>{{ item.name }}</h3>
+            <h4>{{ item.number }}</h4>
+            <p>{{ item.mobile }}</p>
+        </div>
+    </md-list-item>
+</md-list>-->
+<md-toolbar class="md-active">
+    <div class="md-toolbar-tools">
+        <h2 class="md-flex" flex>{{guests.length + " &nbsp; Pepoles Attended Jeeto Karachi Till Now"}}</h2>
+        <md-button flex="20" ng-click="order = ''" >Reset List Order</md-button>
+    </div>
+</md-toolbar>
 
 
+<md-data-table-container>
+
+    <table md-data-table>
+
+        <thead md-order="order">
+        <!-- this cell will order by the name property -->
+
+        <th order-by="name" name="name"></th>
+
+        <!-- this cell will not change the order when clicked -->
+        <th order-by="number" name="Card number"></th>
+        <th order-by="mobile" name="mobile number"></th>
+
+
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in guests | orderBy: order">
+
+            <td><b>{{item.name}}</b></td>
+            <td>{{item.number}}</td>
+            <td>{{item.mobile}}</td>
+            <td>
+
+                <md-button disabled="true" class="md-icon-button md-primary" aria-label="Settings" ><!--ng-click="del(item)"-->
+                        <img class="png-icon" src="png/512/ios7-close-empty.png" width="30px">
+                </md-button>
+                <!--<img src="png/512/ios7-close-empty.png" width="28px " ng-click="alert('dhgds');">-->
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+</md-data-table-container>
 
 
