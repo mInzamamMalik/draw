@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.1-master-938179b
+ * v0.10.1
  */
 @-webkit-keyframes md-tab-content-hide {
     0%, 50% {
@@ -43,12 +43,12 @@ md-tabs {
     flex-shrink: 0
 }
 
-md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
-    min-height: 248px
+md-tabs.ng-animate {
+    transition: height .5s cubic-bezier(.35, 0, .25, 1)
 }
 
-md-tabs[md-align-tabs=bottom] {
-    padding-bottom: 48px
+md-tabs:not(.md-no-tab-content):not(.md-dynamic-height) {
+    min-height: 248px
 }
 
 md-tabs[md-align-tabs=bottom] md-tabs-wrapper {
@@ -56,8 +56,7 @@ md-tabs[md-align-tabs=bottom] md-tabs-wrapper {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 48px;
-    z-index: 2
+    height: 48px
 }
 
 md-tabs[md-align-tabs=bottom] md-tabs-content-wrapper {
@@ -219,6 +218,9 @@ md-pagination-wrapper:after {
 md-pagination-wrapper.md-center-tabs {
     position: relative;
     width: initial;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
     margin: 0 auto
 }
 
@@ -239,6 +241,8 @@ md-tab-content {
     left: 0;
     right: 0;
     bottom: 0;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
     transition: -webkit-transform .5s cubic-bezier(.35, 0, .25, 1);
     transition: transform .5s cubic-bezier(.35, 0, .25, 1);
     overflow: auto
@@ -253,7 +257,7 @@ md-tab-content.md-no-transition, md-tab-content.ng-leave {
     transition: none
 }
 
-md-tab-content.md-left:not(.md-active) {
+md-tab-content.md-left {
     -webkit-transform: translateX(-100%);
     transform: translateX(-100%);
     -webkit-animation: 1s md-tab-content-hide;
@@ -261,13 +265,13 @@ md-tab-content.md-left:not(.md-active) {
     opacity: 0
 }
 
-md-tab-content.md-left:not(.md-active) * {
+md-tab-content.md-left * {
     transition: visibility 0s linear;
     transition-delay: .5s;
     visibility: hidden
 }
 
-md-tab-content.md-right:not(.md-active) {
+md-tab-content.md-right {
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
     -webkit-animation: 1s md-tab-content-hide;
@@ -275,7 +279,7 @@ md-tab-content.md-right:not(.md-active) {
     opacity: 0
 }
 
-md-tab-content.md-right:not(.md-active) * {
+md-tab-content.md-right * {
     transition: visibility 0s linear;
     transition-delay: .5s;
     visibility: hidden
@@ -295,11 +299,11 @@ md-ink-bar {
 }
 
 md-ink-bar.md-left {
-    transition: left .125s cubic-bezier(.35, 0, .25, 1), right .25s cubic-bezier(.35, 0, .25, 1)
+    transition: left .225s cubic-bezier(.35, 0, .25, 1), right .5s cubic-bezier(.35, 0, .25, 1)
 }
 
 md-ink-bar.md-right {
-    transition: left .25s cubic-bezier(.35, 0, .25, 1), right .125s cubic-bezier(.35, 0, .25, 1)
+    transition: left .5s cubic-bezier(.35, 0, .25, 1), right .225s cubic-bezier(.35, 0, .25, 1)
 }
 
 md-tab {

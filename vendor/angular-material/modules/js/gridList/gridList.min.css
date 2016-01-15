@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.1-master-938179b
+ * v0.10.1
  */
 md-grid-list {
     box-sizing: border-box;
@@ -10,7 +10,7 @@ md-grid-list {
     position: relative
 }
 
-md-grid-list md-grid-tile, md-grid-list md-grid-tile-footer, md-grid-list md-grid-tile-header, md-grid-list md-grid-tile > figure {
+md-grid-list *, md-grid-list :after, md-grid-list :before {
     box-sizing: border-box
 }
 

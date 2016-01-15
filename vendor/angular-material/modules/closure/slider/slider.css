@@ -2,95 +2,99 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.2
+ * v0.10.1
  */
+/* mixin definition ; sets LTR and RTL within the same style call */
 @-webkit-keyframes sliderFocusThumb {
-    0% {
-        opacity: 0;
-        -webkit-transform: scale(0);
-        transform: scale(0);
-    }
-    50% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
-}
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
 
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 @keyframes sliderFocusThumb {
-    0% {
-        opacity: 0;
-        -webkit-transform: scale(0);
-        transform: scale(0);
-    }
-    50% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 md-slider {
-    height: 48px;
-    position: relative;
-    display: block;
-    margin-left: 4px;
-    margin-right: 4px;
-    padding: 0;
-    /**
-     * Track
-     */
-    /**
-     * Slider thumb
-     */
-    /* The sign that's focused in discrete mode */
-    /**
-     * The border/background that comes in when focused in non-discrete mode
-     */
-    /* Don't animate left/right while panning */
+  height: 48px;
+  position: relative;
+  display: block;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding: 0;
+  /**
+   * Track
+   */
+  /**
+   * Slider thumb
+   */
+  /* The sign that's focused in discrete mode */
+  /**
+   * The border/background that comes in when focused in non-discrete mode
+   */
+  /* Don't animate left/right while panning */
 }
 
 md-slider *, md-slider *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 md-slider .md-slider-wrapper {
-    position: relative;
+  position: relative;
 }
 
 md-slider .md-track-container {
     width: 100%;
     position: absolute;
     top: 23px;
-    height: 2px;
+  height: 2px;
 }
 
 md-slider .md-track {
     position: absolute;
     left: 0;
     right: 0;
-    height: 100%;
+  height: 100%;
 }
 
 md-slider .md-track-fill {
-    transition: width 0.05s linear;
+  transition: width 0.05s linear;
 }
 
 md-slider .md-track-ticks {
     position: absolute;
     left: 0;
     right: 0;
-    height: 100%;
+  height: 100%;
 }
 
 md-slider .md-track-ticks canvas {
-    width: 100%;
+  width: 100%;
 }
 
 md-slider .md-thumb-container {
@@ -98,8 +102,8 @@ md-slider .md-thumb-container {
     left: 0;
     top: 50%;
     -webkit-transform: translate3d(-50%, -50%, 0);
-    transform: translate3d(-50%, -50%, 0);
-    transition: left 0.1s linear;
+  transform: translate3d(-50%, -50%, 0);
+  transition: left 0.1s linear;
 }
 
 md-slider .md-thumb {
@@ -111,20 +115,20 @@ md-slider .md-thumb {
     height: 38px;
     border-radius: 38px;
     -webkit-transform: scale(0.5);
-    transform: scale(0.5);
-    transition: all 0.1s linear;
+  transform: scale(0.5);
+  transition: all 0.1s linear;
 }
 
 md-slider .md-thumb:after {
-    content: '';
-    position: absolute;
-    left: 3px;
-    top: 3px;
-    width: 32px;
-    height: 32px;
-    border-radius: 32px;
-    border-width: 3px;
-    border-style: solid;
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  border-width: 3px;
+  border-style: solid;
 }
 
 md-slider .md-sign {
@@ -133,11 +137,11 @@ md-slider .md-sign {
     display: -ms-flexbox;
     display: flex;
     -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
     -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
     position: absolute;
     left: -14px;
     top: -20px;
@@ -145,31 +149,31 @@ md-slider .md-sign {
     height: 28px;
     border-radius: 28px;
     -webkit-transform: scale(0.4) translate3d(0, 70px, 0);
-    transform: scale(0.4) translate3d(0, 70px, 0);
+  transform: scale(0.4) translate3d(0, 70px, 0);
     transition: all 0.2s ease-in-out;
-    /* The arrow pointing down under the sign */
+  /* The arrow pointing down under the sign */
 }
 
 md-slider .md-sign:after {
-    position: absolute;
-    content: '';
-    left: 0px;
-    border-radius: 16px;
-    top: 19px;
-    border-left: 14px solid transparent;
-    border-right: 14px solid transparent;
-    border-top-width: 16px;
-    border-top-style: solid;
-    opacity: 0;
-    -webkit-transform: translate3d(0, -8px, 0);
-    transform: translate3d(0, -8px, 0);
-    transition: all 0.2s ease-in-out;
+  position: absolute;
+  content: '';
+  left: 0px;
+  border-radius: 16px;
+  top: 19px;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top-width: 16px;
+  border-top-style: solid;
+  opacity: 0;
+  -webkit-transform: translate3d(0, -8px, 0);
+  transform: translate3d(0, -8px, 0);
+  transition: all 0.2s ease-in-out;
 }
 
 md-slider .md-sign .md-thumb-text {
-    z-index: 1;
-    font-size: 12px;
-    font-weight: bold;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 md-slider .md-focus-thumb {
@@ -183,7 +187,7 @@ md-slider .md-focus-thumb {
     opacity: 0;
     background-color: #C0C0C0;
     -webkit-animation: sliderFocusThumb 0.4s linear;
-    animation: sliderFocusThumb 0.4s linear;
+  animation: sliderFocusThumb 0.4s linear;
 }
 
 md-slider .md-focus-ring {
@@ -193,10 +197,11 @@ md-slider .md-focus-ring {
     width: 48px;
     height: 48px;
     border-radius: 48px;
+  border: 2px solid #D6D6D6;
+  background-color: transparent;
     -webkit-transform: scale(0);
-    transform: scale(0);
-    transition: all 0.2s linear;
-    opacity: 0.26;
+  transform: scale(0);
+  transition: all 0.2s linear;
 }
 
 md-slider .md-disabled-thumb {
@@ -207,93 +212,88 @@ md-slider .md-disabled-thumb {
     height: 44px;
     border-radius: 44px;
     -webkit-transform: scale(0.35);
-    transform: scale(0.35);
+  transform: scale(0.35);
     border-width: 6px;
     border-style: solid;
-    display: none;
+  display: none;
 }
 
 md-slider.md-min .md-thumb:after {
-    background-color: white;
+  background-color: white;
 }
 
 md-slider.md-min .md-sign {
-    opacity: 0;
+  opacity: 0;
 }
 
 md-slider:focus {
-    outline: none;
+  outline: none;
 }
 
-md-slider.md-dragging .md-thumb-container,
-md-slider.md-dragging .md-track-fill {
-    transition: none;
+md-slider.dragging .md-thumb-container, md-slider.dragging .md-track-fill {
+  transition: none;
 }
 
 md-slider:not([md-discrete]) {
-    /* Hide the sign and ticks in non-discrete mode */
+  /* Hide the sign and ticks in non-discrete mode */
 }
 
-md-slider:not([md-discrete]) .md-track-ticks,
-md-slider:not([md-discrete]) .md-sign {
-    display: none;
+md-slider:not([md-discrete]) .md-track-ticks, md-slider:not([md-discrete]) .md-sign {
+  display: none;
 }
 
 md-slider:not([md-discrete]):not([disabled]):hover .md-thumb {
-    -webkit-transform: scale(0.6);
-    transform: scale(0.6);
+  -webkit-transform: scale(0.6);
+  transform: scale(0.6);
 }
 
-md-slider:not([md-discrete]):not([disabled]):focus .md-focus-thumb, md-slider:not([md-discrete]):not([disabled]).md-active .md-focus-thumb {
-    display: block;
+md-slider:not([md-discrete]):not([disabled]):focus .md-focus-thumb, md-slider:not([md-discrete]):not([disabled]).active .md-focus-thumb {
+  display: block;
 }
 
-md-slider:not([md-discrete]):not([disabled]):focus .md-focus-ring, md-slider:not([md-discrete]):not([disabled]).md-active .md-focus-ring {
-    -webkit-transform: scale(1);
-    transform: scale(1);
+md-slider:not([md-discrete]):not([disabled]):focus .md-focus-ring, md-slider:not([md-discrete]):not([disabled]).active .md-focus-ring {
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 
-md-slider:not([md-discrete]):not([disabled]):focus .md-thumb, md-slider:not([md-discrete]):not([disabled]).md-active .md-thumb {
-    -webkit-transform: scale(0.85);
-    transform: scale(0.85);
+md-slider:not([md-discrete]):not([disabled]):focus .md-thumb, md-slider:not([md-discrete]):not([disabled]).active .md-thumb {
+  -webkit-transform: scale(0.85);
+  transform: scale(0.85);
 }
 
 md-slider[md-discrete] {
-    /* Hide the focus thumb in discrete mode */
+  /* Hide the focus thumb in discrete mode */
 }
 
-md-slider[md-discrete] .md-focus-thumb,
-md-slider[md-discrete] .md-focus-ring {
-    display: none;
+md-slider[md-discrete] .md-focus-thumb, md-slider[md-discrete] .md-focus-ring {
+  display: none;
 }
 
-md-slider[md-discrete]:not([disabled]):focus .md-sign,
-md-slider[md-discrete]:not([disabled]):focus .md-sign:after, md-slider[md-discrete]:not([disabled]).md-active .md-sign,
-md-slider[md-discrete]:not([disabled]).md-active .md-sign:after {
-    opacity: 1;
-    -webkit-transform: translate3d(0, 0, 0) scale(1);
-    transform: translate3d(0, 0, 0) scale(1);
+md-slider[md-discrete]:not([disabled]):focus .md-sign, md-slider[md-discrete]:not([disabled]):focus .md-sign:after, md-slider[md-discrete]:not([disabled]).active .md-sign, md-slider[md-discrete]:not([disabled]).active .md-sign:after {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0) scale(1);
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 md-slider[disabled] .md-track-fill {
-    display: none;
+  display: none;
 }
 
 md-slider[disabled] .md-sign {
-    display: none;
+  display: none;
 }
 
 md-slider[disabled] .md-thumb {
     -webkit-transform: scale(0.35);
-    transform: scale(0.35);
+  transform: scale(0.35);
 }
 
 md-slider[disabled] .md-disabled-thumb {
-    display: block;
+  display: block;
 }
 
 @media screen and (-ms-high-contrast: active) {
-    md-slider.md-default-theme .md-track {
-        border-bottom: 1px solid #fff;
-    }
+  md-slider.md-default-theme .md-track {
+    border-bottom: 1px solid #fff;
+  }
 }

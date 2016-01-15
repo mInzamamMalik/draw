@@ -1,12 +1,10 @@
 md-content.autocomplete {
   min-height: 250px;
 }
-
 .md-item-text.compact {
   padding-top: 8px;
   padding-bottom: 8px;
 }
-
 .contact-item {
   box-sizing: border-box;
   &.selected {
@@ -41,6 +39,7 @@ md-contact-chips {
 .md-chips {
   padding: 5px 0 8px;
 }
+
 
 .fixedRows {
   height: 250px;

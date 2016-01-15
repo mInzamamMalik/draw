@@ -2,8 +2,9 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.2
+ * v0.10.1
  */
+/* mixin definition ; sets LTR and RTL within the same style call */
 md-bottom-sheet {
     position: absolute;
     left: 0;
@@ -45,7 +46,7 @@ md-bottom-sheet.ng-leave-active {
 
 md-bottom-sheet .md-subheader {
     background-color: transparent;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif;
     line-height: 56px;
     padding: 0;
     white-space: nowrap;
@@ -104,22 +105,21 @@ md-bottom-sheet.md-grid md-list {
     -ms-flex-align: center;
     align-items: center;
 }
+    md-bottom-sheet.md-grid md-list-item {
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-align-items: center;
+        -ms-flex-align: center;
+        align-items: center;
+        transition: all 0.5s;
+        height: 96px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        /* Mixin for how many grid items to show per row */
+    }
 
-md-bottom-sheet.md-grid md-list-item {
-    -webkit-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    transition: all 0.5s;
-    height: 96px;
-    margin-top: 8px;
-    margin-bottom: 8px;
-    /* Mixin for how many grid items to show per row */
-}
-
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 600px) {
     md-bottom-sheet.md-grid md-list-item {
         -webkit-flex: 1 1 33.33333%;
         -ms-flex: 1 1 33.33333%;
@@ -127,7 +127,7 @@ md-bottom-sheet.md-grid md-list-item {
         max-width: 33.33333%;
     }
 
-    md-bottom-sheet.md-grid md-list-item:nth-of-type(3n + 1) {
+    md-bottom-sheet.md-grid md-list-item:nth-of-type(3n+1) {
         -webkit-align-items: flex-start;
         -ms-flex-align: start;
         align-items: flex-start;
@@ -140,7 +140,7 @@ md-bottom-sheet.md-grid md-list-item {
     }
 }
 
-@media screen and (min-width: 960px) and (max-width: 1279px) {
+@media screen and (min-width: 600px) and (max-width: 960px) {
     md-bottom-sheet.md-grid md-list-item {
         -webkit-flex: 1 1 25%;
         -ms-flex: 1 1 25%;
@@ -149,7 +149,7 @@ md-bottom-sheet.md-grid md-list-item {
     }
 }
 
-@media screen and (min-width: 1280px) and (max-width: 1919px) {
+@media screen and (min-width: 960px) and (max-width: 1200px) {
     md-bottom-sheet.md-grid md-list-item {
         -webkit-flex: 1 1 16.66667%;
         -ms-flex: 1 1 16.66667%;
@@ -158,7 +158,7 @@ md-bottom-sheet.md-grid md-list-item {
     }
 }
 
-@media screen and (min-width: 1920px) {
+@media screen and (min-width: 1200px) {
     md-bottom-sheet.md-grid md-list-item {
         -webkit-flex: 1 1 14.28571%;
         -ms-flex: 1 1 14.28571%;

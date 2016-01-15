@@ -2,8 +2,9 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.2
+ * v0.10.1
  */
+/* mixin definition ; sets LTR and RTL within the same style call */
 .md-dialog-is-showing {
     max-height: 100%;
 }
@@ -34,7 +35,7 @@ md-dialog {
     max-height: 80%;
     position: relative;
     overflow: auto;
-    box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 13px 19px 2px rgba(0, 0, 0, 0.14), 0px 5px 24px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.14), 0px 16px 24px 2px rgba(0, 0, 0, 0.098), 0px 6px 30px 5px rgba(0, 0, 0, 0.084);
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -67,10 +68,6 @@ md-dialog > form {
     overflow: auto;
 }
 
-md-dialog .md-dialog-content {
-    padding: 24px;
-}
-
 md-dialog md-dialog-content {
     -webkit-order: 1;
     -ms-flex-order: 1;
@@ -78,6 +75,7 @@ md-dialog md-dialog-content {
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
     flex-direction: column;
+    padding: 24px;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -107,11 +105,7 @@ md-dialog md-dialog-content.sticky-container > div {
     padding-top: 0;
 }
 
-md-dialog md-dialog-content .md-dialog-content-body {
-    width: 100%;
-}
-
-md-dialog .md-actions, md-dialog md-dialog-actions {
+md-dialog .md-actions {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
@@ -132,14 +126,14 @@ md-dialog .md-actions, md-dialog md-dialog-actions {
     overflow: hidden;
 }
 
-md-dialog .md-actions .md-button, md-dialog md-dialog-actions .md-button {
+md-dialog .md-actions .md-button {
     margin-bottom: 8px;
     margin-left: 8px;
     margin-right: 0;
     margin-top: 8px;
 }
 
-md-dialog.md-content-overflow .md-actions, md-dialog.md-content-overflow md-dialog-actions {
+md-dialog.md-content-overflow .md-actions {
     border-top-width: 1px;
     border-top-style: solid;
 }
@@ -147,13 +141,5 @@ md-dialog.md-content-overflow .md-actions, md-dialog.md-content-overflow md-dial
 @media screen and (-ms-high-contrast: active) {
     md-dialog {
         border: 1px solid #fff;
-    }
-}
-
-@media (max-width: 959px) {
-    md-dialog.md-dialog-fullscreen {
-        min-height: 100%;
-        min-width: 100%;
-        border-radius: 0;
     }
 }

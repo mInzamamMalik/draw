@@ -11,7 +11,7 @@ declare module ng.ui {
         templateUrl?: any; // string || () => string
         templateProvider?: any; // () => string || IPromise<string>
         controller?: any;
-        controllerAs?: string;
+        controllerAs?: string;    
         controllerProvider?: any;
         resolve?: {};
         url?: string;

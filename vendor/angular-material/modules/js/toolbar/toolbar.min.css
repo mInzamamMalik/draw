@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.1-master-938179b
+ * v0.10.1
  */
 md-toolbar {
     box-sizing: border-box;
@@ -21,10 +21,6 @@ md-toolbar {
 
 md-toolbar.md-whiteframe-z1-add, md-toolbar.md-whiteframe-z1-remove {
     transition: box-shadow .5s linear
-}
-
-md-toolbar md-toolbar-filler {
-    width: 72px
 }
 
 md-toolbar *, md-toolbar :after, md-toolbar :before {
@@ -49,7 +45,7 @@ md-toolbar.md-medium-tall .md-toolbar-tools {
     max-height: 48px
 }
 
-md-toolbar > .md-indent {
+md-toolbar .md-indent {
     margin-left: 64px
 }
 
@@ -64,7 +60,6 @@ md-toolbar ~ md-content > md-list md-list-item:last-child md-divider {
 .md-toolbar-tools {
     font-size: 20px;
     letter-spacing: .005em;
-    box-sizing: border-box;
     font-weight: 400;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -122,27 +117,5 @@ md-toolbar ~ md-content > md-list md-list-item:last-child md-divider {
 @media screen and (-ms-high-contrast: active) {
     .md-toolbar-tools {
         border-bottom: 1px solid #fff
-    }
-}
-
-@media only screen and (min-width: 0) and (max-width: 959px) and (orientation: portrait) {
-    md-toolbar {
-        min-height: 56px
-    }
-
-    .md-toolbar-tools {
-        height: 56px;
-        max-height: 56px
-    }
-}
-
-@media only screen and (min-width: 0) and (max-width: 959px) and (orientation: landscape) {
-    md-toolbar {
-        min-height: 48px
-    }
-
-    .md-toolbar-tools {
-        height: 48px;
-        max-height: 48px
     }
 }

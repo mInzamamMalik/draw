@@ -2,10 +2,10 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.1-master-938179b
+ * v0.10.1
  */
 .md-contact-chips .md-chips .md-chip {
-    padding: 0 25px 0 0
+    padding: 0 8px 0 0
 }
 
 .md-contact-chips .md-chips .md-chip .md-contact-avatar {
@@ -50,28 +50,17 @@
 
 .md-chips {
     display: block;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
-    font-size: 16px;
-    padding: 0 0 8px 3px;
-    vertical-align: middle
+    font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif;
+    font-size: 13px;
+    padding: 0 0 8px;
+    vertical-align: middle;
+    cursor: text
 }
 
 .md-chips:after {
     content: '';
     display: table;
     clear: both
-}
-
-.md-chips:not(.md-readonly) {
-    cursor: text
-}
-
-.md-chips:not(.md-readonly) .md-chip:not(.md-readonly) {
-    padding-right: 22px
-}
-
-.md-chips:not(.md-readonly) .md-chip:not(.md-readonly) .md-chip-content {
-    padding-right: 4px
 }
 
 .md-chips .md-chip {
@@ -81,15 +70,15 @@
     height: 32px;
     line-height: 32px;
     margin: 8px 8px 0 0;
-    padding: 0 12px;
+    padding: 0 8px 0 12px;
     float: left;
     box-sizing: border-box;
-    max-width: 100%;
-    position: relative
+    max-width: 100%
 }
 
 .md-chips .md-chip .md-chip-content {
     display: block;
+    padding-right: 4px;
     float: left;
     white-space: nowrap;
     max-width: 100%;
@@ -102,9 +91,8 @@
 }
 
 .md-chips .md-chip .md-chip-remove-container {
-    position: absolute;
-    right: 0;
-    line-height: 22px
+    display: inline-block;
+    margin-right: -5px
 }
 
 .md-chips .md-chip .md-chip-remove {
@@ -134,7 +122,7 @@
     display: block;
     line-height: 32px;
     margin: 8px 8px 0 0;
-    padding: 0;
+    padding: 0 8px 0 12px;
     float: left
 }
 

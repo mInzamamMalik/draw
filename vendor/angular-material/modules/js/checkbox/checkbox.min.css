@@ -2,16 +2,12 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.1-master-938179b
+ * v0.10.1
  */
-.md-inline-form md-checkbox {
-    margin: 19px 0 18px
-}
-
 md-checkbox {
     box-sizing: border-box;
-    display: inline-block;
-    margin-bottom: 16px;
+    display: block;
+    margin: 8px;
     white-space: nowrap;
     cursor: pointer;
     outline: 0;
@@ -19,48 +15,21 @@ md-checkbox {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    padding-left: 18px;
+    padding-right: 0;
     position: relative;
-    min-width: 20px;
-    min-height: 20px;
-    margin-left: inherit;
-    margin-right: 16px
+    line-height: 26px;
+    min-width: 18px;
+    min-height: 18px
 }
 
-body[dir=rtl] md-checkbox, html[dir=rtl] md-checkbox {
-    margin-left: 16px;
-    margin-right: inherit;
-    unicode-bidi: embed
+html[dir=rtl] md-checkbox {
+    padding-left: 0;
+    padding-right: 18px
 }
 
-md-checkbox bdo[dir=rtl] {
-    direction: rtl;
-    unicode-bidi: bidi-override
-}
-
-md-checkbox bdo[dir=ltr] {
-    direction: ltr;
-    unicode-bidi: bidi-override
-}
-
-md-checkbox:last-of-type {
-    margin-left: inherit;
-    margin-right: 0
-}
-
-body[dir=rtl] md-checkbox:last-of-type, html[dir=rtl] md-checkbox:last-of-type {
-    margin-left: 0;
-    margin-right: inherit;
-    unicode-bidi: embed
-}
-
-md-checkbox:last-of-type bdo[dir=rtl] {
-    direction: rtl;
-    unicode-bidi: bidi-override
-}
-
-md-checkbox:last-of-type bdo[dir=ltr] {
-    direction: ltr;
-    unicode-bidi: bidi-override
+md-checkbox *, md-checkbox :after, md-checkbox :before {
+    box-sizing: border-box
 }
 
 md-checkbox.md-focused:not([disabled]) .md-container:before {
@@ -79,32 +48,19 @@ md-checkbox .md-container {
     top: 50%;
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    box-sizing: border-box;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     left: 0;
     right: auto
 }
 
-body[dir=rtl] md-checkbox .md-container, html[dir=rtl] md-checkbox .md-container {
+html[dir=rtl] md-checkbox .md-container {
     left: auto;
-    right: 0;
-    unicode-bidi: embed
-}
-
-md-checkbox .md-container bdo[dir=rtl] {
-    direction: rtl;
-    unicode-bidi: bidi-override
-}
-
-md-checkbox .md-container bdo[dir=ltr] {
-    direction: ltr;
-    unicode-bidi: bidi-override
+    right: 0
 }
 
 md-checkbox .md-container:before {
-    box-sizing: border-box;
     background-color: transparent;
     border-radius: 50%;
     content: '';
@@ -120,7 +76,6 @@ md-checkbox .md-container:before {
 }
 
 md-checkbox .md-container:after {
-    box-sizing: border-box;
     content: '';
     position: absolute;
     top: -10px;
@@ -145,13 +100,12 @@ md-checkbox.md-align-top-left > div.md-container {
 }
 
 md-checkbox .md-icon {
-    box-sizing: border-box;
     transition: 240ms;
     position: absolute;
     top: 0;
     left: 0;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-width: 2px;
     border-style: solid;
     border-radius: 2px
@@ -162,19 +116,18 @@ md-checkbox.md-checked .md-icon {
 }
 
 md-checkbox[disabled] {
-    cursor: default
+    cursor: no-drop
 }
 
 md-checkbox.md-checked .md-icon:after {
-    box-sizing: border-box;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
     position: absolute;
-    left: 6.67px;
-    top: 2.22px;
+    left: 6px;
+    top: 2px;
     display: table;
-    width: 6.67px;
-    height: 13.33px;
+    width: 6px;
+    height: 12px;
     border-width: 2px;
     border-style: solid;
     border-top: 0;
@@ -183,7 +136,6 @@ md-checkbox.md-checked .md-icon:after {
 }
 
 md-checkbox .md-label {
-    box-sizing: border-box;
     position: relative;
     display: inline-block;
     vertical-align: middle;
@@ -192,22 +144,11 @@ md-checkbox .md-label {
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
-    margin-left: 30px;
+    margin-left: 10px;
     margin-right: 0
 }
 
-body[dir=rtl] md-checkbox .md-label, html[dir=rtl] md-checkbox .md-label {
+html[dir=rtl] md-checkbox .md-label {
     margin-left: 0;
-    margin-right: 30px;
-    unicode-bidi: embed
-}
-
-md-checkbox .md-label bdo[dir=rtl] {
-    direction: rtl;
-    unicode-bidi: bidi-override
-}
-
-md-checkbox .md-label bdo[dir=ltr] {
-    direction: ltr;
-    unicode-bidi: bidi-override
+    margin-right: 10px
 }

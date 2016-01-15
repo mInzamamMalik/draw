@@ -7,7 +7,7 @@
 
 // Typography
 // ------------------------------
-$font-family: Roboto, 'Helvetica Neue', sans-serif !default;
+$font-family: RobotoDraft, Roboto, 'Helvetica Neue', sans-serif !default;
 $font-size: 10px;
 
 $display-4-font-size-base: rem(11.20) !default;
@@ -25,15 +25,11 @@ $caption-font-size-base: rem(1.200) !default;
 // ------------------------------
 
 $baseline-grid: 8px !default;
+$layout-breakpoint-sm: 600px !default;
+$layout-breakpoint-md: 960px !default;
+$layout-breakpoint-lg: 1200px !default;
 $layout-gutter-width: ($baseline-grid * 2) !default;
 
-$layout-breakpoint-xs: 600px !default;
-$layout-breakpoint-sm: 960px !default;
-$layout-breakpoint-md: 1280px !default;
-$layout-breakpoint-lg: 1920px !default;
-
-// Icon
-$icon-size: rem(2.400) !default;
 
 // App bar variables
 $app-bar-height: 64px;
@@ -43,51 +39,37 @@ $toast-margin: $baseline-grid * 1 !default;
 
 // Whiteframes
 
-$shadow-key-umbra-opacity: 0.2;
-$shadow-key-penumbra-opacity: 0.14;
-$shadow-ambient-shadow-opacity: 0.12;
+$shadow-multiplier: 0.7;
+$shadow-key-umbra-opacity: $shadow-multiplier * 0.2;
+$shadow-key-penumbra-opacity: $shadow-multiplier * 0.14;
+$shadow-ambient-shadow-opacity: $shadow-multiplier * 0.12;
 
 // NOTE(shyndman): gulp-sass seems to be failing if I split the shadow defs across
 //    multiple lines. Ugly. Sorry.
-$whiteframe-shadow-1dp: 0px 1px 3px 0px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 1px 1px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 2px 1px -1px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-2dp: 0px 1px 5px 0px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 2px 2px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 3px 1px -2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-3dp: 0px 1px 8px 0px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 3px 4px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 3px 3px -2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-4dp: 0px 2px 4px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 4px 5px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 1px 10px 0px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-5dp: 0px 3px 5px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 5px 8px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 1px 14px 0px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-6dp: 0px 3px 5px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 6px 10px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 1px 18px 0px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-7dp: 0px 4px 5px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 7px 10px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 2px 16px 1px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-8dp: 0px 5px 5px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 8px 10px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 3px 14px 2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-9dp: 0px 5px 6px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 9px 12px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 3px 16px 2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-10dp: 0px 6px 6px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 10px 14px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 4px 18px 3px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-11dp: 0px 6px 7px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 11px 15px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 4px 20px 3px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-12dp: 0px 7px 8px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 12px 17px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 5px 22px 4px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-13dp: 0px 7px 8px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 13px 19px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 5px 24px 4px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-14dp: 0px 7px 9px -4px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 14px 21px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 5px 26px 4px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-15dp: 0px 8px 9px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 15px 22px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 6px 28px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-16dp: 0px 8px 10px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 16px 24px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 6px 30px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-17dp: 0px 8px 11px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 17px 26px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 6px 32px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-18dp: 0px 9px 11px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 18px 28px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 7px 34px 6px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-19dp: 0px 9px 12px -6px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 19px 29px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 7px 36px 6px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-20dp: 0px 10px 13px -6px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 20px 31px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 8px 38px 7px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-21dp: 0px 10px 13px -6px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 21px 33px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 8px 40px 7px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-22dp: 0px 10px 14px -6px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 22px 35px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 8px 42px 7px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-23dp: 0px 11px 14px -7px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 23px 36px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 9px 44px 8px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
-$whiteframe-shadow-24dp: 0px 11px 15px -7px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 24px 38px 3px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 9px 46px 8px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+$whiteframe-shadow-z1: 0px 3px 1px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 2px 2px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 1px 5px 0px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+$whiteframe-zindex-z1: 1 !default;
+$whiteframe-shadow-z2: 0 2px 4px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0 4px 5px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0 1px 10px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
+$whiteframe-zindex-z2: 2 !default;
+$whiteframe-shadow-z3: 0px 3px 5px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 6px 10px 0px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 1px 18px 0px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+$whiteframe-zindex-z3: 3 !default;
+$whiteframe-shadow-z4: 0px 5px 5px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 8px 10px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 3px 14px 2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+$whiteframe-zindex-z4: 4 !default;
+$whiteframe-shadow-z5: 0px 8px 10px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity), 0px 16px 24px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity), 0px 6px 30px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity) !default;
+$whiteframe-zindex-z5: 5 !default;
 
 // Z-indexes
 //--------------------------------------------
 
-$z-index-toast: 105 !default;
 $z-index-tooltip: 100 !default;
-$z-index-menu: 100 !default;
-$z-index-select: 90 !default;
+$z-index-menu: 99 !default;
+$z-index-select: 99 !default;
 $z-index-dialog: 80 !default;
+$z-index-toast: 90 !default;
 $z-index-bottom-sheet: 70 !default;
 $z-index-scroll-mask: 65 !default;
 $z-index-sidenav: 60 !default;
 $z-index-backdrop: 50 !default;
 $z-index-fab: 20 !default;
-$z-index-progress-circular: 2 !default; // Used to fix animation bug in Chrome
 
 // Easing Curves
 //--------------------------------------------
@@ -103,16 +85,6 @@ $swift-ease-in: all $swift-ease-in-duration $swift-ease-in-timing-function !defa
 $swift-ease-in-out-duration: 0.5s !default;
 $swift-ease-in-out-timing-function: cubic-bezier(0.35, 0, 0.25, 1) !default;
 $swift-ease-in-out: all $swift-ease-in-out-duration $swift-ease-in-out-timing-function !default;
-
-$swift-linear-duration: 0.08s !default;
-$swift-linear-timing-function: linear !default;
-$swift-linear: all $swift-linear-duration $swift-linear-timing-function !default;
-
-// Fab Buttons (shared between buttons.scss and fab*.scss)
-// -------------------------------------------
-$button-fab-width: rem(5.600) !default;
-$button-fab-height: rem(5.600) !default;
-$button-fab-padding: rem(1.60) !default;
 
 @mixin margin-selectors($before:1em, $after:1em, $start:0px, $end:0px) {
   -webkit-margin-before: $before;
@@ -132,8 +104,8 @@ $button-fab-padding: rem(1.60) !default;
 
 @mixin input-placeholder-color($color) {
   &::-webkit-input-placeholder,
-  &::-moz-placeholder,
-  &:-moz-placeholder,
+  &::-moz-placeholder, /* Firefox 19+ */
+  &:-moz-placeholder, /* Firefox 18- */
   &:-ms-input-placeholder {
     color: $color;
   }
@@ -153,23 +125,6 @@ $button-fab-padding: rem(1.60) !default;
 
 @mixin md-shadow-bottom-z-2() {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4);
-}
-
-// Mixin for a "flat" input that can be used for components that contain an input
-// (datepicker, autocomplete).
-@mixin md-flat-input() {
-  font-size: 14px;
-
-  box-sizing: border-box;
-  border: none;
-  box-shadow: none;
-  outline: none;
-  background: transparent;
-
-  // The the "clear X" that IE adds to input[type="search"]
-  &::-ms-clear {
-    display: none;
-  }
 }
 
 // Typography mixins
@@ -216,48 +171,12 @@ $button-fab-padding: rem(1.60) !default;
   @return $map-str + '}';
 }
 
-// mixin definition ; sets LTR and RTL within the same style call
-// @see https://css-tricks.com/almanac/properties/d/direction/
-
+/* mixin definition ; sets LTR and RTL within the same style call */
 @mixin rtl($prop, $value, $rtl-value) {
   #{$prop}: $value;
-
   html[dir=rtl] & {
     #{$prop}: $rtl-value;
-    unicode-bidi: embed;
   }
-  body[dir=rtl] & {
-    #{$prop}: $rtl-value;
-    unicode-bidi: embed;
-  }
-
-  bdo[dir=rtl] {
-    direction: rtl;
-    unicode-bidi: bidi-override;
-  }
-  bdo[dir=ltr] {
-    direction: ltr;
-    unicode-bidi: bidi-override;
-  }
-
-}
-
-// Position a FAB button.
-@mixin fab-position($spot, $top: auto, $right: auto, $bottom: auto, $left: auto) {
-  &.md-fab-#{$spot} {
-    top: $top;
-    right: $right;
-    bottom: $bottom;
-    left: $left;
-    position: absolute;
-  }
-}
-
-@mixin fab-all-positions() {
-  @include fab-position(bottom-right, auto, ($button-fab-width - $button-fab-padding)/2, ($button-fab-height - $button-fab-padding)/2, auto);
-  @include fab-position(bottom-left, auto, auto, ($button-fab-height - $button-fab-padding)/2, ($button-fab-width - $button-fab-padding)/2);
-  @include fab-position(top-right, ($button-fab-height - $button-fab-padding)/2, ($button-fab-width - $button-fab-padding)/2, auto, auto);
-  @include fab-position(top-left, ($button-fab-height - $button-fab-padding)/2, auto, auto, ($button-fab-width - $button-fab-padding)/2);
 }
 
 html, body {
@@ -275,7 +194,6 @@ body {
 [tabindex='-1']:focus {
   outline: none;
 }
-
 .inset {
   padding: 10px;
 }
@@ -352,7 +270,6 @@ input {
 .md-shadow-bottom-z-1 {
   @include md-shadow-bottom-z-1();
 }
-
 .md-shadow-bottom-z-2 {
   @include md-shadow-bottom-z-2();
 }
@@ -378,13 +295,16 @@ input {
 
 .md-ripple {
   position: absolute;
-  transform: translate(-50%, -50%) scale(0);
+  transform: scale(0);
   transform-origin: 50% 50%;
   opacity: 0;
   border-radius: 50%;
   &.md-ripple-placed {
-    $sizeDuration: 0.45s * 2;
-    transition: margin $sizeDuration $swift-ease-out-timing-function,
+    $positionDuration: 0.9s * 2;
+    $sizeDuration: 0.65s * 2;
+    transition: left $positionDuration $swift-ease-out-timing-function,
+    top $positionDuration $swift-ease-out-timing-function,
+    margin $sizeDuration $swift-ease-out-timing-function,
     border $sizeDuration $swift-ease-out-timing-function,
     width $sizeDuration $swift-ease-out-timing-function,
     height $sizeDuration $swift-ease-out-timing-function,
@@ -392,7 +312,7 @@ input {
     transform $sizeDuration $swift-ease-out-timing-function;
   }
   &.md-ripple-scaled {
-    transform: translate(-50%, -50%) scale(1);
+    transform: scale(1);
   }
   &.md-ripple-active, &.md-ripple-full, &.md-ripple-visible {
     opacity: 0.20;
@@ -466,56 +386,46 @@ ul, ol, p, h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.010em;
   line-height: $display-4-font-size-base;
 }
-
 .md-display-3 {
   font-size: $display-3-font-size-base;
   font-weight: 400;
   letter-spacing: -0.005em;
   line-height: $display-3-font-size-base;
 }
-
 .md-display-2 {
   font-size: $display-2-font-size-base;
   font-weight: 400;
   line-height: rem(6.4);
 }
-
 .md-display-1 {
   font-size: $display-1-font-size-base;
   font-weight: 400;
   line-height: rem(4);
 }
-
 .md-headline {
   font-size: $headline-font-size-base;
   font-weight: 400;
   line-height: rem(3.2);
 }
-
 .md-title {
   @include md-title();
 }
-
 .md-subhead {
   @include md-subhead();
 }
-
 /************
  * Body Copy
  ************/
 .md-body-1 {
   @include md-body-1();
 }
-
 .md-body-2 {
   @include md-body-2();
 }
-
 .md-caption {
   font-size: $caption-font-size-base;
   letter-spacing: 0.020em;
 }
-
 .md-button {
   letter-spacing: 0.010em;
 }
@@ -539,142 +449,162 @@ input {
   font-size: 100%;
 }
 
-/*
-*
-*  Responsive attributes
-*
-*  References:
-*  1) https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties#flex
-*  2) https://css-tricks.com/almanac/properties/f/flex/
-*  3) https://css-tricks.com/snippets/css/a-guide-to-flexbox/
-*  4) https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
-*  5) http://godban.com.ua/projects/flexgrid
-*
-*
+// Responsive attributes
+// ------------------------------
+
+// hide means hide everywhere
+/* Sizes:
+  0    <= size < 600  Phone
+  600  <= size < 960  Tablet
+  960  <= size < 1200 Tablet-Landscape
+  1200 <= size         PC
 */
 
+[layout] {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+[layout=column] {
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
+[layout=row] {
+  flex-direction: row;
+  -webkit-flex-direction: row;
+}
+
+[layout-padding] > [flex-sm],
+[layout-padding] > [flex-lt-md] {
+  padding: $layout-gutter-width / 4;
+}
+
+[layout-padding],
+[layout-padding] > [flex],
+[layout-padding] > [flex-gt-sm],
+[layout-padding] > [flex-md],
+[layout-padding] > [flex-lt-lg] {
+  padding: $layout-gutter-width / 2;
+}
+
+[layout-padding] > [flex-gt-md],
+[layout-padding] > [flex-lg] {
+  padding: $layout-gutter-width / 1;
+}
+
+[layout-margin] > [flex-sm],
+[layout-margin] > [flex-lt-md] {
+  margin: $layout-gutter-width / 4;
+}
+
+[layout-margin],
+[layout-margin] > [flex],
+[layout-margin] > [flex-gt-sm],
+[layout-margin] > [flex-md],
+[layout-margin] > [flex-lt-lg] {
+  margin: $layout-gutter-width / 2;
+}
+
+[layout-margin] > [flex-gt-md],
+[layout-margin] > [flex-lg] {
+  margin: $layout-gutter-width / 1;
+}
+
+[layout-wrap] {
+  flex-wrap: wrap;
+}
+
+[layout-fill] {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
 @-moz-document url-prefix() {
-  .layout-fill {
+  [layout-fill] {
     margin: 0;
     width: 100%;
-    min-height: 100%;
-    height: 100%;
+    min-height: auto;
+    height: inherit;
   }
 }
 
-@mixin flex-order-for-name($sizes:null) {
-  @if $sizes == null {
-    $sizes: '';
-
-    .flex-order {
-      order: 0;
-    }
+@mixin flex-order-for-name($suffix: null) {
+  $selector: 'flex-order';
+  @if $suffix != null {
+    $selector: 'flex-order-#{$suffix}';
   }
-
-  @for $i from -20 through 20 {
-    $order: '';
-    $suffix: '';
-
-    @each $s in $sizes {
-      @if $s != '' {
-        $suffix: '#{$s}-#{$i}';
-      } @else {
-        $suffix: '#{$i}';
-      }
-
-      $order: '.flex-order-#{$suffix}';
-    }
-
-    #{$order} {
-      order: #{$i};
-    }
+  [#{$selector}="0"] {
+    order: 0;
   }
-}
-
-@mixin offset-for-name($sizes:null) {
-  @if $sizes == null {
-    $sizes: '';
+  [#{$selector}="1"] {
+    order: 1;
   }
-
-  @for $i from 0 through 19 {
-    $offsets: '';
-    $suffix: '';
-
-    @each $s in $sizes {
-      @if $s != '' {
-        $suffix: '#{$s}-#{$i * 5}';
-      } @else {
-        $suffix: '#{$i * 5}';
-      }
-
-      $offsets: '.offset-#{$suffix}, .flex-offset-#{$suffix}';
-    }
-
-    #{$offsets} {
-      margin-left: #{$i * 5 + '%'};
-    }
+  [#{$selector}="2"] {
+    order: 2;
   }
-
-  @each $i in 33 {
-    $offsets: '';
-    $suffix: '';
-
-    @each $s in $sizes {
-      @if $s != '' {
-        $suffix: '#{$s}-#{$i}';
-      } @else {
-        $suffix: '#{$i}';
-      }
-
-      $offsets: '.offset-#{$suffix}, .flex-offset-#{$suffix} ';
-    }
-
-    #{$offsets} {
-      margin-left: calc(100% / 3);
-    }
+  [#{$selector}="3"] {
+    order: 3;
   }
-
-  @each $i in 66 {
-    $offsets: '';
-    $suffix: '';
-
-    @each $s in $sizes {
-      @if $s != '' {
-        $suffix: '#{$s}-#{$i}';
-      } @else {
-        $suffix: '#{$i}';
-      }
-
-      $offsets: '.offset-#{$suffix}, .flex-offset-#{$suffix} ';
-    }
-
-    #{$offsets} {
-      margin-left: calc(200% / 3);
-    }
+  [#{$selector}="4"] {
+    order: 4;
+  }
+  [#{$selector}="5"] {
+    order: 5;
+  }
+  [#{$selector}="6"] {
+    order: 6;
+  }
+  [#{$selector}="7"] {
+    order: 7;
+  }
+  [#{$selector}="8"] {
+    order: 8;
+  }
+  [#{$selector}="9"] {
+    order: 9;
   }
 }
 
-@mixin layout-for-name($name: null) {
-  @if $name == null {
-    $name: '';
-  }
-  @if $name != '' {
-    $name: '-#{$name}';
-  }
-
-  .layout#{$name}, .layout#{$name}-column, .layout#{$name}-row {
+@mixin layout-for-name($name) {
+  [layout-#{$name}] {
     box-sizing: border-box;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
+    display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
   }
-  .layout#{$name}-column {
+  [layout-#{$name}=column] {
     flex-direction: column;
   }
-  .layout#{$name}-row {
+  [layout-#{$name}=row] {
     flex-direction: row;
+  }
+}
+
+@mixin offset-for-name($name: null) {
+  $offsetName: 'offset';
+  @if $name != null {
+    $offsetName: 'offset-#{$name}';
+  }
+  @for $i from 1 through 19 {
+    [#{$offsetName}="#{$i * 5}"] {
+      margin-left: #{$i * 5 + '%'};
+    }
+  }
+  [#{$offsetName}="33"], [#{$offsetName}="34"] {
+    margin-left: 33.33%;
+  }
+  [#{$offsetName}="66"], [#{$offsetName}="67"] {
+    margin-left: 66.66%;
   }
 }
 
@@ -682,426 +612,226 @@ input {
   $flexName: 'flex';
   @if $name != null {
     $flexName: 'flex-#{$name}';
-    $name: '-#{$name}';
-  } @else {
-    $name: '';
   }
 
-  .#{$flexName} {
+  [#{$flexName}] {
+    box-sizing: border-box;
     flex: 1;
-    box-sizing: border-box;
-  }
-  // === flex: 1 1 0%;
-
-  // IE mediaQuery hack for 8,9,10 to set the flex-basis properly for 'flex' values
-  // Details:
-  // Do not use unitless flex-basis values in the flex shorthand because IE 10-11 will error.
-  // Also use 0% instead of 0px since minifiers will often convert 0px to 0 (which is unitless and will have the same problem).
-  // Safari, however, fails with flex-basis : 0% and requires flex-basis : 0px
-  @media screen \0
-  {
-    .#{$flexName} {
-      flex: 1 1 0%;
-    }
   }
 
-  .#{$flexName}-grow {
-    flex: 1 1 100%;
-    box-sizing: border-box;
-  }
-  .#{$flexName}-initial {
-    flex: 0 1 auto;
-    box-sizing: border-box;
-  }
-  .#{$flexName}-auto {
-    flex: 1 1 auto;
-    box-sizing: border-box;
-  }
-  .#{$flexName}-none {
-    flex: 0 0 auto;
-    box-sizing: border-box;
-  }
-  .#{$flexName}-noshrink {
-    flex: 1 0 auto;
-    box-sizing: border-box;
-  }
-  .#{$flexName}-nogrow {
-    flex: 0 1 auto;
-    box-sizing: border-box;
-  }
-
-  // (1-20) * 5 = 0-100%
+  // (0-20) * 5 = 0-100%
   @for $i from 0 through 20 {
-    $value: #{$i * 5 + '%'};
-
-    .#{$flexName}-#{$i * 5} {
-      flex: 1 1 #{$value};
-      max-width: #{$value};
-      max-height: 100%;
-      box-sizing: border-box;
+    [#{$flexName}="#{$i * 5}"] {
+      flex: 0 0 #{$i * 5 + '%'};
     }
-
-    .layout-row > .#{$flexName}-#{$i * 5},
-    .layout#{$name}-row > .#{$flexName}-#{$i * 5} {
-      flex: 1 1 #{$value};
-      max-width: #{$value};
-      max-height: 100%;
-      box-sizing: border-box;
+    [layout="row"] > [#{$flexName}="#{$i * 5}"] {
+      max-width: #{$i * 5 + '%'};
     }
-
-    .layout-column > .#{$flexName}-#{$i * 5},
-    .layout#{$name}-column > .#{$flexName}-#{$i * 5} {
-      flex: 1 1 #{$value};
-      max-width: 100%;
-      max-height: #{$value};
-      box-sizing: border-box;
+    [layout="column"] > [#{$flexName}="#{$i * 5}"] {
+      max-height: #{$i * 5 + '%'};
     }
   }
 
-  .layout-row, .layout#{$name}-row {
-    > .#{$flexName}-33, > .#{$flexName}-33 {
-      flex: 1 1 33%;
-      max-width: calc(100% / 3);
-      max-height: 100%;
-      box-sizing: border-box;
+  [#{$flexName}="33"], [#{$flexName}="34"] {
+    flex: 0 0 33.33%;
+  }
+  [#{$flexName}="66"], [#{$flexName}="67"] {
+    flex: 0 0 66.66%;
+  }
+
+  [layout="row"] {
+    > [#{$flexName}="33"], > [#{$flexName}="34"] {
+      max-width: 33.33%;
     }
-    > .#{$flexName}-66, > .#{$flexName}-66 {
-      flex: 1 1 66%;
-      max-width: calc(200% / 3);
-      max-height: 100%;
-      box-sizing: border-box;
+    > [#{$flexName}="66"], > [#{$flexName}="67"] {
+      max-width: 66.66%;
     }
   }
-  .layout-column, .layout#{$name}-column {
-    > .#{$flexName}-33, > .#{$flexName}-33 {
-      flex: 1 1 33%;
-      max-width: 100%;
-      max-height: calc(100% / 3);
-      box-sizing: border-box;
+  [layout="column"] {
+    > [#{$flexName}="33"], > [#{$flexName}="34"] {
+      max-height: 33.33%;
     }
-    > .#{$flexName}-66, > .#{$flexName}-66 {
-      flex: 1 1 66%;
-      max-width: 100%;
-      max-height: calc(200% / 3);
-      box-sizing: border-box;
+    > [#{$flexName}="66"], > [#{$flexName}="67"] {
+      max-height: 66.66%;
     }
   }
 }
 
+// Alignment attributes for layout containers' children
+// Arrange on the Main Axis
+// center, start, end, space-between, space-around
+// flex-start is the default for justify-content
+// ------------------------------
+
 @mixin layout-align-for-name($suffix: null) {
-
-  // Alignment attributes for layout containers' children
-  // Arrange on the Main Axis
-  // center, start, end, space-between, space-around
-  // flex-start is the default for justify-content
-  // ------------------------------
-
   $name: 'layout-align';
   @if $suffix != null {
     $name: 'layout-align-#{$suffix}';
   }
 
-  .#{$name},
-  .#{$name}-start-stretch // defaults
-  {
-    justify-content: flex-start;
-    align-content: stretch;
-    align-items: stretch;
-  }
-
   // Main Axis Center
-  .#{$name}-start,
-  .#{$name}-start-start,
-  .#{$name}-start-center,
-  .#{$name}-start-end,
-  .#{$name}-start-stretch {
-    justify-content: flex-start;
-  }
-
-  // Main Axis Center
-  .#{$name}-center, //stretch
-  .#{$name}-center-start,
-  .#{$name}-center-center,
-  .#{$name}-center-end,
-  .#{$name}-center-stretch {
+  [#{$name}="center"], //stretch
+  [#{$name}="center center"],
+  [#{$name}="center start"],
+  [#{$name}="center end"] {
     justify-content: center;
   }
 
   // Main Axis End
-  .#{$name}-end, //stretch
-  .#{$name}-end-start,
-  .#{$name}-end-center,
-  .#{$name}-end-end,
-  .#{$name}-end-stretch {
+  [#{$name}="end"], //stretch
+  [#{$name}="end center"],
+  [#{$name}="end start"],
+  [#{$name}="end end"] {
     justify-content: flex-end;
   }
 
   // Main Axis Space Around
-  .#{$name}-space-around, //stretch
-  .#{$name}-space-around-center,
-  .#{$name}-space-around-start,
-  .#{$name}-space-around-end,
-  .#{$name}-space-around-stretch {
+  [#{$name}="space-around"], //stretch
+  [#{$name}="space-around center"],
+  [#{$name}="space-around start"],
+  [#{$name}="space-around end"] {
     justify-content: space-around;
   }
 
   // Main Axis Space Between
-  .#{$name}-space-between, //stretch
-  .#{$name}-space-between-center,
-  .#{$name}-space-between-start,
-  .#{$name}-space-between-end,
-  .#{$name}-space-between-stretch {
+  [#{$name}="space-between"], //stretch
+  [#{$name}="space-between center"],
+  [#{$name}="space-between start"],
+  [#{$name}="space-between end"] {
     justify-content: space-between;
   }
+
 
   // Arrange on the Cross Axis
   // center, start, end
   // stretch is the default for align-items
   // ------------------------------
 
-  // Cross Axis Start
-  .#{$name}-start-start,
-  .#{$name}-center-start,
-  .#{$name}-end-start,
-  .#{$name}-space-between-start,
-  .#{$name}-space-around-start {
-    align-items: flex-start;
-    align-content: flex-start;
-  }
-
   // Cross Axis Center
-  .#{$name}-start-center,
-  .#{$name}-center-center,
-  .#{$name}-end-center,
-  .#{$name}-space-between-center,
-  .#{$name}-space-around-center {
+  [#{$name}="center center"],
+  [#{$name}="start center"],
+  [#{$name}="end center"],
+  [#{$name}="space-between center"],
+  [#{$name}="space-around center"] {
     align-items: center;
-    align-content: center;
-    max-width: 100%;
   }
 
-  // Cross Axis Center IE overflow fix
-  .#{$name}-start-center > *,
-  .#{$name}-center-center > *,
-  .#{$name}-end-center > *,
-  .#{$name}-space-between-center > *,
-  .#{$name}-space-around-center > * {
-    max-width: 100%;
-    box-sizing: border-box;
+  // Cross Axis Start
+  [#{$name}="center start"],
+  [#{$name}="start start"],
+  [#{$name}="end start"],
+  [#{$name}="space-between start"],
+  [#{$name}="space-around start"] {
+    align-items: flex-start;
   }
 
   // Cross Axis End
-  .#{$name}-start-end,
-  .#{$name}-center-end,
-  .#{$name}-end-end,
-  .#{$name}-space-between-end,
-  .#{$name}-space-around-end {
+  [#{$name}="center end"],
+  [#{$name}="start end"],
+  [#{$name}="end end"],
+  [#{$name}="space-between end"],
+  [#{$name}="space-around end"] {
     align-items: flex-end;
-    align-content: flex-end;
   }
 
-  // Cross Axis Start
-  .#{$name}-start-stretch,
-  .#{$name}-center-stretch,
-  .#{$name}-end-stretch,
-  .#{$name}-space-between-stretch,
-  .#{$name}-space-around-stretch {
-    align-items: stretch;
-    align-content: stretch;
-  }
 }
 
-@mixin layout-padding-margin() {
+// Flex attributes for layout children
+// ------------------------------
 
-  // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
-  .layout-padding-sm > *,
-  .layout-padding > .flex-sm {
-    padding: $layout-gutter-width / 4;
-  }
-
-  .layout-padding,
-  .layout-padding-gt-sm,
-  .layout-padding-md,
-
-    // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
-  .layout-padding > *,
-  .layout-padding-gt-sm > *,
-  .layout-padding-md > *,
-  .layout-padding > .flex,
-  .layout-padding > .flex-gt-sm,
-  .layout-padding > .flex-md {
-    padding: $layout-gutter-width / 2;
-  }
-
-  // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
-  .layout-padding-gt-md > *,
-  .layout-padding-lg > *,
-  .layout-padding-gt-lg > *,
-  .layout-padding > .flex-gt-md,
-  .layout-padding > .flex-lg,
-  .layout-padding > .flex-lg,
-  .layout-padding > .flex-gt-lg {
-    padding: $layout-gutter-width / 1;
-  }
-
-  // Margin enhancements
-
-  .layout-margin-sm > *,
-  .layout-margin > .flex-sm {
-    margin: $layout-gutter-width / 4;
-  }
-
-  .layout-margin,
-  .layout-margin-gt-sm,
-  .layout-margin-md,
-
-    // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
-  .layout-margin > *,
-  .layout-margin-gt-sm > *,
-  .layout-margin-md > *,
-  .layout-margin > .flex,
-  .layout-margin > .flex-gt-sm,
-  .layout-margin > .flex-md {
-    margin: $layout-gutter-width / 2;
-  }
-
-  // NOTE: these`> *` selectors should only be applied for layout="row" or layout="column" children !!
-  .layout-margin-gt-md > *,
-  .layout-margin-lg > *,
-  .layout-margin-gt-lg > *,
-  .layout-margin > .flex-gt-md,
-  .layout-margin > .flex-lg,
-  .layout-margin > .flex-gt-lg {
-    margin: $layout-gutter-width / 1;
-  }
-
-  .layout-wrap {
-    flex-wrap: wrap;
-  }
-
-  .layout-nowrap {
-    flex-wrap: nowrap;
-  }
-
-  .layout-fill {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
-    height: 100%;
-  }
-}
-
-@mixin layouts_for_breakpoint($name:null) {
-  @include flex-order-for-name($name);
-  @include offset-for-name($name);
-  @include layout-align-for-name($name);
-
-  @include flex-properties-for-name($name);
-  @include layout-for-name($name);
-}
-
-/*
- *  Apply Mixins to create Layout/Flexbox styles
- *
- */
-
-@include layouts_for_breakpoint();
-@include layout-padding-margin();
+@include flex-properties-for-name();
+@include layout-align-for-name();
+@include flex-order-for-name();
+@include offset-for-name();
 
 /**
  * `hide-gt-sm show-gt-lg` should hide from 600px to 1200px
  * `show-md hide-gt-sm` should show from 0px to 960px and hide at >960px
  * `hide-gt-md show-gt-sm` should show everywhere (show overrides hide)`
- *
- *  hide means hide everywhere
- *  Sizes:
- *         $layout-breakpoint-xs:     600px !default;
- *         $layout-breakpoint-sm:     960px !default;
- *         $layout-breakpoint-md:     1280px !default;
- *         $layout-breakpoint-lg:     1920px !default;
  */
 
-@media (max-width: $layout-breakpoint-xs - 1) {
-  // Xtra-SMALL  SCREEN
-  .hide-xs, .hide {
-    &:not(.show-xs):not(.show) {
+// SMALL SCREEN
+@media (max-width: $layout-breakpoint-sm - 1) {
+  [hide-sm], [hide] {
+    &:not([show-sm]):not([show]) {
       display: none;
     }
   }
-  @include layouts_for_breakpoint(xs);
+
+  @include flex-order-for-name(sm);
+  @include layout-align-for-name(sm);
+  @include layout-for-name(sm);
+  @include offset-for-name(sm);
+  @include flex-properties-for-name(sm);
 }
 
-@media (min-width: $layout-breakpoint-xs) {
-  // BIGGER THAN Xtra-SMALL SCREEN
-  @include layouts_for_breakpoint(gt-xs);
-
-}
-
-@media (min-width: $layout-breakpoint-xs) and (max-width: $layout-breakpoint-sm - 1) {
-  .hide, .hide-gt-xs {
-    &:not(.show-gt-xs):not(.show-sm):not(.show) {
-      display: none;
-    }
-  }
-  .hide-sm:not(.show-gt-xs):not(.show-sm):not(.show) {
-    display: none;
-  }
-
-  @include layouts_for_breakpoint(sm);
-}
-
+// BIGGER THAN SMALL SCREEN
 @media (min-width: $layout-breakpoint-sm) {
-  // BIGGER THAN SMALL SCREEN
-  @include layouts_for_breakpoint(gt-sm);
-
+  @include flex-order-for-name(gt-sm);
+  @include layout-align-for-name(gt-sm);
+  @include layout-for-name(gt-sm);
+  @include offset-for-name(gt-sm);
+  @include flex-properties-for-name(gt-sm);
 }
 
+// MEDIUM SCREEN
 @media (min-width: $layout-breakpoint-sm) and (max-width: $layout-breakpoint-md - 1) {
-  // MEDIUM SCREEN
-  .hide, .hide-gt-xs, .hide-gt-sm {
-    &:not(.show-gt-xs):not(.show-gt-sm):not(.show-md):not(.show) {
+  [hide], [hide-gt-sm] {
+    &:not([show-gt-sm]):not([show-md]):not([show]) {
       display: none;
     }
   }
-  .hide-md:not(.show-md):not(.show-gt-sm):not(.show-gt-xs):not(.show) {
+  [hide-md]:not([show-md]):not([show]) {
     display: none;
   }
-  @include layouts_for_breakpoint(md);
+
+  @include flex-order-for-name(md);
+  @include layout-align-for-name(md);
+  @include layout-for-name(md);
+  @include offset-for-name(md);
+  @include flex-properties-for-name(md);
 }
 
+// BIGGER THAN MEDIUM SCREEN
 @media (min-width: $layout-breakpoint-md) {
-  // BIGGER THAN MEDIUM SCREEN
-  @include layouts_for_breakpoint(gt-md);
+  @include flex-order-for-name(gt-md);
+  @include layout-align-for-name(gt-md);
+  @include layout-for-name(gt-md);
+  @include offset-for-name(gt-md);
+  @include flex-properties-for-name(gt-md);
 }
 
+// LARGE SCREEN
 @media (min-width: $layout-breakpoint-md) and (max-width: $layout-breakpoint-lg - 1) {
-  // LARGE SCREEN
-  .hide, .hide-gt-xs, .hide-gt-sm, .hide-gt-md {
-    &:not(.show-gt-xs):not(.show-gt-sm):not(.show-gt-md):not(.show-lg):not(.show) {
+  [hide], [hide-gt-sm], [hide-gt-md] {
+    &:not([show-gt-sm]):not([show-gt-md]):not([show-lg]):not([show]) {
       display: none;
     }
   }
-  .hide-lg:not(.show-lg):not(.show-gt-md):not(.show-gt-sm):not(.show-gt-xs):not(.show) {
+  [hide-lg]:not([show-lg]):not([show]) {
     display: none;
   }
 
-  @include layouts_for_breakpoint(lg);
+  @include flex-order-for-name(lg);
+  @include layout-align-for-name(lg);
+  @include layout-for-name(lg);
+  @include offset-for-name(lg);
+  @include flex-properties-for-name(lg);
 }
 
+// BIGGER THAN LARGE SCREEN
 @media (min-width: $layout-breakpoint-lg) {
-  @include layouts_for_breakpoint(gt-lg);
-  @include layouts_for_breakpoint(xl);
-
-  // BIGGER THAN LARGE SCREEN
-  .hide, .hide-gt-xs, .hide-gt-sm, .hide-gt-md, .hide-gt-lg {
-    &:not(.show-gt-xs):not(.show-gt-sm):not(.show-gt-md):not(.show-gt-lg):not(.show-xl):not(.show) {
+  [hide-gt-sm], [hide-gt-md], [hide-gt-lg], [hide] {
+    &:not([show-gt-sm]):not([show-gt-md]):not([show-gt-lg]):not([show]) {
       display: none;
     }
   }
-  .hide-xl:not(.show-xl):not(.show-gt-lg):not(.show-gt-md):not(.show-gt-sm):not(.show-gt-xs):not(.show) {
-    display: none;
-  }
 
+  @include flex-order-for-name(gt-lg);
+  @include layout-align-for-name(gt-lg);
+  @include layout-for-name(gt-lg);
+  @include offset-for-name(gt-lg);
+  @include flex-properties-for-name(gt-lg);
 }
 
 $autocomplete-option-height: 48px;
@@ -1122,7 +852,6 @@ $input-error-height: 24px !default;
     opacity: 0;
   }
 }
-
 @keyframes md-autocomplete-list-in {
   0% {
     opacity: 0;
@@ -1138,7 +867,6 @@ $input-error-height: 24px !default;
     height: 40px;
   }
 }
-
 md-autocomplete {
   border-radius: 2px;
   display: block;
@@ -1148,23 +876,16 @@ md-autocomplete {
   min-width: 190px;
   &[disabled] {
     input {
-      cursor: default;
+      cursor: not-allowed;
     }
   }
   &[md-floating-label] {
+    padding-bottom: $input-container-padding + $input-error-height;
     border-radius: 0;
     background: transparent;
     height: auto;
-
     md-input-container {
-      padding-bottom: $input-container-padding + $input-error-height;
-
-      // When we have ng-messages, remove the input error height from our bottom padding, since the
-      // ng-messages wrapper has a min-height of 1 error (so we don't adjust height as often; see
-      // input.scss file)
-      &.md-input-has-messages {
-        padding-bottom: $input-container-padding;
-      }
+      padding-bottom: 0;
     }
     md-autocomplete-wrap {
       height: auto;
@@ -1186,50 +907,47 @@ md-autocomplete {
     &.md-menu-showing {
       z-index: $z-index-backdrop + 1;
     }
-    md-progress-linear {
+    md-progress-linear[md-mode=indeterminate] {
       position: absolute;
-      bottom: -2px;
+      bottom: 0;
       left: 0;
-      // When `md-inline` is present, we adjust the offset to go over the `ng-message` space
-      &.md-inline {
-        bottom: 40px;
-        right: 2px;
-        left: 2px;
-        width: auto;
-      }
-      .md-mode-indeterminate {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        transition: none;
+      width: 100%;
+      height: 3px;
+      transition: none;
 
-        .md-container {
-          transition: none;
-          height: 3px;
+      .md-container {
+        transition: none;
+        top: auto;
+        height: 3px;
+      }
+      &.ng-enter {
+        transition: opacity 0.15s linear;
+        &.ng-enter-active {
+          opacity: 1;
         }
-        &.ng-enter {
-          transition: opacity 0.15s linear;
-          &.ng-enter-active {
-            opacity: 1;
-          }
-        }
-        &.ng-leave {
-          transition: opacity 0.15s linear;
-          &.ng-leave-active {
-            opacity: 0;
-          }
+      }
+      &.ng-leave {
+        transition: opacity 0.15s linear;
+        &.ng-leave-active {
+          opacity: 0;
         }
       }
     }
   }
   input:not(.md-input) {
-    @include md-flat-input();
     width: 100%;
+    box-sizing: border-box;
+    border: none;
+    box-shadow: none;
     padding: 0 15px;
+    font-size: 14px;
     line-height: 40px;
     height: 40px;
+    outline: none;
+    background: transparent;
+    &::-ms-clear {
+      display: none;
+    }
   }
   button {
     position: relative;
@@ -1287,7 +1005,6 @@ md-autocomplete {
       }
     }
   }
-  // IE Only
   @media screen and (-ms-high-contrast: active) {
     $border-color: #fff;
 
@@ -1299,24 +1016,16 @@ md-autocomplete {
     }
   }
 }
-
-.md-virtual-repeat-container.md-autocomplete-suggestions-container {
-  position: absolute;
-  box-shadow: 0 2px 5px rgba(black, 0.25);
-  height: 41px * 5.5;
-  max-height: 41px * 5.5;
-  z-index: $z-index-tooltip;
-}
-
-.md-virtual-repeat-container.md-not-found {
-  height: 48px;
-}
-
 .md-autocomplete-suggestions {
+  position: absolute;
   margin: 0;
   list-style: none;
   padding: 0;
+  overflow: auto;
+  max-height: 41px * 5.5;
+  z-index: $z-index-tooltip;
   li {
+    cursor: pointer;
     font-size: 14px;
     overflow: hidden;
     padding: 0 15px;
@@ -1326,18 +1035,23 @@ md-autocomplete {
     margin: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
+    &.ng-enter,
+    &.ng-hide-remove {
+      transition: none;
+      animation: md-autocomplete-list-in 0.2s;
+    }
+    &.ng-leave,
+    &.ng-hide-add {
+      transition: none;
+      animation: md-autocomplete-list-out 0.2s;
+    }
 
     &:focus {
       outline: none;
     }
 
-    &:not(.md-not-found-wrapper) {
-      cursor: pointer;
-    }
   }
 }
-
-// IE Only
 @media screen and (-ms-high-contrast: active) {
   md-autocomplete,
   .md-autocomplete-suggestions {
@@ -1382,6 +1096,7 @@ md-bottom-sheet {
     display: block;
     transform: translate3d(0, $bottom-sheet-hidden-bottom-padding, 0) !important;
   }
+
 
   &.ng-leave-active {
     transform: translate3d(0, 100%, 0) !important;
@@ -1469,11 +1184,11 @@ md-bottom-sheet {
         @include grid-items-per-row(3, true);
       }
 
-      @media screen and (min-width: $layout-breakpoint-sm) and (max-width: $layout-breakpoint-md - 1) {
+      @media screen and (min-width: $layout-breakpoint-sm) and (max-width: $layout-breakpoint-md) {
         @include grid-items-per-row(4);
       }
 
-      @media screen and (min-width: $layout-breakpoint-md) and (max-width: $layout-breakpoint-lg - 1) {
+      @media screen and (min-width: $layout-breakpoint-md) and (max-width: $layout-breakpoint-lg) {
         @include grid-items-per-row(6);
       }
 
@@ -1520,34 +1235,19 @@ md-bottom-sheet {
   }
 }
 
-// IE only
 @media screen and (-ms-high-contrast: active) {
   md-bottom-sheet {
     border: 1px solid #fff;
   }
 }
 
-// !!Important - Theme-based Background-color can be configured in backdrop-theme.scss
-//             - Animate background-color opacityy only for `.md-opaque` styles
-
 md-backdrop {
-  transition: opacity 450ms;
-
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
   z-index: $z-index-backdrop;
-
   &.md-menu-backdrop {
-    position: fixed !important;
     z-index: $z-index-menu - 1;
   }
   &.md-select-backdrop {
     z-index: $z-index-dialog + 1;
-    transition-duration: 0;
   }
   &.md-dialog-backdrop {
     z-index: $z-index-dialog - 1;
@@ -1559,34 +1259,240 @@ md-backdrop {
     z-index: $z-index-sidenav - 1;
   }
 
+  opacity: 1;
+
+  // - Animate background-color alpha only for `.md-opaque` stylings
+  // !!Important - Theme-based Background-color and animations can be enabled in backdrop-theme.scss
+
+  transition: background-color 450ms $swift-ease-in-timing-function;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
   &.md-click-catcher {
     position: absolute;
   }
 
-  &.md-opaque {
-
-    opacity: .48;
-
-    &.ng-enter {
-      opacity: 0;
-    }
-    &.ng-enter.md-opaque.ng-enter-active {
-      opacity: .48;
-    }
-    &.ng-leave {
-      opacity: .48;
-      transition: opacity 400ms;
-    }
-    &.ng-leave.md-opaque.ng-leave-active {
-      opacity: 0;
-    }
+  &.md-opaque.ng-leave {
+    transition: background-color 400ms linear;
   }
 
 }
 
-$button-border-radius: 3px !default;
-$button-fab-border-radius: 50% !default;
-$button-icon-border-radius: $button-fab-border-radius;
+$card-padding: 16px !default;
+$card-box-shadow: $whiteframe-shadow-z1 !default;
+
+md-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: $baseline-grid;
+
+  box-shadow: $card-box-shadow;
+
+  > img,
+  > :not(md-card-content) img {
+    width: 100%;
+  }
+
+  md-card-content {
+    padding: $card-padding;
+  }
+  .md-actions {
+    margin: 0;
+
+    .md-button {
+      margin-bottom: $baseline-grid;
+      margin-top: $baseline-grid;
+      margin-right: $baseline-grid * .5;
+      margin-left: $baseline-grid * .5;
+    }
+  }
+  md-card-footer {
+    padding: $card-padding;
+  }
+}
+
+@media screen and (-ms-high-contrast: active) {
+  md-card {
+    border: 1px solid #fff;
+  }
+}
+
+$checkbox-width: 18px !default;
+$checkbox-height: $checkbox-width !default;
+$checkbox-margin: 8px !default;
+$checkbox-border-radius: 2px !default;
+$checkbox-border-width: 2px !default;
+$checkbox-text-margin: 10px !default;
+$checkbox-top-left: 12px !default;
+
+md-checkbox {
+  box-sizing: border-box;
+  display: block;
+  margin: $checkbox-margin;
+  white-space: nowrap;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+  @include rtl(padding-left, $checkbox-width, 0);
+  @include rtl(padding-right, 0, $checkbox-width);
+  position: relative;
+  line-height: $checkbox-width + $checkbox-margin;
+  min-width: $checkbox-width;
+  min-height: $checkbox-width;
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
+
+  &.md-focused:not([disabled]) {
+    .md-container:before {
+      left: -8px;
+      top: -8px;
+      right: -8px;
+      bottom: -8px;
+    }
+
+    &:not(.md-checked) {
+      .md-container:before {
+        background-color: rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+
+  .md-container {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-block;
+    width: $checkbox-width;
+    height: $checkbox-height;
+    @include rtl(left, 0, auto);
+    @include rtl(right, auto, 0);
+
+    &:before {
+      background-color: transparent;
+      border-radius: 50%;
+      content: '';
+      position: absolute;
+      display: block;
+      height: auto;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      transition: all 0.5s;
+      width: auto;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      bottom: -10px;
+      left: -10px;
+    }
+
+    .md-ripple-container {
+      position: absolute;
+      display: block;
+      width: auto;
+      height: auto;
+      left: -15px;
+      top: -15px;
+      right: -15px;
+      bottom: -15px;
+    }
+  }
+
+  &.md-align-top-left > div.md-container {
+    top: $checkbox-top-left;
+  }
+
+  // unchecked
+  .md-icon {
+    transition: 240ms;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: $checkbox-width;
+    height: $checkbox-height;
+    border-width: $checkbox-border-width;
+    border-style: solid;
+    border-radius: $checkbox-border-radius;
+  }
+
+  &.md-checked .md-icon {
+    border: none;
+  }
+
+  // disabled
+  &[disabled] {
+    cursor: no-drop;
+  }
+
+  &.md-checked .md-icon:after {
+    transform: rotate(45deg);
+    position: absolute;
+    left: $checkbox-width / 3;
+    top: $checkbox-width / 9;
+    display: table;
+    width: $checkbox-width / 3;
+    height: $checkbox-width * 2 / 3;
+    border-width: $checkbox-border-width;
+    border-style: solid;
+    border-top: 0;
+    border-left: 0;
+    content: '';
+  }
+
+  .md-label {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    white-space: normal;
+    user-select: text;
+
+    @include rtl(margin-left, $checkbox-text-margin, 0);
+    @include rtl(margin-right, 0, $checkbox-text-margin);
+
+  }
+}
+
+md-content {
+
+  display: block;
+  position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &[md-scroll-y] {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  &[md-scroll-x] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  &[md-scroll-xy] {
+  }
+
+  // For iOS allow disabling of momentum scrolling
+  // @see issue #2640.
+
+  &.autoScroll {
+    -webkit-overflow-scrolling: auto;
+  }
+}
+
+
 
 $button-line-height: rem(3.60) !default;
 $button-padding: 0 rem(0.600) !default;
@@ -1594,24 +1500,34 @@ $button-margin: rem(0.600) rem(0.800) !default;
 $button-min-width: rem(8.800) !default;
 
 // Fab buttons
+$button-fab-width: rem(5.600) !default;
+$button-fab-height: rem(5.600) !default;
 $button-fab-line-height: rem(5.600) !default;
+$button-fab-padding: rem(1.60) !default;
 $button-fab-mini-width: rem(4.00) !default;
 $button-fab-mini-height: rem(4.00) !default;
 $button-fab-mini-line-height: rem(4.00) !default;
 
 $button-fab-toast-offset: $button-fab-height * 0.75 !default;
 
-$icon-button-height: rem(4.000) !default;
-$icon-button-width: rem(4.000) !default;
+$icon-button-height: rem(4.800) !default;
+$icon-button-width: rem(4.800) !default;
 $icon-button-margin: rem(0.600) !default;
 
-// Fix issue causing buttons in Firefox to be 2px bigger than they should
-button.md-button::-moz-focus-inner {
-  border: 0;
+/**
+ * Position a FAB button.
+ */
+@mixin fab-position($spot, $top: auto, $right: auto, $bottom: auto, $left: auto) {
+  &.md-fab-#{$spot} {
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    position: absolute;
+  }
 }
 
 .md-button {
-  border-radius: $button-border-radius;
   box-sizing: border-box;
   color: currentColor;
 
@@ -1648,6 +1564,11 @@ button.md-button::-moz-focus-inner {
   transition: box-shadow $swift-ease-out-duration $swift-ease-out-timing-function,
   background-color $swift-ease-out-duration $swift-ease-out-timing-function;
 
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
   &:focus {
     outline: none;
   }
@@ -1679,12 +1600,13 @@ button.md-button::-moz-focus-inner {
     margin: 0 $icon-button-margin;
     height: $icon-button-height;
     min-width: 0;
-    line-height: $icon-size;
-    padding: $baseline-grid;
+    line-height: $icon-button-height;
+    padding-left: 0;
+    padding-right: 0;
     width: $icon-button-width;
-    border-radius: $button-icon-border-radius;
+    border-radius: 50%;
     .md-ripple-container {
-      border-radius: $button-icon-border-radius;
+      border-radius: 50%;
       background-clip: padding-box;
       overflow: hidden;
       // The following hack causes Safari/Chrome to respect overflow hidden for ripples
@@ -1694,8 +1616,10 @@ button.md-button::-moz-focus-inner {
 
   &.md-fab {
 
-    // Include the top/left/bottom/right fab positions
-    @include fab-all-positions();
+    @include fab-position(bottom-right, auto, ($button-fab-width - $button-fab-padding)/2, ($button-fab-height - $button-fab-padding)/2, auto);
+    @include fab-position(bottom-left, auto, auto, ($button-fab-height - $button-fab-padding)/2, ($button-fab-width - $button-fab-padding)/2);
+    @include fab-position(top-right, ($button-fab-height - $button-fab-padding)/2, ($button-fab-width - $button-fab-padding)/2, auto, auto);
+    @include fab-position(top-left, ($button-fab-height - $button-fab-padding)/2, auto, auto, ($button-fab-width - $button-fab-padding)/2);
 
     z-index: $z-index-fab;
 
@@ -1706,14 +1630,14 @@ button.md-button::-moz-focus-inner {
     vertical-align: middle;
 
     @include md-shadow-bottom-z-1();
-    border-radius: $button-fab-border-radius;
+    border-radius: 50%;
     background-clip: padding-box;
     overflow: hidden;
 
-    transition: $swift-ease-in;
-    transition-property: background-color, box-shadow, transform;
+    transition: 0.2s linear;
+    transition-property: background-color, box-shadow;
     .md-ripple-container {
-      border-radius: $button-fab-border-radius;
+      border-radius: 50%;
       background-clip: padding-box;
       overflow: hidden;
       // The following hack causes Safari/Chrome to respect overflow hidden for ripples
@@ -1726,9 +1650,6 @@ button.md-button::-moz-focus-inner {
       height: $button-fab-mini-height;
     }
 
-    &.ng-hide, &.ng-leave {
-      transition: none;
-    }
   }
 
   &:not([disabled]) {
@@ -1742,20 +1663,11 @@ button.md-button::-moz-focus-inner {
       }
     }
   }
-
-  .md-ripple-container {
-    border-radius: $button-border-radius;
-    background-clip: padding-box;
-    overflow: hidden;
-    // The following hack causes Safari/Chrome to respect overflow hidden for ripples
-    -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC');
-  }
 }
 
 .md-toast-open-top {
   .md-button.md-fab-top-left,
   .md-button.md-fab-top-right {
-    transition: $swift-ease-out;
     transform: translate3d(0, $button-fab-toast-offset, 0);
     &:not([disabled]) {
       &.md-focused,
@@ -1765,11 +1677,9 @@ button.md-button::-moz-focus-inner {
     }
   }
 }
-
 .md-toast-open-bottom {
   .md-button.md-fab-bottom-left,
   .md-button.md-fab-bottom-right {
-    transition: $swift-ease-out;
     transform: translate3d(0, -$button-fab-toast-offset, 0);
     &:not([disabled]) {
       &.md-focused,
@@ -1785,7 +1695,6 @@ button.md-button::-moz-focus-inner {
   flex: 1;
   width: 100%;
 }
-
 .md-button-group > .md-button {
   flex: 1;
 
@@ -1810,8 +1719,6 @@ button.md-button::-moz-focus-inner {
     border-radius: 0px 2px 2px 0px;
   }
 }
-
-// IE only
 @media screen and (-ms-high-contrast: active) {
   .md-button.md-raised,
   .md-button.md-fab {
@@ -1819,385 +1726,24 @@ button.md-button::-moz-focus-inner {
   }
 }
 
-$card-padding: 16px !default;
-$card-box-shadow: $whiteframe-shadow-1dp !default;
+md-divider {
+  display: block;
+  border-top-width: 1px;
+  border-top-style: solid;
+  margin: 0;
 
-md-card {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  margin: $baseline-grid;
-
-  box-shadow: $card-box-shadow;
-
-  md-card-header {
-    padding: $card-padding;
-    display: flex;
-    flex-direction: row;
-
-    &:first-child {
-      md-card-avatar {
-        margin-right: 12px;
-      }
-    }
-
-    &:last-child {
-      md-card-avatar {
-        margin-left: 12px;
-      }
-    }
-
-    md-card-avatar {
-      width: 40px;
-      height: 40px;
-
-      .md-user-avatar,
-      md-icon {
-        border-radius: 50%;
-      }
-
-      md-icon {
-        padding: 8px;
-      }
-
-      & + md-card-header-text {
-        max-height: 40px;
-
-        .md-title {
-          font-size: 14px;
-        }
-      }
-    }
-
-    md-card-header-text {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-
-      .md-subhead {
-        font-size: 14px;
-      }
-    }
-  }
-
-  > img,
-  > :not(md-card-content) img {
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 0 auto;
-    width: 100%;
-    height: auto;
-  }
-
-  md-card-title {
-    padding: 3 * $card-padding / 2 $card-padding $card-padding;
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-
-    & + md-card-content {
-      padding-top: 0;
-    }
-
-    md-card-title-text {
-      flex: 1;
-      flex-direction: column;
-      display: flex;
-
-      .md-subhead {
-        padding-top: 0;
-        font-size: 14px;
-      }
-
-      &:only-child {
-        .md-subhead {
-          padding-top: 3 * $card-padding / 4;
-        }
-      }
-    }
-
-    md-card-title-media {
-      margin-top: - $card-padding / 2;
-
-      .md-media-sm {
-        height: 80px;
-        width: 80px;
-      }
-      .md-media-md {
-        height: 112px;
-        width: 112px;
-      }
-      .md-media-lg {
-        height: 152px;
-        width: 152px;
-      }
-    }
-  }
-
-  md-card-content {
-    display: block;
-    padding: $card-padding;
-
-    & > p {
-      &:first-child {
-        margin-top: 0;
-      }
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-
-    .md-media-xl {
-      height: 240px;
-      width: 240px;
-    }
-  }
-
-  .md-actions, md-card-actions {
-    margin: $baseline-grid;
-
-    &.layout-column {
-      .md-button {
-        &:not(.md-icon-button) {
-          margin: $baseline-grid / 4 0;
-
-          &:first-of-type {
-            margin-top: 0;
-          }
-
-          &:last-of-type {
-            margin-bottom: 0;
-          }
-        }
-
-        &.md-icon-button {
-          margin-top: 3 * $baseline-grid / 4;
-          margin-bottom: 3 * $baseline-grid / 4;
-        }
-      }
-    }
-
-    md-card-icon-actions {
-      flex: 1;
-      justify-content: flex-start;
-      display: flex;
-      flex-direction: row;
-    }
-
-    &:not(.layout-column) .md-button {
-      &:not(.md-icon-button) {
-        margin: 0 $baseline-grid * .5;
-
-        &:first-of-type {
-          margin-left: 0;
-        }
-
-        &:last-of-type {
-          margin-right: 0;
-        }
-      }
-
-      &.md-icon-button {
-        margin-left: 3 * $baseline-grid / 4;
-        margin-right: 3 * $baseline-grid / 4;
-
-        &:first-of-type {
-          margin-left: 3 * $baseline-grid / 2;
-        }
-
-        &:last-of-type {
-          margin-right: 3 * $baseline-grid / 2;
-        }
-      }
-
-      & + md-card-icon-actions {
-        flex: 1;
-        justify-content: flex-end;
-        display: flex;
-        flex-direction: row;
-      }
-    }
-  }
-
-  md-card-footer {
-    margin-top: auto;
-    padding: $card-padding;
+  &[md-inset] {
+    margin-left: $baseline-grid * 10;
   }
 }
 
-@media screen and (-ms-high-contrast: active) {
-  md-card {
-    border: 1px solid #fff;
-  }
-}
-
-$checkbox-width: 20px !default;
-$checkbox-height: $checkbox-width !default;
-$checkbox-margin: 16px !default;
-$checkbox-border-radius: 2px !default;
-$checkbox-border-width: 2px !default;
-$checkbox-text-margin: 10px !default;
-$checkbox-top: 12px !default;
-
-.md-inline-form {
-  md-checkbox {
-    margin: 19px 0 18px;
-  }
-}
-
-md-checkbox {
-  box-sizing: border-box;
-  display: inline-block;
-  margin-bottom: $checkbox-margin;
-  white-space: nowrap;
-  cursor: pointer;
-  outline: none;
-  user-select: none;
-  position: relative;
-  min-width: $checkbox-width;
-  min-height: $checkbox-width;
-  @include rtl(margin-left, inherit, $checkbox-margin);
-  @include rtl(margin-right, $checkbox-margin, inherit);
-
-  &:last-of-type {
-    @include rtl(margin-left, inherit, 0);
-    @include rtl(margin-right, 0, inherit);
-  }
-
-  &.md-focused:not([disabled]) {
-    .md-container:before {
-      left: -8px;
-      top: -8px;
-      right: -8px;
-      bottom: -8px;
-    }
-
-    &:not(.md-checked) {
-      .md-container:before {
-        background-color: rgba(0, 0, 0, 0.12);
-      }
-    }
-  }
-
-  .md-container {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-
-    box-sizing: border-box;
-    display: inline-block;
-
-    width: $checkbox-width;
-    height: $checkbox-height;
-    @include rtl(left, 0, auto);
-    @include rtl(right, auto, 0);
-
-    &:before {
-      box-sizing: border-box;
-      background-color: transparent;
-      border-radius: 50%;
-      content: '';
-      position: absolute;
-      display: block;
-      height: auto;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      transition: all 0.5s;
-      width: auto;
-    }
-
-    &:after {
-      box-sizing: border-box;
-      content: '';
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      bottom: -10px;
-      left: -10px;
-    }
-
-    .md-ripple-container {
-      position: absolute;
-      display: block;
-      width: auto;
-      height: auto;
-      left: -15px;
-      top: -15px;
-      right: -15px;
-      bottom: -15px;
-    }
-  }
-
-  &.md-align-top-left > div.md-container {
-    top: $checkbox-top;
-  }
-
-  // unchecked
-  .md-icon {
-    box-sizing: border-box;
-    transition: 240ms;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: $checkbox-width;
-    height: $checkbox-height;
-    border-width: $checkbox-border-width;
-    border-style: solid;
-    border-radius: $checkbox-border-radius;
-  }
-
-  &.md-checked .md-icon {
-    border: none;
-  }
-
-  // disabled
-  &[disabled] {
-    cursor: default;
-  }
-
-  &.md-checked .md-icon:after {
-    box-sizing: border-box;
-    transform: rotate(45deg);
-    position: absolute;
-    left: $checkbox-width / 3;
-    top: $checkbox-width / 9;
-    display: table;
-    width: $checkbox-width / 3;
-    height: $checkbox-width * 2 / 3;
-    border-width: $checkbox-border-width;
-    border-style: solid;
-    border-top: 0;
-    border-left: 0;
-    content: '';
-  }
-
-  .md-label {
-    box-sizing: border-box;
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    white-space: normal;
-    user-select: text;
-
-    @include rtl(margin-left, $checkbox-text-margin + $checkbox-width, 0);
-    @include rtl(margin-right, 0, $checkbox-text-margin + $checkbox-width);
-
-  }
-}
-
-$chip-font-size: rem(1.6) !default;
+$chip-font-size: rem(1.3) !default;
 $chip-height: rem(3.2) !default;
-$chip-padding: 0 rem(1.2) 0 rem(1.2) !default;
-$chip-input-padding: 0 !default;
-$chip-remove-padding-right: rem(2.2) !default;
-$chip-remove-line-height: rem(2.2) !default;
+$chip-padding: 0 rem(0.8) 0 rem(1.2) !default;
 $chip-margin: rem(0.8) rem(0.8) 0 0 !default;
-$chip-wrap-padding: 0 0 rem(0.8) rem(0.3) !default;
+$chip-wrap-padding: 0 0 rem(0.8) 0 !default;
 $chip-delete-icon-size: rem(1.8) !default;
-$contact-chip-padding: 0 rem(2.5) 0 0 !default;
+$contact-chip-padding: 0 rem(0.8) 0 0 !default;
 $contact-chip-suggestion-image-height: rem(4.0) !default;
 $contact-chip-suggestion-margin: rem(0.8) !default;
 $contact-chip-name-width: rem(12) !default;
@@ -2221,7 +1767,6 @@ $contact-chip-name-width: rem(12) !default;
     }
   }
 }
-
 .md-contact-suggestion {
   height: ($contact-chip-suggestion-margin * 2) + $contact-chip-suggestion-image-height;
   img {
@@ -2239,32 +1784,17 @@ $contact-chip-name-width: rem(12) !default;
     text-overflow: ellipsis;
   }
 }
-
 .md-contact-chips-suggestions li {
   height: 100%;
 }
-
 .md-chips {
   @include pie-clearfix();
-
   display: block;
   font-family: $font-family;
   font-size: $chip-font-size;
   padding: $chip-wrap-padding;
   vertical-align: middle;
-
-  &:not(.md-readonly) {
-    cursor: text;
-
-    .md-chip:not(.md-readonly) {
-      padding-right: $chip-remove-padding-right;
-
-      .md-chip-content {
-        padding-right: rem(0.4);
-      }
-    }
-  }
-
+  cursor: text;
   .md-chip {
     cursor: default;
     border-radius: $chip-height / 2;
@@ -2276,10 +1806,9 @@ $contact-chip-name-width: rem(12) !default;
     float: left;
     box-sizing: border-box;
     max-width: 100%;
-    position: relative;
-
     .md-chip-content {
       display: block;
+      padding-right: rem(0.4);
       float: left;
       white-space: nowrap;
       max-width: 100%;
@@ -2290,9 +1819,8 @@ $contact-chip-name-width: rem(12) !default;
       }
     }
     .md-chip-remove-container {
-      position: absolute;
-      right: 0;
-      line-height: $chip-remove-line-height;
+      display: inline-block;
+      margin-right: rem(-0.5);
     }
     .md-chip-remove {
       text-align: center;
@@ -2319,7 +1847,7 @@ $contact-chip-name-width: rem(12) !default;
     display: block;
     line-height: $chip-height;
     margin: $chip-margin;
-    padding: $chip-input-padding;
+    padding: $chip-padding;
     float: left;
     input {
       &:not([type]), &[type="email"], &[type="number"], &[type="tel"], &[type="url"], &[type="text"] {
@@ -2376,8 +1904,6 @@ $contact-chip-name-width: rem(12) !default;
     }
   }
 }
-
-// IE only
 @media screen and (-ms-high-contrast: active) {
   .md-chip-input-container,
   md-chip {
@@ -2388,392 +1914,12 @@ $contact-chip-name-width: rem(12) !default;
   }
 }
 
-md-content {
-
-  display: block;
-  position: relative;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-
-  &[md-scroll-y] {
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  &[md-scroll-x] {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-  &[md-scroll-xy] {
-  }
-
-  // For iOS allow disabling of momentum scrolling
-  // @see issue #2640.
-
-  &.autoScroll {
-    -webkit-overflow-scrolling: auto;
-  }
-}
-
-/** Styles for mdCalendar. */
-$md-calendar-cell-size: 44px !default;
-$md-calendar-header-height: 40px;
-$md-calendar-cell-emphasis-size: 40px !default;
-$md-calendar-side-padding: 16px !default;
-$md-calendar-weeks-to-show: 7 !default;
-
-$md-calendar-month-label-padding: 8px !default;
-$md-calendar-month-label-font-size: 14px !default;
-
-$md-calendar-scroll-cue-shadow-radius: 6px;
-
-$md-calendar-width: (7 * $md-calendar-cell-size) + (2 * $md-calendar-side-padding);
-$md-calendar-height: ($md-calendar-weeks-to-show * $md-calendar-cell-size) + $md-calendar-header-height;
-
-// Styles for date cells, including day-of-the-week header cells.
-@mixin md-calendar-cell() {
-  height: $md-calendar-cell-size;
-  width: $md-calendar-cell-size;
-
-  text-align: center;
-
-  // Remove all padding and borders so we can completely
-  // control the size of the table cells.
-  padding: 0;
-  border: none;
-
-  // The left / right padding is applied to the cells instead of the wrapper
-  // because we want the header background and the month dividing border to
-  // extend the entire width of the calendar.
-  &:first-child {
-    padding-left: $md-calendar-side-padding;
-  }
-
-  &:last-child {
-    padding-right: $md-calendar-side-padding;
-  }
-}
-
-// Styles for tables used in mdCalendar (the day-of-the-week header and the table of dates itself).
-@mixin md-calendar-table() {
-  // Fixed table layout makes IE faster.
-  // https://msdn.microsoft.com/en-us/library/ms533020(VS.85).aspx
-  table-layout: fixed;
-  border-spacing: 0;
-  border-collapse: collapse;
-}
-
-md-calendar {
-  font-size: 13px;
-  user-select: none;
-}
-
-// Wrap the scroll with overflow: hidden in order to hide the scrollbar.
-// The inner .md-calendar-scroll-container will using a padding-right to push the
-// scrollbar into the hidden area (done with javascript).
-.md-calendar-scroll-mask {
-  display: inline-block;
-  overflow: hidden;
-  height: $md-calendar-weeks-to-show * $md-calendar-cell-size;
-
-  // The actual scrolling element.
-  .md-virtual-repeat-scroller {
-    // These two properties are needed to get touch momentum to work.
-    // See https://css-tricks.com/snippets/css/momentum-scrolling-on-ios-overflow-elements
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  // Offsetter is the element that is translateY'ed into view of the user and contains the
-  // calendar content.
-  .md-virtual-repeat-offsetter {
-    width: 100%;
-  }
-}
-
-// Contains the scrolling element (this is the md-virtual-repeat-container).
-.md-calendar-scroll-container {
-  // Add an inset shadow to help cue users that the calendar is scrollable. Use a negative x
-  // offset to push the vertical edge shadow off to the right so that it's cut off by the edge
-  // of the calendar container.
-  box-shadow: inset -3px 3px $md-calendar-scroll-cue-shadow-radius rgba(black, 0.2);
-
-  display: inline-block;
-  height: $md-calendar-weeks-to-show * $md-calendar-cell-size;
-
-  // Add the shadow radius to the width so that the shadow os pushed off to the side and cut off.
-  width: $md-calendar-width + $md-calendar-scroll-cue-shadow-radius;
-}
-
-// A single date cell in the calendar table.
-.md-calendar-date {
-  @include md-calendar-cell();
-
-  &.md-calendar-date-disabled {
-    cursor: default;
-  }
-}
-
-// Circle element inside of every date cell used to indicate selection or focus.
-.md-calendar-date-selection-indicator {
-  transition: background-color, color $swift-ease-out-duration $swift-ease-out-timing-function;
-
-  border-radius: 50%;
-  display: inline-block;
-
-  width: $md-calendar-cell-emphasis-size;
-  height: $md-calendar-cell-emphasis-size;
-  line-height: $md-calendar-cell-emphasis-size;
-
-  .md-calendar-date:not(.md-disabled) & {
-    cursor: pointer;
-  }
-}
-
-// The label above each month (containing the month name and the year, e.g. "Jun 2014").
-.md-calendar-month-label {
-  height: $md-calendar-cell-size;
-  font-size: $md-calendar-month-label-font-size;
-  font-weight: 500; // Roboto Medium
-  padding: 0 0 0 $md-calendar-side-padding + $md-calendar-month-label-padding;
-}
-
-// Table containing the day-of-the-week header.
-.md-calendar-day-header {
-  @include md-calendar-table();
-
-  th {
-    @include md-calendar-cell();
-    font-weight: normal;
-    height: $md-calendar-header-height;
-  }
-}
-
-// Primary table containing all date cells. Each month is a tbody in this table.
-.md-calendar {
-  @include md-calendar-table();
-
-  // Divider between months.
-  tr:last-child td {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-  }
-
-  // The divider between months doesn't actually change the height of the tbody in which the
-  // border appear; it changes the height of the following tbody. The causes the first-child to be
-  // 1px shorter than the other months. We fix this by adding an invisible border-top.
-  &:first-child {
-    border-top: 1px solid transparent;
-  }
-}
-
-/** Styles for mdDatepicker. */
-$md-datepicker-button-gap: 12px; // Space between the text input and the calendar-icon button.
-$md-datepicker-border-bottom-gap: 5px; // Space between input and the grey underline.
-$md-datepicker-open-animation-duration: 0.2s;
-$md-datepicker-triangle-button-width: 36px;
-
-md-datepicker {
-  // Don't let linebreaks happen between the open icon-button and the input.
-  white-space: nowrap;
-  overflow: hidden;
-
-  // Leave room for the down-triangle button to "overflow" it's parent without modifying scrollLeft
-  padding-right: $md-datepicker-triangle-button-width / 2;
-  margin-right: -$md-datepicker-triangle-button-width / 2;
-
-  vertical-align: middle;
-}
-
-.md-inline-form {
-  md-datepicker {
-    margin-top: 12px;
-  }
-}
-
-// The calendar icon button used to open the calendar pane.
-.md-datepicker-button {
-  display: inline-block;
-  box-sizing: border-box;
-  background: none;
-}
-
-// The input into which the user can type the date.
-.md-datepicker-input {
-  @include md-flat-input();
-  min-width: 120px;
-  max-width: $md-calendar-width - $md-datepicker-button-gap;
-}
-
-// Container for the datepicker input.
-.md-datepicker-input-container {
-  // Position relative in order to absolutely position the down-triangle button within.
-  position: relative;
-
-  padding-bottom: $md-datepicker-border-bottom-gap;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-
-  display: inline-block;
-  width: auto;
-  margin-left: $md-datepicker-button-gap;
-
-  &.md-datepicker-focused {
-    border-bottom-width: 2px;
-  }
-}
-
-// Floating pane that contains the calendar at the bottom of the input.
-.md-datepicker-calendar-pane {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: $z-index-menu;
-
-  border-width: 1px;
-  border-style: solid;
-  background: transparent;
-
-  transform: scale(0);
-  transform-origin: 0 0;
-  transition: transform $md-datepicker-open-animation-duration $swift-ease-out-timing-function;
-
-  &.md-pane-open {
-    transform: scale(1);
-  }
-}
-
-// Portion of the floating panel that sits, invisibly, on top of the input.
-.md-datepicker-input-mask {
-  height: 40px;
-  width: $md-calendar-width;
-  position: relative;
-
-  background: transparent;
-  pointer-events: none;
-  cursor: text;
-}
-
-.md-datepicker-input-mask-opaque {
-  position: absolute;
-  right: 0;
-  left: 120px;
-
-  height: 100%;
-}
-
-// The calendar portion of the floating pane (vs. the input mask).
-.md-datepicker-calendar {
-  opacity: 0;
-  // Use a modified timing function (from swift-ease-out) so that the opacity part of the
-  // animation doesn't come in as quickly so that the floating pane doesn't ever seem to
-  // cover up the trigger input.
-  transition: opacity $md-datepicker-open-animation-duration cubic-bezier(0.5, 0, 0.25, 1);
-
-  .md-pane-open & {
-    opacity: 1;
-  }
-
-  md-calendar:focus {
-    outline: none;
-  }
-}
-
-// Down triangle/arrow indicating that the datepicker can be opened.
-// We can do this entirely with CSS without needing to load an icon.
-// See https://css-tricks.com/snippets/css/css-triangle/
-$md-date-arrow-size: 5px;
-.md-datepicker-expand-triangle {
-  // Center the triangle inside of the button so that the
-  // ink ripple origin looks correct.
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: 0;
-  height: 0;
-  border-left: $md-date-arrow-size solid transparent;
-  border-right: $md-date-arrow-size solid transparent;
-  border-top: $md-date-arrow-size solid;
-}
-
-// Button containing the down "disclosure" triangle/arrow.
-.md-datepicker-triangle-button {
-  position: absolute;
-  right: 0;
-  top: 0;
-
-  // TODO(jelbourn): This position isn't great on all platforms.
-  transform: translateY(-25%) translateX(45%);
-}
-
-// Need crazy specificity to override .md-button.md-icon-button.
-// Only apply this high specifiy to the property we need to override.
-.md-datepicker-triangle-button.md-button.md-icon-button {
-  height: 100%;
-  width: $md-datepicker-triangle-button-width;
-  position: absolute;
-}
-
-// Disabled state for all elements of the picker.
-md-datepicker[disabled] {
-  .md-datepicker-input-container {
-    border-bottom-color: transparent;
-  }
-
-  .md-datepicker-triangle-button {
-    display: none;
-  }
-}
-
-// Open state for all of the elements of the picker.
-.md-datepicker-open {
-  .md-datepicker-input-container {
-    margin-left: -$md-datepicker-button-gap;
-    border: none;
-  }
-
-  .md-datepicker-input {
-    margin-left: 24px;
-    height: 40px;
-  }
-
-  .md-datepicker-triangle-button {
-    display: none;
-  }
-}
-
-// When the position of the floating calendar pane is adjusted to remain inside
-// of the viewport, hide the inputput mask, as the text input will no longer be
-// directly underneath it.
-.md-datepicker-pos-adjusted .md-datepicker-input-mask {
-  display: none;
-}
-
-// Animate the calendar inside of the floating calendar pane such that it appears to "scroll" into
-// view while the pane is opening. This is done as a cue to users that the calendar is scrollable.
-.md-datepicker-calendar-pane {
-  .md-calendar {
-    transform: translateY(-85px);
-    transition: transform 0.65s $swift-ease-out-timing-function;
-    transition-delay: 0.125s;
-  }
-
-  &.md-pane-open .md-calendar {
-    transform: translateY(0);
-  }
-}
 
 $dialog-padding: $baseline-grid * 3;
 
 .md-dialog-is-showing {
   max-height: 100%;
 }
-
 .md-dialog-container {
   display: flex;
   justify-content: center;
@@ -2807,7 +1953,7 @@ md-dialog {
   position: relative;
   overflow: auto; // stop content from leaking out of dialog parent and fix IE
 
-  box-shadow: $whiteframe-shadow-13dp;
+  box-shadow: $whiteframe-shadow-z5;
 
   display: flex;
   flex-direction: column;
@@ -2817,14 +1963,10 @@ md-dialog {
     flex-direction: column;
     overflow: auto;
   }
-
-  .md-dialog-content {
-    padding: $dialog-padding;
-  }
-
   md-dialog-content {
     order: 1;
     flex-direction: column;
+    padding: $dialog-padding;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
 
@@ -2851,13 +1993,9 @@ md-dialog {
         padding-top: 0;
       }
     }
-
-    .md-dialog-content-body {
-      width: 100%;
-    }
   }
 
-  .md-actions, md-dialog-actions {
+  .md-actions {
     display: flex;
     order: 2;
     box-sizing: border-box;
@@ -2876,11 +2014,9 @@ md-dialog {
       margin-top: $baseline-grid;
     }
   }
-  &.md-content-overflow {
-    .md-actions, md-dialog-actions {
-      border-top-width: 1px;
-      border-top-style: solid;
-    }
+  &.md-content-overflow .md-actions {
+    border-top-width: 1px;
+    border-top-style: solid;
   }
 
 }
@@ -2891,59 +2027,10 @@ md-dialog {
   }
 }
 
-@media (max-width: $layout-breakpoint-sm - 1) {
-  md-dialog.md-dialog-fullscreen {
-    min-height: 100%;
-    min-width: 100%;
-    border-radius: 0;
-  }
-}
-
-md-divider {
-  display: block;
-  border-top-width: 1px;
-  border-top-style: solid;
-  margin: 0;
-
-  &[md-inset] {
-    margin-left: $baseline-grid * 10;
-  }
-}
-
-.layout-row {
-  & > md-divider {
-    border-top-width: 0;
-    border-right-width: 1px;
-    border-right-style: solid;
-  }
-}
-
 md-fab-speed-dial {
   position: relative;
   display: flex;
   align-items: center;
-
-  // Include the top/left/bottom/right fab positions and set the z-index for absolute positioning
-  @include fab-all-positions();
-  z-index: $z-index-fab;
-
-  // Allow users to enable/disable hovering over the entire speed dial (i.e. the empty space where
-  // items will eventually appear)
-  &:not(.md-hover-full) {
-    // Turn off pointer events when closed
-    pointer-events: none;
-
-    md-fab-trigger, .md-fab-action-item {
-      // Always make the trigger and action items always have pointer events (the tooltip looks
-      // for the first parent with pointer-events, so we must set this for tooltips to work)
-      pointer-events: auto;
-    }
-
-    &.md-is-open {
-      // Turn on pointer events when open
-      pointer-events: auto;
-    }
-  }
 
   .md-css-variables {
     z-index: $z-index-fab;
@@ -2951,6 +2038,7 @@ md-fab-speed-dial {
 
   &.md-is-open {
     .md-fab-action-item {
+      visibility: visible;
       align-items: center;
     }
   }
@@ -2959,9 +2047,10 @@ md-fab-speed-dial {
     display: flex;
 
     // Set the height so that the z-index in the JS animation works
-    height: auto;
+    height: initial;
 
     .md-fab-action-item {
+      visibility: hidden;
       transition: $swift-ease-in;
     }
   }
@@ -3027,34 +2116,12 @@ md-fab-speed-dial {
   }
 
   /*
-   * Hide some graphics glitches if switching animation types
-   */
-  &.md-fling-remove, &.md-scale-remove {
-    .md-fab-action-item > * {
-      visibility: hidden;
-    }
-  }
-
-  /*
    * Handle the animations
    */
-  &.md-fling {
-    .md-fab-action-item {
-      opacity: 1;
-    }
-  }
-
-  // For the initial animation, set the duration to be instant
-  &.md-fling.md-animations-waiting {
-    .md-fab-action-item {
-      opacity: 0;
-      transition-duration: 0s;
-    }
-  }
-
   &.md-scale {
     .md-fab-action-item {
-      transform: scale(0.1);
+      opacity: 0;
+      transform: scale(0);
       transition: $swift-ease-in;
 
       // Make the scale animation a bit faster since we are delaying each item
@@ -3063,14 +2130,8 @@ md-fab-speed-dial {
   }
 }
 
-$button-fab-width: rem(5.600) !default;
-$icon-button-margin: rem(0.600) !default;
-
 md-fab-toolbar {
   $icon-delay: 200ms;
-
-  // Include the top/left/bottom/right fab positions
-  @include fab-all-positions();
 
   display: block;
 
@@ -3082,8 +2143,8 @@ md-fab-toolbar {
     position: relative;
     overflow: hidden;
 
-    // Account for the size of the trigger plus it's margin/shadow
-    height: $button-fab-width + ($icon-button-margin * 2);
+    // Account for the size of the trigger (5.6rem) plus it's margin/shadow (0.6rem * 2)
+    height: 6.8rem;
   }
 
   md-fab-trigger {
@@ -3116,29 +2177,6 @@ md-fab-toolbar {
 
   &.md-left {
     md-fab-trigger {
-      right: 0;
-    }
-
-    .md-toolbar-tools {
-      flex-direction: row-reverse;
-
-      > .md-button:first-child {
-        margin-right: 0.6rem;
-      }
-
-      > .md-button:first-child {
-        margin-left: -0.8rem;
-      }
-
-      > .md-button:last-child {
-        margin-right: 8px;
-      }
-
-    }
-  }
-
-  &.md-right {
-    md-fab-trigger {
       left: 0;
     }
 
@@ -3147,9 +2185,32 @@ md-fab-toolbar {
     }
   }
 
+  &.md-right {
+    md-fab-trigger {
+      right: 0;
+    }
+
+    .md-toolbar-tools {
+      flex-direction: row-reverse;
+
+      > .md-button:first-child {
+        margin-left: 0.6rem;
+      }
+
+      > .md-button:first-child {
+        margin-right: -0.8rem;
+      }
+
+
+      > .md-button:last-child {
+        margin-right: 8px;
+      }
+
+    }
+  }
+
   md-toolbar {
     background-color: transparent !important;
-    pointer-events: none;
     z-index: $z-index-fab + 3;
 
     .md-toolbar-tools {
@@ -3186,16 +2247,14 @@ md-fab-toolbar {
     }
   }
 }
-
 md-grid-list {
   box-sizing: border-box;
   display: block;
   position: relative;
 
-  md-grid-tile,
-  md-grid-tile > figure,
-  md-grid-tile-header,
-  md-grid-tile-footer {
+  *,
+  *:before,
+  *:after {
     box-sizing: border-box;
   }
 
@@ -3268,6 +2327,8 @@ md-grid-list {
   }
 }
 
+$icon-size: rem(2.4);
+
 md-icon {
   margin: auto;
   background-repeat: no-repeat no-repeat;
@@ -3339,40 +2400,27 @@ $input-padding-top: 2px !default;
 
 $input-error-font-size: 12px !default;
 $input-error-height: 24px !default;
-$input-error-line-height: $input-error-font-size + 2px;
-$error-padding-top: ($input-error-height - $input-error-line-height) / 2;
 
 $icon-offset: 36px !default;
 
+$icon-float-top: -16px !default;
 $icon-float-focused-top: -8px !default;
 
 md-input-container {
-  @include pie-clearfix();
-  display: inline-block;
+  display: flex;
   position: relative;
+  flex-direction: column;
+
   padding: $input-container-padding;
-  margin: 18px 0;
-  vertical-align: middle;
-
-  &.md-block {
-    display: block;
-  }
-
-  // Setup a spacer that is always there as a placeholder for any messages so we don't change
-  // height with only 1 message
-  .md-errors-spacer {
-    @include rtl(float, right, left);
-    min-height: $input-error-height;
-
-    // Ensure the element always takes up space, even if empty
-    min-width: 1px;
-  }
+  padding-bottom: $input-container-padding + $input-error-height;
 
   > md-icon {
     position: absolute;
     top: 5px;
-    @include rtl(left, 2px, auto);
-    @include rtl(right, auto, 2px);
+    left: 2px;
+    + input {
+      margin-left: $icon-offset;
+    }
   }
 
   textarea,
@@ -3411,30 +2459,17 @@ md-input-container {
     -ms-flex-preferred-size: auto; //IE fix
   }
 
-  label:not(.md-container-ignore) {
-    position: absolute;
-    bottom: 100%;
-    @include rtl(left, 0, auto);
-    @include rtl(right, auto, 0);
+  label {
+    position: relative;
+    top: -2px;
   }
 
-  // icon offset should have higher priority as normal label
-  &.md-has-icon {
-    @include rtl(padding-left, $icon-offset, 0);
-    @include rtl(padding-right, 0, $icon-offset);
-    > label {
-      @include rtl(left, $icon-offset, auto);
-      @include rtl(right, auto, $icon-offset);
-    }
-  }
-
-  label:not(.md-no-float):not(.md-container-ignore),
+  label:not(.md-no-float),
   .md-placeholder {
     order: 1;
     pointer-events: none;
     -webkit-font-smoothing: antialiased;
-    @include rtl(padding-left, $input-container-padding + 1px, 0);
-    @include rtl(padding-right, 0, $input-container-padding + 1px);
+    padding-left: $input-container-padding;
     z-index: 1;
     transform: translate3d(0, $input-label-default-offset + 4, 0) scale($input-label-default-scale);
     transition: transform $swift-ease-out-timing-function 0.25s;
@@ -3447,6 +2482,9 @@ md-input-container {
     opacity: 0;
     transition-property: opacity, transform;
     transform: translate3d(0, $input-placeholder-offset + $baseline-grid * 0.75, 0);
+    &.md-static {
+      position: static;
+    }
   }
   &.md-input-focused .md-placeholder {
     opacity: 1;
@@ -3478,7 +2516,7 @@ md-input-container {
   .md-input {
     order: 2;
     display: block;
-    margin-top: 0;
+    margin-top: auto;
 
     background: none;
     padding-top: $input-padding-top;
@@ -3487,19 +2525,8 @@ md-input-container {
     padding-right: 2px;
     border-width: 0 0 $input-border-width-default 0;
     line-height: $input-line-height;
-    height: $input-line-height + ($input-padding-top * 2);
     -ms-flex-preferred-size: $input-line-height; //IE fix
     border-radius: 0;
-    border-style: solid; // Firefox fix
-
-    // Fix number inputs in Firefox to be full-width
-    width: 100%;
-    box-sizing: border-box;
-
-    // Hacky fix to force vertical alignment between `input` and `textarea`
-    // Input and textarea do not align by default:
-    // http://jsbin.com/buqomevage/1/edit?html,css,js,output
-    @include rtl(float, left, right);
 
     &:focus {
       outline: none;
@@ -3514,97 +2541,50 @@ md-input-container {
     }
   }
 
-  .md-char-counter {
-    @include rtl(text-align, right, left);
-    @include rtl(padding-right, $input-container-padding, 0);
-    @include rtl(padding-left, 0, $input-container-padding);
-  }
-
-  //
-  // ngMessage base styles - animations moved to input.js
-  //
   ng-messages, data-ng-messages, x-ng-messages,
   [ng-messages], [data-ng-messages], [x-ng-messages] {
+    order: 3;
     position: relative;
-    order: 4;
-    overflow: hidden;
-    @include rtl(clear, left, right);
-
-    &.ng-enter {
-      // Upon entering the DOM, messages should be hidden
-      ng-message, data-ng-message, x-ng-message,
-      [ng-message], [data-ng-message], [x-ng-message],
-      [ng-message-exp], [data-ng-message-exp], [x-ng-message-exp] {
-        opacity: 0;
-        margin-top: -100px;
-      }
-    }
   }
-
   ng-message, data-ng-message, x-ng-message,
   [ng-message], [data-ng-message], [x-ng-message],
-  [ng-message-exp], [data-ng-message-exp], [x-ng-message-exp],
   .md-char-counter {
+    //-webkit-font-smoothing: antialiased;
+    position: absolute;
     font-size: $input-error-font-size;
-    line-height: $input-error-line-height;
-    overflow: hidden;
-
-    transition: $swift-ease-in;
-
-    // Default state for messages is to be visible
-    opacity: 1;
-    margin-top: 0;
-
-    // Add some top padding which is equal to half the difference between the expected height
-    // and the actual height
-    padding-top: $error-padding-top;
+    line-height: $input-error-height;
 
     &:not(.md-char-counter) {
-      // Add some padding so that the messages don't touch the character counter
-      @include rtl(padding-right, rem(0.5), 0);
-      @include rtl(padding-left, 0, rem(0.5));
+      padding-right: rem(3);
     }
-  }
 
-  &:not(.md-input-invalid) {
-    .md-auto-hide {
-      .md-input-message-animation {
-        opacity: 0;
-        margin-top: -100px;
-      }
-    }
-  }
-
-  // Note: This is a workaround to fix an ng-enter flicker bug
-  .md-auto-hide {
-    .md-input-message-animation {
-      &:not(.ng-animate) {
-        opacity: 0;
-        margin-top: -100px;
-      }
-    }
-  }
-
-  .md-input-message-animation {
     &.ng-enter {
-      opacity: 0;
-      margin-top: -100px;
+      transition: $swift-ease-out;
+      transition-delay: 0.2s;
     }
+    &.ng-leave {
+      transition: $swift-ease-in;
+    }
+    &.ng-enter,
+    &.ng-leave.ng-leave-active {
+      opacity: 0;
+      transform: translate3d(0, -20%, 0);
+    }
+    &.ng-leave,
+    &.ng-enter.ng-enter-active {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  .md-char-counter {
+    bottom: $input-container-padding;
+    right: $input-container-padding;
   }
 
   &.md-input-focused,
-  &.md-input-has-placeholder,
   &.md-input-has-value {
     label:not(.md-no-float) {
       transform: translate3d(0, $input-label-float-offset, 0) scale($input-label-float-scale);
-    }
-  }
-
-  // If we have an existing value; don't animate the transform as it happens on page load and
-  // causes erratic/unnecessary animation
-  &.md-input-has-value {
-    label {
-      transition: none;
     }
   }
 
@@ -3630,21 +2610,31 @@ md-input-container {
 
 md-input-container.md-icon-float {
 
+  margin-top: $icon-float-top;
   transition: margin-top 0.5s $swift-ease-out-timing-function;
 
   > label {
     pointer-events: none;
     position: absolute;
+    margin-left: $icon-offset;
   }
 
   > md-icon {
-    top: 2px;
-    @include rtl(left, 2px, auto);
-    @include rtl(right, auto, 2px);
+    top: 26px;
+    left: 2px;
+    + input {
+      margin-left: $icon-offset;
+    }
+  }
+
+  > input {
+    padding-top: $input-line-height - $input-container-padding;
   }
 
   &.md-input-focused,
   &.md-input-has-value {
+
+    margin-top: $icon-float-focused-top;
 
     label {
       transform: translate3d(0, $input-label-float-offset, 0) scale($input-label-float-scale);
@@ -3654,30 +2644,16 @@ md-input-container.md-icon-float {
 
 }
 
-md-input-container.md-icon-right {
-  @include rtl(padding-right, $icon-offset, $icon-offset);
-  @include rtl(padding-left, $icon-offset, $icon-offset);
-
-  .md-errors-spacer {
-    + md-icon {
-      margin: 0;
-
-      @include rtl(right, 2px, auto);
-      @include rtl(left, auto, 2px);
-    }
-  }
-}
-
 @media screen and (-ms-high-contrast: active) {
   md-input-container.md-default-theme > md-icon {
     fill: #fff;
   }
 }
 
-$list-h3-margin: 0 0 0px 0 !default;
-$list-h4-margin: 3px 0 1px 0 !default;
+$list-h3-margin: 0 0 6px 0 !default;
+$list-h4-margin: 10px 0 5px 0 !default;
 $list-h4-font-weight: 400 !default;
-$list-header-line-height: 1.2em !default;
+$list-header-line-height: 0.75em !default;
 $list-p-margin: 0 0 0 0 !default;
 $list-p-line-height: 1.6em !default;
 
@@ -3697,10 +2673,9 @@ $list-item-primary-avatar-width: $baseline-grid * 5 !default;
 $list-item-primary-icon-width: $baseline-grid * 3 !default;
 $list-item-secondary-left-margin: $baseline-grid * 2 !default;
 $list-item-secondary-button-width: $baseline-grid * 6 !default;
+$list-item-text-padding-top: $baseline-grid * 2 !default;
+$list-item-text-padding-bottom: $baseline-grid * 2.5 !default;
 $list-item-inset-divider-offset: 12 * $baseline-grid !default;
-$list-item-height: 6 * $baseline-grid !default;
-$list-item-two-line-height: 9 * $baseline-grid !default;
-$list-item-three-line-height: 11 * $baseline-grid !default;
 
 md-list {
   display: block;
@@ -3715,9 +2690,6 @@ md-list {
 }
 
 md-list-item {
-  // Ensure nested dividers are properly positioned
-  position: relative;
-
   &.md-proxy-focus.md-focused .md-no-style {
     transition: background-color 0.15s linear;
   }
@@ -3725,8 +2697,8 @@ md-list-item {
   .md-no-style {
     position: relative;
     padding: $list-item-padding-vertical $list-item-padding-horizontal;
-    flex: 1 1 auto;
-
+    flex: 1;
+    
     &.md-button {
       font-size: inherit;
       height: inherit;
@@ -3736,11 +2708,6 @@ md-list-item {
       white-space: normal;
       flex-direction: inherit;
       align-items: inherit;
-      border-radius: 0;
-
-      & > .md-ripple-container {
-        border-radius: 0;
-      }
     }
     &:focus {
       outline: none
@@ -3770,14 +2737,13 @@ md-list-item, md-list-item .md-list-item-inner {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  min-height: $list-item-height;
-  height: auto;
+  min-height: 48px;
 
   // Layout for controls in primary or secondary divs, or auto-infered first child
-  & > div.md-primary > md-icon:not(.md-avatar-icon),
-  & > div.md-secondary > md-icon:not(.md-avatar-icon),
-  & > md-icon:first-child:not(.md-avatar-icon),
-  > md-icon.md-secondary:not(.md-avatar-icon) {
+  & > div.md-primary > md-icon,
+  & > div.md-secondary > md-icon,
+  & > md-icon:first-child,
+  > md-icon.md-secondary {
     width: $list-item-primary-icon-width;
     margin-top: 16px;
     margin-bottom: 12px;
@@ -3785,7 +2751,7 @@ md-list-item, md-list-item .md-list-item-inner {
   }
   & > div.md-primary > md-checkbox,
   & > div.md-secondary > md-checkbox,
-  & > md-checkbox,
+  & > md-checkbox:first-child,
   md-checkbox.md-secondary {
     align-self: center;
     .md-label {
@@ -3793,42 +2759,29 @@ md-list-item, md-list-item .md-list-item-inner {
     }
   }
 
-  & > md-icon:first-child:not(.md-avatar-icon) {
+  & > md-icon:first-child {
     margin-right: $list-item-primary-width - $list-item-primary-icon-width;
   }
-  & > md-checkbox {
+  & > md-checkbox:first-child {
     width: 3 * $baseline-grid;
     margin-left: 3px;
     margin-right: 29px;
-    margin-top: 16px;
   }
-  & .md-avatar, .md-avatar-icon {
+  & > .md-avatar:first-child {
+    width: $list-item-primary-avatar-width;
+    height: $list-item-primary-avatar-width;
     margin-top: $baseline-grid;
     margin-bottom: $baseline-grid;
     margin-right: $list-item-primary-width - $list-item-primary-avatar-width;
     border-radius: 50%;
     box-sizing: content-box;
   }
-  & .md-avatar {
-    width: $list-item-primary-avatar-width;
-    height: $list-item-primary-avatar-width;
-  }
-  & .md-avatar-icon {
-    padding: 8px;
-  }
 
   md-checkbox.md-secondary,
   md-switch.md-secondary {
+    margin-right: 0;
     margin-top: 0;
     margin-bottom: 0;
-  }
-
-  md-checkbox.md-secondary {
-    margin-right: 0;
-  }
-
-  md-switch.md-secondary {
-    margin-right: -6px;
   }
 
   button.md-button.md-secondary-container {
@@ -3841,24 +2794,19 @@ md-list-item, md-list-item .md-list-item-inner {
     .md-ripple-container {
       border-radius: 50%;
     }
-
-    &.md-icon-button {
-      // Make icon buttons align with checkboxes and other controls
-      margin-right: -12px;
-    }
   }
 
   .md-secondary-container,
   .md-secondary {
+    margin-left: $list-item-secondary-left-margin;
     position: absolute;
-    top: 50%;
     right: $list-item-padding-horizontal;
-    margin: 0 0 0 $list-item-secondary-left-margin;
+    top: 50%;
     transform: translate3d(0, -50%, 0);
   }
 
   & > .md-button.md-secondary-container > .md-secondary {
-    margin-left: 0;
+    margin-left: 0px;
     position: static;
   }
 
@@ -3868,16 +2816,16 @@ md-list-item, md-list-item .md-list-item-inner {
   }
 }
 
+
 md-list-item.md-2-line,
 md-list-item.md-2-line > .md-no-style,
 md-list-item.md-3-line,
 md-list-item.md-3-line > .md-no-style {
   align-items: flex-start;
-  justify-content: center;
 
   .md-list-item-text {
     flex: 1;
-    margin: auto;
+    padding: $baseline-grid * 2 0;
     text-overflow: ellipsis;
 
     &.md-offset {
@@ -3890,9 +2838,6 @@ md-list-item.md-3-line > .md-no-style {
       letter-spacing: 0.010em;
       margin: $list-h3-margin;
       line-height: $list-header-line-height;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
     }
     h4 {
       font-size: $body-font-size-base;
@@ -3900,9 +2845,6 @@ md-list-item.md-3-line > .md-no-style {
       margin: $list-h4-margin;
       font-weight: $list-h4-font-weight;
       line-height: $list-header-line-height;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
     }
     p {
       font-size: $body-font-size-base;
@@ -3916,13 +2858,7 @@ md-list-item.md-3-line > .md-no-style {
 
 md-list-item.md-2-line,
 md-list-item.md-2-line > .md-no-style {
-  height: auto;
-  min-height: $list-item-two-line-height;
-  &.md-long-text {
-    margin: 1.6em;
-  }
-
-  > .md-avatar, .md-avatar-icon {
+  > .md-avatar:first-child {
     margin-top: $baseline-grid * 1.5;
   }
   > md-icon:first-child {
@@ -3930,20 +2866,14 @@ md-list-item.md-2-line > .md-no-style {
   }
   .md-list-item-text {
     flex: 1;
+    padding-top: ($baseline-grid * 2.5) - 1;
   }
 }
 
 md-list-item.md-3-line,
 md-list-item.md-3-line > .md-no-style {
-  height: auto;
-  min-height: $list-item-three-line-height;
-
-  &.md-long-text {
-    margin: 1.6em;
-  }
-
   > md-icon:first-child,
-  > .md-avatar {
+  > .md-avatar:first-child {
     margin-top: $baseline-grid * 2;
   }
 }
@@ -3962,13 +2892,12 @@ $max-dense-menu-height: 2 * $baseline-grid + $max-visible-items * $dense-menu-it
   z-index: $z-index-menu;
   opacity: 0;
   border-radius: $menu-border-radius;
+  overflow: hidden;
 
   md-menu-divider {
     margin-top: $baseline-grid / 2;
     margin-bottom: $baseline-grid / 2;
     height: 1px;
-    min-height: 1px;
-    max-height: 1px;
     width: 100%;
   }
 
@@ -4011,7 +2940,6 @@ md-menu-content {
     max-height: $max-dense-menu-height;
     md-menu-item {
       height: $dense-menu-item-height;
-      min-height: 0px;
     }
   }
 }
@@ -4031,24 +2959,19 @@ md-menu-item {
     padding-right: 2*$baseline-grid;
   }
 
-  > a.md-button {
-    display: flex;
-  }
-
   > .md-button {
     border-radius: 0;
     margin: auto 0;
     font-size: (2*$baseline-grid) - 1;
     text-transform: none;
     font-weight: 400;
-    text-align: left;
     text-align: start;
     height: 100%;
     padding-left: 2*$baseline-grid;
     padding-right: 2*$baseline-grid;
     display: inline-block;
     align-items: baseline;
-    align-content: flex-start;
+    align-content: left;
     width: 100%;
     md-icon {
       margin: auto 2*$baseline-grid auto 0;
@@ -4061,9 +2984,6 @@ md-menu-item {
       margin-top: auto;
       margin-bottom: auto;
     }
-    .md-ripple-container {
-      border-radius: inherit;
-    }
   }
 }
 
@@ -4075,7 +2995,6 @@ md-toolbar {
   .md-menu {
     height: auto;
     margin: auto;
-    padding: 0;
   }
 }
 
@@ -4089,7 +3008,6 @@ md-toolbar {
     }
   }
 }
-
 @media (min-width: $layout-breakpoint-sm) {
   md-menu-content {
     min-width: 96px;
@@ -4101,247 +3019,16 @@ md-toolbar {
   }
 }
 
-md-toolbar.md-menu-toolbar {
-  h2.md-toolbar-tools {
-    line-height: 1rem;
-    height: auto;
-    padding: 3.5 * $baseline-grid;
-    padding-bottom: 1.5 * $baseline-grid;
-  }
-}
-
-md-menu-bar {
-  padding: 0 2.5 * $baseline-grid;
-  display: block;
-  position: relative;
-  z-index: 2;
-  .md-menu {
-    display: inline-block;
-    padding: 0;
-    position: relative;
-  }
-  button {
-    font-size: rem(1.4);
-    padding: 0 1.25 * $baseline-grid;
-    margin: 0;
-    border: 0;
-    background-color: transparent;
-    height: 5 * $baseline-grid;
-  }
-
-  md-backdrop.md-menu-backdrop {
-    z-index: -2;
-  }
-}
-
-md-menu-content.md-menu-bar-menu.md-dense {
-  max-height: none;
-  padding: 2 * $baseline-grid 0;
-  md-menu-item.md-indent {
-    position: relative;
-    > md-icon {
-      position: absolute;
-      padding: 0;
-      width: 24px;
-      top: 0.75 * $baseline-grid;
-      left: 3 * $baseline-grid;
-    }
-    > .md-button, .md-menu > .md-button {
-      padding: 0 4 * $baseline-grid 0 8 * $baseline-grid;
-    }
-  }
-  .md-button {
-    min-height: 0;
-    height: 4 * $baseline-grid;
-    display: flex;
-    span {
-      flex-grow: 1;
-    }
-    span.md-alt-text {
-      flex-grow: 0;
-      align-self: flex-end;
-      margin: 0 $baseline-grid;
-    }
-  }
-  md-menu-divider {
-    margin: $baseline-grid 0;
-  }
-
-  md-menu-item > .md-button, .md-menu > .md-button {
-    text-align: left;
-    text-align: start;
-  }
-
-  .md-menu {
-    padding: 0;
-    > .md-button {
-      position: relative;
-      margin: 0;
-      width: 100%;
-      text-transform: none;
-      font-weight: normal;
-      border-radius: 0px;
-      padding-left: 2 * $baseline-grid;
-      &:after {
-        display: block;
-        content: '\25BC';
-        position: absolute;
-        top: 0px;
-        speak: none;
-        transform: rotate(270deg) scaleY(0.45) scaleX(0.9);
-        right: 3.5 * $baseline-grid;
-      }
-    }
-  }
-}
-
 $progress-circular-ease-in-out: cubic-bezier(0.35, 0, 0.25, 1) !default;
 $progress-circular-duration: 5.25s !default;
 $progress-circular-circle-duration: $progress-circular-duration * 0.25 !default;
 $progress-circular-outer-duration: $progress-circular-duration * (5 / 9) !default;
 $progress-circular-sporadic-duration: $progress-circular-duration !default;
-$progress-border-width: 10px;
-$progress-circular-size: 10 * $progress-border-width !default;
+$progress-circular-size: 50px !default;
 
-md-progress-circular {
-  display: block;
-  position: relative;
-
-  width: $progress-circular-size;
-  height: $progress-circular-size;
-
-  padding-top: 0 !important;
-  margin-bottom: 0 !important;
-
-  z-index: $z-index-progress-circular; // Used to fix a Chrome bug with spinner animation
-
-  .md-spinner-wrapper {
-    display: block;
-    position: absolute;
-    overflow: hidden;
-    top: 50%;
-    left: 50%;
-
-    .md-inner {
-      width: $progress-circular-size;
-      height: $progress-circular-size;
-      position: relative;
-      .md-gap {
-        position: absolute;
-        left: $progress-circular-size * 0.5 - 1;
-        right: $progress-circular-size * 0.5 - 1;
-        top: 0;
-        bottom: 0;
-        border-top-width: $progress-border-width;
-        border-top-style: solid;
-        box-sizing: border-box;
-      }
-      .md-left, .md-right {
-        position: absolute;
-        top: 0;
-        height: $progress-circular-size;
-        width: $progress-circular-size * 0.50;
-        overflow: hidden;
-        .md-half-circle {
-          position: absolute;
-          top: 0;
-          width: $progress-circular-size;
-          height: $progress-circular-size;
-          box-sizing: border-box;
-          border-width: $progress-border-width;
-          border-style: solid;
-          border-bottom-color: transparent;
-          border-radius: 50%;
-        }
-      }
-      .md-left {
-        left: 0;
-        .md-half-circle {
-          left: 0;
-          border-right-color: transparent;
-        }
-      }
-      .md-right {
-        right: 0;
-        .md-half-circle {
-          right: 0;
-          border-left-color: transparent;
-        }
-      }
-    }
-  }
-
-  .md-mode-indeterminate .md-spinner-wrapper {
-    animation: outer-rotate $progress-circular-outer-duration linear infinite;
-    .md-inner {
-      animation: sporadic-rotate $progress-circular-sporadic-duration $progress-circular-ease-in-out infinite;
-      .md-left, .md-right {
-        .md-half-circle {
-          animation-iteration-count: infinite;
-          animation-duration: ($progress-circular-duration * 0.25);
-          animation-timing-function: $progress-circular-ease-in-out;
-        }
-      }
-      .md-left {
-        .md-half-circle {
-          animation-name: left-wobble;
-        }
-      }
-      .md-right {
-        .md-half-circle {
-          animation-name: right-wobble;
-        }
-      }
-    }
-  }
-
-  md-progress-circular.ng-hide {
-    .md-spinner-wrapper {
-      animation: none;
-      .md-inner {
-        animation: none;
-        .md-left {
-          .md-half-circle {
-            animation-name: none;
-          }
-        }
-        .md-right {
-          .md-half-circle {
-            animation-name: none;
-          }
-        }
-      }
-    }
-  }
-
-  .md-spinner-wrapper.ng-hide {
-    animation: none;
-    .md-inner {
-      animation: none;
-      .md-left {
-        .md-half-circle {
-          animation-name: none;
-        }
-      }
-      .md-right {
-        .md-half-circle {
-          animation-name: none;
-        }
-      }
-    }
-  }
-
-}
-
-//
-// Keyframe animation for the Indeterminate Progress
-//
 @keyframes outer-rotate {
-  0% {
-    transform: rotate(0deg) scale(0.5);
-  }
   100% {
-    transform: rotate(360deg) scale(0.5);
+    transform: rotate(360deg);
   }
 }
 
@@ -4390,113 +3077,242 @@ md-progress-circular {
   }
 }
 
-$progress-linear-bar-height: 5px !default;
-
-md-progress-linear {
+md-progress-circular {
+  width: $progress-circular-size;
+  height: $progress-circular-size;
   display: block;
   position: relative;
-  width: 100%;
-  height: $progress-linear-bar-height;
-
   padding-top: 0 !important;
   margin-bottom: 0 !important;
-
-  .md-container {
-    display: block;
+  overflow: hidden;
+  .md-inner {
+    width: $progress-circular-size;
+    height: $progress-circular-size;
     position: relative;
-    overflow: hidden;
-
-    width: 100%;
-    height: $progress-linear-bar-height;
-
-    transform: translate(0, 0) scale(1, 1);
-
-    .md-bar {
+    .md-gap {
       position: absolute;
-
-      left: 0;
+      left: $progress-circular-size * 0.5 - 1;
+      right: $progress-circular-size * 0.5 - 1;
       top: 0;
       bottom: 0;
-
-      width: 100%;
-      height: $progress-linear-bar-height;
+      border-top-width: 5px;
+      border-top-style: solid;
+      box-sizing: border-box;
     }
-
-    .md-dashed:before {
-      content: "";
-      display: none;
+    .md-left, .md-right {
       position: absolute;
-
-      margin-top: 0;
-      height: $progress-linear-bar-height;
-      width: 100%;
-
-      background-color: transparent;
-      background-size: 10px 10px !important;
-      background-position: 0px -23px;
-    }
-
-    .md-bar1, .md-bar2 {
-
-      // Just set the transition information here.
-      // Note: the actual transform values are calculated in JS
-
-      transition: transform 0.2s linear;
-    }
-
-    // ************************************************************
-    // Animations for modes: Determinate, InDeterminate, and Query
-    // ************************************************************
-
-    &.md-mode-query {
-      .md-bar1 {
-        display: none;
-      }
-      .md-bar2 {
-        transition: all 0.2s linear;
-        animation: query .8s infinite cubic-bezier(0.390, 0.575, 0.565, 1.000);
+      top: 0;
+      height: $progress-circular-size;
+      width: $progress-circular-size * 0.5;
+      overflow: hidden;
+      .md-half-circle {
+        position: absolute;
+        top: 0;
+        width: $progress-circular-size;
+        height: $progress-circular-size;
+        box-sizing: border-box;
+        border-width: 5px;
+        border-style: solid;
+        border-bottom-color: transparent;
+        border-radius: 50%;
       }
     }
-
-    &.md-mode-determinate {
-      .md-bar1 {
-        display: none;
+    .md-left {
+      left: 0;
+      .md-half-circle {
+        left: 0;
+        border-right-color: transparent;
       }
     }
-
-    &.md-mode-indeterminate {
-      .md-bar1 {
-        animation: md-progress-linear-indeterminate-scale-1 4s infinite,
-        md-progress-linear-indeterminate-1 4s infinite;
-      }
-      .md-bar2 {
-        animation: md-progress-linear-indeterminate-scale-2 4s infinite,
-        md-progress-linear-indeterminate-2 4s infinite;
-      }
-    }
-
-    &.ng-hide {
-      animation: none;
-
-      .md-bar1 {
-        animation-name: none;
-      }
-      .md-bar2 {
-        animation-name: none;
+    .md-right {
+      right: 0;
+      .md-half-circle {
+        right: 0;
+        border-left-color: transparent;
       }
     }
   }
 
-  // Special animations for the `buffer` mode
+  // TODO: This while-loop generates about 2 kilobytes of css after gzip.
+  // Refactor progressCircular to animate with javascript.
+  $i: 0;
+  @while $i <= 100 {
+    &[value="#{$i}"] {
+      .md-inner {
+        .md-left {
+          .md-half-circle {
+            @if $i <= 50 {
+              transform: rotate(135deg);
+            } @else {
+              transition: transform 0.1s linear;
+              $deg: ($i - 50) / 50 * 180 + 135;
+              transform: rotate(#{$deg}deg);
+            }
+          }
+        }
+        .md-right {
+          .md-half-circle {
+            @if $i <= 50 {
+              transition: transform 0.1s linear;
+              $deg: $i / 50 * 180 - 135;
+              transform: rotate(#{$deg}deg);
+            } @else {
+              transform: rotate(45deg);
+            }
+          }
+        }
+        .md-gap {
+          border-bottom-width: 5px;
+          border-bottom-style: solid;
+          @if $i <= 50 {
+            border-bottom-color: transparent !important;
+          } @else {
+            transition: border-bottom-color 0.1s linear;
+          }
+        }
+      }
+    }
+    $i: $i + 1;
+  }
 
-  .md-container.md-mode-buffer {
-    background-color: transparent !important;
+  &[md-mode=indeterminate] {
+    .md-spinner-wrapper {
+      animation: outer-rotate $progress-circular-outer-duration linear infinite;
+      .md-inner {
+        animation: sporadic-rotate $progress-circular-sporadic-duration $progress-circular-ease-in-out infinite;
+        .md-left, .md-right {
+          .md-half-circle {
+            animation-iteration-count: infinite;
+            animation-duration: ($progress-circular-duration * 0.25);
+            animation-timing-function: $progress-circular-ease-in-out;
+          }
+        }
+        .md-left {
+          .md-half-circle {
+            animation-name: left-wobble;
+          }
+        }
+        .md-right {
+          .md-half-circle {
+            animation-name: right-wobble;
+          }
+        }
+      }
+    }
+  }
+}
 
+.ng-hide md-progress-circular,
+md-progress-circular.ng-hide {
+  &[md-mode=indeterminate] {
+    .md-spinner-wrapper {
+      animation: none;
+      .md-inner {
+        animation: none;
+        .md-left {
+          .md-half-circle {
+            animation-name: none;
+          }
+        }
+        .md-right {
+          .md-half-circle {
+            animation-name: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+$progress-linear-bar-height: 5px !default;
+
+md-progress-linear:not([md-mode="indeterminate"]) {
+  display: block;
+  width: 100%;
+  height: $progress-linear-bar-height;
+
+  .md-container {
+    overflow: hidden;
+    position: relative;
+    height: $progress-linear-bar-height;
+    top: $progress-linear-bar-height;
+    transform: translate(0, 5px) scale(1, 0);
+    transition: all .3s linear;
+  }
+
+  .md-container.md-ready {
+    transform: translate(0, 0) scale(1, 1);
+  }
+
+  .md-bar {
+    height: $progress-linear-bar-height;
+    position: absolute;
+    width: 100%;
+  }
+
+  .md-bar1, .md-bar2 {
     transition: all 0.2s linear;
+  }
+
+  &[md-mode=determinate] {
+    .md-bar1 {
+      display: none;
+    }
+  }
+
+  &[md-mode=buffer] {
+    .md-container {
+      background-color: transparent !important;
+    }
 
     .md-dashed:before {
+      content: "";
       display: block;
+      height: $progress-linear-bar-height;
+      width: 100%;
+      margin-top: 0;
+      position: absolute;
+      background-color: transparent;
+      background-size: 10px 10px !important;
+      background-position: 0px -23px;
       animation: buffer 3s infinite linear;
+    }
+  }
+
+  &[md-mode=query] {
+    .md-bar2 {
+      animation: query .8s infinite cubic-bezier(0.390, 0.575, 0.565, 1.000);
+    }
+  }
+}
+
+md-progress-linear[md-mode="indeterminate"] {
+  display: block;
+  width: 100%;
+  height: $progress-linear-bar-height;
+  position: relative;
+  .md-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    height: $progress-linear-bar-height;
+    top: $progress-linear-bar-height;
+    transition: all .3s linear;
+    .md-bar {
+      height: $progress-linear-bar-height;
+      left: 0;
+      width: 288 * 100% / 360;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+    .md-bar1 {
+      animation: md-progress-linear-indeterminate-scale-1 4s infinite,
+      md-progress-linear-indeterminate-1 4s infinite;
+    }
+    .md-bar2 {
+      animation: md-progress-linear-indeterminate-scale-2 4s infinite,
+      md-progress-linear-indeterminate-2 4s infinite;
     }
   }
 }
@@ -4598,54 +3414,47 @@ md-progress-linear {
   }
 }
 
-$radio-width: 20px !default;
+$radio-width: 16px !default;
 $radio-height: $radio-width !default;
 $radio-text-margin: 10px !default;
-$radio-top-left: 12px !default;
-$radio-margin: 16px;
+$radio-top-left: -15px !default;
 
-md-radio-button {
+md-radio-button,
+.md-switch-thumb { // Used in switch
   box-sizing: border-box;
   display: block;
-  margin-bottom: $radio-margin;
+  margin: 15px;
   white-space: nowrap;
   cursor: pointer;
-  position: relative;
 
-  // disabled
-  &[disabled] {
-    cursor: default;
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
 
-    .md-container {
-      cursor: default;
-    }
+  input {
+    display: none;
   }
 
   .md-container {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    box-sizing: border-box;
+    position: relative;
+    top: 4px;
     display: inline-block;
     width: $radio-width;
     height: $radio-width;
     cursor: pointer;
-    @include rtl(left, 0, auto);
-    @include rtl(right, auto, 0);
 
     .md-ripple-container {
       position: absolute;
       display: block;
-      width: auto;
-      height: auto;
-      left: -15px;
-      top: -15px;
-      right: -15px;
-      bottom: -15px;
+      width: $radio-width * 3;
+      height: $radio-width * 3;
+      left: -$radio-width;
+      top: -$radio-width;
     }
 
     &:before {
-      box-sizing: border-box;
       background-color: transparent;
       border-radius: 50%;
       content: '';
@@ -4666,7 +3475,6 @@ md-radio-button {
   }
 
   .md-off {
-    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
@@ -4679,7 +3487,6 @@ md-radio-button {
   }
 
   .md-on {
-    box-sizing: border-box;
     position: absolute;
     top: 0;
     left: 0;
@@ -4695,12 +3502,11 @@ md-radio-button {
   }
 
   .md-label {
-    box-sizing: border-box;
     position: relative;
     display: inline-block;
 
-    @include rtl(margin-left, $radio-text-margin + $radio-width, 0);
-    @include rtl(margin-right, 0, $radio-text-margin + $radio-width);
+    @include rtl(margin-left, $radio-text-margin, 0);
+    @include rtl(margin-right, 0, $radio-text-margin);
 
     vertical-align: middle;
     white-space: normal;
@@ -4713,27 +3519,7 @@ md-radio-button {
   }
 
 }
-
 md-radio-group {
-  md-radio-button {
-    &:not(:first-child) {
-      margin-top: $radio-margin;
-    }
-  }
-
-  &.layout-row {
-    md-radio-button {
-      margin-top: 0;
-      margin-bottom: 0;
-      @include rtl(margin-left, inherit, $radio-margin);
-      @include rtl(margin-right, $radio-margin, inherit);
-
-      &:last-of-type {
-        @include rtl(margin-left, inherit, 0);
-        @include rtl(margin-right, 0, inherit);
-      }
-    }
-  }
   &:focus {
     outline: none;
   }
@@ -4743,20 +3529,6 @@ md-radio-group {
       top: -8px;
       right: -8px;
       bottom: -8px;
-    }
-  }
-}
-
-.md-inline-form {
-  md-radio-group {
-    margin: 18px 0 19px;
-    md-radio-button {
-      display: inline-block;
-      height: 30px;
-      padding: 2px;
-      box-sizing: border-box;
-      margin-top: 0;
-      margin-bottom: 0;
     }
   }
 }
@@ -4780,7 +3552,6 @@ $select-max-visible-options: 5;
   top: 0;
   z-index: $z-index-select;
   opacity: 0;
-  display: none;
 
   // Don't let the user select a new choice while it's animating
   &:not(.md-clickable) {
@@ -4792,17 +3563,17 @@ $select-max-visible-options: 5;
     margin: 3*$baseline-grid auto !important;
   }
 
+
   // enter: md-select scales in, then options fade in.
   &.md-active {
-    display: block;
     opacity: 1;
     md-select-menu {
       transition: $swift-ease-out;
-      transition-duration: 150ms;
+      transition-duration: 200ms;
       > * {
         opacity: 1;
         transition: $swift-ease-in;
-        transition-duration: 150ms;
+        transition-duration: 200ms;
         transition-delay: 100ms;
       }
     }
@@ -4817,21 +3588,13 @@ $select-max-visible-options: 5;
 }
 
 md-input-container > md-select {
-  margin: 0;
+  margin: auto 0 0 0;
   order: 2;
 }
 
 md-select {
   display: flex;
   margin: 2.5*$baseline-grid 0 3*$baseline-grid + 2 0;
-  &[disabled] .md-select-value {
-    background-position: 0 bottom;
-    // This background-size is coordinated with a linear-gradient set in select-theme.scss
-    // to create a dotted line under the input.
-    background-size: 4px 1px;
-    background-repeat: repeat-x;
-    margin-bottom: -1px; // Shift downward so dotted line is positioned the same as other bottom borders
-  }
   &:focus {
     outline: none;
   }
@@ -4858,33 +3621,29 @@ md-select {
   }
 }
 
+
 .md-select-value {
   display: flex;
   align-items: center;
   padding: 2px 2px 1px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  background-color: rgba(0, 0, 0, 0);
   position: relative;
   box-sizing: content-box;
   min-width: 8 * $baseline-grid;
   min-height: 26px;
   flex-grow: 1;
 
-  .md-text {
-    display: inline;
-  }
-
   *:first-child {
-    flex: 1 0 auto;
+    flex: 1;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    max-width: calc(100% - 2 * #{$baseline-grid});
     transform: translate3d(0, 2px, 0);
   }
 
   .md-select-icon {
-    display: block;
     align-items: flex-end;
     text-align: end;
     width: 3 * $baseline-grid;
@@ -4925,7 +3684,7 @@ md-select-menu {
     }
   }
 
-  box-shadow: $whiteframe-shadow-1dp;
+  box-shadow: $whiteframe-shadow-z1;
   max-height: ($select-option-height * $select-max-visible-options) + 2 * $baseline-grid;
   min-height: $select-option-height;
   overflow-y: hidden;
@@ -4952,16 +3711,11 @@ md-option {
   align-items: center;
   width: auto;
 
-  &[disabled] {
-    cursor: default;
-  }
-
   &:focus {
     outline: none;
   }
 
   .md-text {
-    @include not-selectable();
     width: auto;
     white-space: nowrap;
     overflow: hidden;
@@ -4996,8 +3750,7 @@ md-optgroup {
   }
 }
 
-$sidenav-mobile-width: 320px !default;
-$sidenav-desktop-width: 400px !default;
+$sidenav-default-width: 304px !default;
 $sidenav-min-space: 56px !default;
 
 md-sidenav {
@@ -5006,10 +3759,18 @@ md-sidenav {
   flex-direction: column;
   z-index: $z-index-sidenav;
 
-  width: $sidenav-mobile-width;
-  max-width: $sidenav-mobile-width;
+  width: $sidenav-default-width;
+  min-width: $sidenav-default-width;
+  max-width: $sidenav-default-width;
   bottom: 0;
+  background-color: white;
   overflow: auto;
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
 
   ul {
     list-style: none;
@@ -5021,7 +3782,9 @@ md-sidenav {
   &.md-closed-add,
   &.md-closed-remove {
     display: flex;
-    transition: 0.2s ease-in all;
+    /* this is required as of 1.3x to properly
+       apply all styling in a show/hide animation */
+    transition: 0s all;
   }
 
   &.md-closed-add.md-closed-add-active,
@@ -5034,6 +3797,11 @@ md-sidenav {
     position: static;
     display: flex;
     transform: translate3d(0, 0, 0);
+  }
+  &.md-locked-open {
+    width: $sidenav-default-width;
+    min-width: $sidenav-default-width;
+    max-width: $sidenav-default-width;
   }
 
   &.md-locked-open,
@@ -5061,14 +3829,13 @@ md-sidenav {
   &.md-closed.md-locked-open-add-active {
     transition: width $swift-ease-in-duration $swift-ease-in-timing-function,
     min-width $swift-ease-in-duration $swift-ease-in-timing-function;
-    width: $sidenav-mobile-width;
-    min-width: $sidenav-mobile-width;
+    width: $sidenav-default-width;
+    min-width: $sidenav-default-width;
     transform: translate3d(0%, 0, 0);
   }
 
   @extend .md-sidenav-left;
 }
-
 .md-sidenav-backdrop.md-locked-open {
   display: none;
 }
@@ -5091,21 +3858,12 @@ md-sidenav {
   }
 }
 
-@media screen and (min-width: $layout-breakpoint-xs) {
+@media (max-width: $sidenav-default-width + $sidenav-min-space) {
   md-sidenav {
-    max-width: $sidenav-desktop-width;
+    width: 85%;
   }
 }
 
-@media screen and (max-width: $sidenav-desktop-width + $sidenav-min-space) {
-  md-sidenav {
-    width: calc(100% - #{$sidenav-min-space});
-    min-width: calc(100% - #{$sidenav-min-space});
-    max-width: calc(100% - #{$sidenav-min-space});
-  }
-}
-
-// IE Only
 @media screen and (-ms-high-contrast: active) {
   .md-sidenav-left {
     border-right: 1px solid #fff;
@@ -5300,9 +4058,10 @@ md-slider {
   }
   .md-focus-ring {
     @include slider-thumb-position($slider-focus-thumb-width, $slider-focus-thumb-height);
+    border: 2px solid #D6D6D6;
+    background-color: transparent;
     transform: scale(0);
     transition: all 0.2s linear;
-    opacity: 0.26;
   }
   .md-disabled-thumb {
     @include slider-thumb-position(
@@ -5331,7 +4090,7 @@ md-slider {
   }
 
   /* Don't animate left/right while panning */
-  &.md-dragging {
+  &.dragging {
     .md-thumb-container,
     .md-track-fill {
       transition: none;
@@ -5353,7 +4112,7 @@ md-slider {
       }
 
       &:focus,
-      &.md-active {
+      &.active {
         .md-focus-thumb {
           display: block;
         }
@@ -5376,7 +4135,7 @@ md-slider {
 
     &:not([disabled]) {
       &:focus,
-      &.md-active {
+      &.active {
         .md-sign,
         .md-sign:after {
           opacity: 1;
@@ -5408,6 +4167,7 @@ md-slider {
   }
 }
 
+
 .md-sticky-clone {
   z-index: 2;
   top: 0;
@@ -5427,9 +4187,10 @@ md-slider {
 
 $subheader-line-height: 1em !default;
 $subheader-font-size: rem(1.4) !default;
-$subheader-padding: ($baseline-grid * 2) !default;
+$subheader-padding: ($baseline-grid * 2) 0px ($baseline-grid * 2) ($baseline-grid * 2) !default;
 $subheader-font-weight: 500 !default;
 $subheader-margin: 0 0 0 0 !default;
+$subheader-margin-right: 16px !default;
 $subheader-sticky-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.16) !default;
 
 @keyframes subheaderStickyHoverIn {
@@ -5440,7 +4201,6 @@ $subheader-sticky-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.16) !default;
     box-shadow: $subheader-sticky-shadow;
   }
 }
-
 @keyframes subheaderStickyHoverOut {
   0% {
     box-shadow: $subheader-sticky-shadow;
@@ -5450,45 +4210,42 @@ $subheader-sticky-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.16) !default;
   }
 }
 
-.md-subheader-wrapper {
-
-  &:not(.md-sticky-no-effect) {
-    .md-subheader {
-      margin: 0;
-    }
-
-    transition: 0.2s ease-out margin;
-
-    &.md-sticky-clone {
-      z-index: 2;
-    }
-
-    &[sticky-state="active"] {
-      margin-top: -2px;
-    }
-
-    &:not(.md-sticky-clone)[sticky-prev-state="active"] .md-subheader-inner:after {
-      animation: subheaderStickyHoverOut 0.3s ease-out both;
-    }
-  }
-
-}
-
 .md-subheader {
   display: block;
   font-size: $subheader-font-size;
   font-weight: $subheader-font-weight;
   line-height: $subheader-line-height;
   margin: $subheader-margin;
+  margin-right: $subheader-margin-right;
   position: relative;
 
   .md-subheader-inner {
-    display: block;
     padding: $subheader-padding;
   }
 
+  &:not(.md-sticky-no-effect) {
+    &:after {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      top: 0;
+      right: -$subheader-margin-right;
+      content: '';
+    }
+
+    transition: 0.2s ease-out margin;
+    &.md-sticky-clone {
+      z-index: 2;
+    }
+    &[sticky-state="active"] {
+      margin-top: -2px;
+    }
+    &:not(.md-sticky-clone)[sticky-prev-state="active"] .md-subheader-inner:after {
+      animation: subheaderStickyHoverOut 0.3s ease-out both;
+    }
+  }
+
   .md-subheader-content {
-    display: block;
     z-index: 1;
     position: relative;
   }
@@ -5498,41 +4255,17 @@ $switch-width: 36px !default;
 $switch-height: $baseline-grid * 3 !default;
 $switch-bar-height: 14px !default;
 $switch-thumb-size: 20px !default;
-$switch-margin: 16px !default;
-
-.md-inline-form {
-  md-switch {
-    margin-top: 18px;
-    margin-bottom: 19px;
-  }
-}
 
 md-switch {
-  margin: $switch-margin 0;
+
+  display: flex;
+  align-items: center;
+
+  margin: 15px;
   white-space: nowrap;
   cursor: pointer;
   outline: none;
   user-select: none;
-  height: 30px;
-  line-height: 28px;
-  align-items: center;
-  display: flex;
-
-  @include rtl(margin-left, inherit, $switch-margin);
-  @include rtl(margin-right, $switch-margin, inherit);
-
-  &:last-of-type {
-    @include rtl(margin-left, inherit, 0);
-    @include rtl(margin-right, 0, inherit);
-  }
-
-  &[disabled] {
-    cursor: default;
-
-    .md-container {
-      cursor: default;
-    }
-  }
 
   .md-container {
     cursor: grab;
@@ -5541,7 +4274,6 @@ md-switch {
     position: relative;
     user-select: none;
     margin-right: 8px;
-    float: left;
   }
 
   // If the user moves his mouse off the switch, stil display grabbing cursor
@@ -5570,7 +4302,6 @@ md-switch {
   .md-label {
     border-color: transparent;
     border-width: 0;
-    float: left;
   }
 
   .md-bar {
@@ -5603,7 +4334,7 @@ md-switch {
     height: $switch-thumb-size;
     width: $switch-thumb-size;
     border-radius: 50%;
-    box-shadow: $whiteframe-shadow-1dp;
+    box-shadow: $whiteframe-shadow-z1;
 
     &:before {
       background-color: transparent;
@@ -5636,7 +4367,7 @@ md-switch {
     .md-bar,
     .md-thumb-container,
     .md-thumb {
-      transition: $swift-linear;
+      transition: $swift-ease-in-out;
       transition-property: transform, background-color;
     }
     .md-bar,
@@ -5692,18 +4423,19 @@ md-tabs {
   overflow: hidden;
   position: relative;
   flex-shrink: 0;
+  &.ng-animate {
+    transition: height $swift-ease-in-out-duration $swift-ease-in-out-timing-function;
+  }
   &:not(.md-no-tab-content):not(.md-dynamic-height) {
     min-height: 200 + $tabs-header-height;
   }
   &[md-align-tabs="bottom"] {
-    padding-bottom: $tabs-header-height;
     md-tabs-wrapper {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
       height: $tabs-header-height;
-      z-index: 2;
     }
     md-tabs-content-wrapper {
       top: 0;
@@ -5831,6 +4563,7 @@ md-pagination-wrapper {
   &.md-center-tabs {
     position: relative;
     width: initial;
+    flex: 1;
     margin: 0 auto;
   }
 }
@@ -5852,6 +4585,7 @@ md-tab-content {
   left: 0;
   right: 0;
   bottom: 0;
+  transform: translateX(0);
   transition: transform $swift-ease-in-out-duration $swift-ease-in-out-timing-function;
   overflow: auto;
   &.md-no-scroll {
@@ -5861,7 +4595,7 @@ md-tab-content {
   &.ng-leave, &.md-no-transition {
     transition: none;
   }
-  &.md-left:not(.md-active) {
+  &.md-left {
     transform: translateX(-100%);
     animation: 2 * $swift-ease-in-out-duration md-tab-content-hide;
     opacity: 0;
@@ -5871,7 +4605,7 @@ md-tab-content {
       visibility: hidden;
     }
   }
-  &.md-right:not(.md-active) {
+  &.md-right {
     transform: translateX(100%);
     animation: 2 * $swift-ease-in-out-duration md-tab-content-hide;
     opacity: 0;
@@ -5887,20 +4621,18 @@ md-tab-content {
 }
 
 md-ink-bar {
-  $duration: $swift-ease-in-out-duration * 0.5;
-  $multiplier: 0.5;
   position: absolute;
   left: auto;
   right: auto;
   bottom: 0;
   height: 2px;
   &.md-left {
-    transition: left ($duration * $multiplier) $swift-ease-in-out-timing-function,
-    right $duration $swift-ease-in-out-timing-function;
+    transition: left ($swift-ease-in-out-duration * 0.45) $swift-ease-in-out-timing-function,
+    right $swift-ease-in-out-duration $swift-ease-in-out-timing-function;
   }
   &.md-right {
-    transition: left $duration $swift-ease-in-out-timing-function,
-    right ($duration * $multiplier) $swift-ease-in-out-timing-function;
+    transition: left $swift-ease-in-out-duration $swift-ease-in-out-timing-function,
+    right ($swift-ease-in-out-duration * 0.45) $swift-ease-in-out-timing-function;
   }
 }
 
@@ -5953,54 +4685,36 @@ md-toolbar + md-tabs {
 // See height set globally, depended on by buttons
 
 md-toast {
+  display: flex;
   position: absolute;
-  z-index: $z-index-toast;
-
   box-sizing: border-box;
+  align-items: center;
+
+  min-height: 48px;
+  padding-left: 24px;
+  padding-right: 24px;
+
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  border-radius: 2px;
+  font-size: 14px;
   cursor: default;
-  overflow: hidden;
 
-  // Add some padding to the outer toast container so that the wrapper's box shadow is visible
-  padding: $toast-margin;
+  max-width: 100%;
+  max-height: 40px;
 
-  // Setup opacity transition on whole toast
-  opacity: 1;
-  transition: $swift-ease-out;
-
-  .md-toast-content {
-    display: flex;
-    align-items: center;
-
-    height: 0;
-    max-height: 7 * $toast-height;
-    max-width: 100%;
-    min-height: 48px;
-    padding-left: 24px;
-    padding-right: 24px;
-
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    border-radius: 2px;
-    font-size: 14px;
-
-    overflow: hidden;
-
-    // Setup for transform transitions on inner content
-    transform: translate3d(0, 0, 0) rotateZ(0deg);
-    transition: $swift-ease-out;
-  }
+  height: $toast-height;
+  z-index: $z-index-toast;
 
   &.md-capsule {
     border-radius: 24px;
-
-    .md-toast-content {
-      border-radius: 24px;
-    }
   }
 
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotateZ(0deg);
+  transition: $swift-ease-out;
+
   &.ng-leave-active {
-    .md-toast-content {
-      transition: $swift-ease-in;
-    }
+    transition: $swift-ease-in;
   }
 
   /* Transition differently when swiping */
@@ -6008,59 +4722,37 @@ md-toast {
   &.md-swiperight,
   &.md-swipeup,
   &.md-swipedown {
-    .md-toast-content {
-      transition: $swift-ease-out;
-    }
+    transition: $swift-ease-out;
   }
 
   &.ng-enter {
-    opacity: 0;
-    .md-toast-content {
-      transform: translate3d(0, 100%, 0);
-    }
+    transform: translate3d(0, 100%, 0);
     &.md-top {
-      .md-toast-content {
-        transform: translate3d(0, -100%, 0);
-      }
+      transform: translate3d(0, -100%, 0);
     }
+    opacity: 0;
     &.ng-enter-active {
+      transform: translate3d(0, 0, 0);
       opacity: 1;
-      .md-toast-content {
-        transform: translate3d(0, 0, 0);
-      }
     }
   }
-  /*
-   * When the toast doesn't take up the whole screen,
-   * make it rotate when the user swipes it away
-   */
   &.ng-leave.ng-leave-active {
-    .md-toast-content {
-      opacity: 0;
-      transform: translate3d(0, 100%, 0);
-    }
-
-    &.md-swipeup {
-      .md-toast-content {
-        transform: translate3d(0, -50%, 0);
-      }
-    }
-    &.md-swipedown {
-      .md-toast-content {
-        transform: translate3d(0, 50%, 0);
-      }
-    }
+    opacity: 0;
+    transform: translate3d(0, 100%, 0);
     &.md-top {
-      .md-toast-content {
-        transform: translate3d(0, -100%, 0);
-      }
+      transform: translate3d(0, -100%, 0);
+    }
+    &.md-swipeleft {
+      transform: translate3d(-100%, 0%, 0);
+    }
+    &.md-swiperight {
+      transform: translate3d(100%, 0%, 0);
     }
   }
 
   .md-action {
     line-height: 19px;
     margin-left: 24px;
-    margin-right: 0;
     cursor: pointer;
     text-transform: uppercase;
     float: right;
@@ -6071,7 +4763,7 @@ md-toast {
   }
 }
 
-@media (max-width: $layout-breakpoint-sm - 1) {
+@media (max-width: $layout-breakpoint-sm) {
   md-toast {
     left: 0;
     right: 0;
@@ -6080,51 +4772,45 @@ md-toast {
     min-width: 0;
     border-radius: 0;
     bottom: 0;
-
-    &.ng-leave.ng-leave-active {
-      &.md-swipeup {
-        .md-toast-content {
-          transform: translate3d(0, -50%, 0);
-        }
-      }
-      &.md-swipedown {
-        .md-toast-content {
-          transform: translate3d(0, 50%, 0);
-        }
-      }
+    &.md-top {
+      bottom: auto;
+      top: 0;
     }
   }
 }
-
 @media (min-width: $layout-breakpoint-sm) {
   md-toast {
-    min-width: 288px + $toast-margin * 2;
+    min-width: 288px;
     &.md-bottom {
-      bottom: 0;
+      bottom: $toast-margin;
     }
     &.md-left {
-      left: 0;
+      left: $toast-margin;
     }
     &.md-right {
-      right: 0;
+      right: $toast-margin;
     }
     &.md-top {
-      top: 0;
+      top: $toast-margin;
     }
 
     /*
-   * When the toast doesn't take up the whole screen,
-   * make it rotate when the user swipes it away
-   */
+     * When the toast doesn't take up the whole screen,
+     * make it rotate when the user swipes it away
+     */
     &.ng-leave.ng-leave-active {
       &.md-swipeleft {
-        .md-toast-content {
-          transform: translate3d(-50%, 0, 0);
-        }
+        transform: translate3d(-100%, 25%, 0) rotateZ(-15deg);
       }
       &.md-swiperight {
-        .md-toast-content {
-          transform: translate3d(50%, 0, 0);
+        transform: translate3d(100%, 25%, 0) rotateZ(15deg);
+      }
+      &.md-top {
+        &.md-swipeleft {
+          transform: translate3d(-100%, 0, 0) rotateZ(-15deg);
+        }
+        &.md-swiperight {
+          transform: translate3d(100%, 0, 0) rotateZ(15deg);
         }
       }
     }
@@ -6133,9 +4819,7 @@ md-toast {
 
 @media (min-width: $layout-breakpoint-lg) {
   md-toast {
-    .md-toast-content {
-      max-width: $baseline-grid * 71;
-    }
+    max-width: $baseline-grid * 71;
   }
 }
 
@@ -6145,25 +4829,10 @@ md-toast {
   }
 }
 
-// While animating, set the toast parent's overflow to hidden so scrollbars do not appear
-.md-toast-animating {
-  overflow: hidden !important;
-}
-
-// Standard/Desktop Heights
 $toolbar-tools-height: 64px !default;
 $toolbar-height: 64px !default;
 $toolbar-medium-tall-height: 88px !default;
 $toolbar-tall-height: 128px !default;
-
-// Mobile portrait heights
-$toolbar-tools-height-mobile-portrait: 56px !default;
-$toolbar-height-mobile-portrait: 56px !default;
-
-// Mobile landscape heights
-$toolbar-tools-height-mobile-landscape: 48px !default;
-$toolbar-height-mobile-landscape: 48px !default;
-
 $toolbar-indent-margin: 64px !default;
 $toolbar-padding: 16px !default;
 
@@ -6180,13 +4849,8 @@ md-toolbar {
   font-size: rem(2.0);
   min-height: $baseline-grid * 8;
   width: 100%;
-
   &.md-whiteframe-z1-add, &.md-whiteframe-z1-remove {
     transition: box-shadow $swift-ease-in-out-duration linear;
-  }
-
-  md-toolbar-filler {
-    width: 9 * $baseline-grid;
   }
 
   *,
@@ -6213,7 +4877,7 @@ md-toolbar {
     }
   }
 
-  > .md-indent {
+  .md-indent {
     margin-left: $toolbar-indent-margin;
   }
 
@@ -6233,7 +4897,6 @@ md-toolbar {
 .md-toolbar-tools {
   font-size: $title-font-size-base;
   letter-spacing: 0.005em;
-  box-sizing: border-box;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -6282,30 +4945,6 @@ md-toolbar {
   }
 }
 
-// Handle mobile portrait
-@media only screen and (min-width: 0) and (max-width: $layout-breakpoint-sm - 1) and (orientation: portrait) {
-  md-toolbar {
-    min-height: $toolbar-height-mobile-portrait;
-  }
-
-  .md-toolbar-tools {
-    height: $toolbar-height-mobile-portrait;
-    max-height: $toolbar-height-mobile-portrait;
-  }
-}
-
-// Handle mobile landscape
-@media only screen and (min-width: 0) and (max-width: $layout-breakpoint-sm - 1) and (orientation: landscape) {
-  md-toolbar {
-    min-height: $toolbar-height-mobile-landscape;
-  }
-
-  .md-toolbar-tools {
-    height: $toolbar-height-mobile-landscape;
-    max-height: $toolbar-height-mobile-landscape;
-  }
-}
-
 $tooltip-fontsize-lg: rem(1);
 $tooltip-fontsize-sm: rem(1.4);
 $tooltip-height-lg: rem(2.2);
@@ -6329,14 +4968,37 @@ md-tooltip {
     font-size: $tooltip-fontsize-lg;
   }
 
+  .md-background {
+    position: absolute;
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+    &.md-show-add {
+      transition: $swift-ease-out;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+    }
+    &.md-show, &.md-show-add-active {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    &.md-show-remove {
+      transition: $swift-ease-in;
+      &.md-show-remove-active {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0;
+      }
+    }
+  }
   .md-content {
     position: relative;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    transform-origin: center top;
-    transform: scale(0);
+
+    background: transparent;
     opacity: 0;
+
     height: $tooltip-height-sm;
     line-height: $tooltip-height-sm;
     padding-left: $tooltip-lr-padding-sm;
@@ -6349,20 +5011,14 @@ md-tooltip {
     }
     &.md-show-add {
       transition: $swift-ease-out;
-      transition-duration: .2s;
-      transform: scale(0);
       opacity: 0;
     }
     &.md-show, &.md-show-add-active {
-      transform: scale(1);
       opacity: 1;
-      transform-origin: center top;
     }
     &.md-show-remove {
-      transition: $swift-ease-out;
-      transition-duration: .2s;
+      transition: $swift-ease-in;
       &.md-show-remove-active {
-        transform: scale(0);
         opacity: 0;
       }
     }
@@ -6375,7 +5031,7 @@ md-tooltip {
   &.md-show {
     transition: $swift-ease-out;
     pointer-events: auto;
-    will-change: opacity, height, width;
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -6395,6 +5051,7 @@ $virtual-repeat-scrollbar-width: 16px;
     left: 0;
     margin: 0;
     overflow-x: hidden;
+    overflow-y: auto;
     padding: 0;
     position: absolute;
     right: 0;
@@ -6404,7 +5061,7 @@ $virtual-repeat-scrollbar-width: 16px;
   .md-virtual-repeat-sizer {
     box-sizing: border-box;
     height: 1px;
-    display: block;
+    display: inline-block;
     margin: 0;
     padding: 0;
     width: 1px;
@@ -6416,7 +5073,9 @@ $virtual-repeat-scrollbar-width: 16px;
     margin: 0;
     padding: 0;
     position: absolute;
-    right: 0;
+    // Leave room for the scroll bar.
+    // TODO: Will probably need to perform measurements at runtime.
+    right: $virtual-repeat-scrollbar-width;
     top: 0;
   }
 }
@@ -6436,100 +5095,24 @@ $virtual-repeat-scrollbar-width: 16px;
   }
 }
 
-.md-whiteframe-1dp, .md-whiteframe-z1 {
-  box-shadow: $whiteframe-shadow-1dp;
+.md-whiteframe-z1 {
+  box-shadow: $whiteframe-shadow-z1;
 }
 
-.md-whiteframe-2dp {
-  box-shadow: $whiteframe-shadow-2dp;
+.md-whiteframe-z2 {
+  box-shadow: $whiteframe-shadow-z2;
 }
 
-.md-whiteframe-3dp {
-  box-shadow: $whiteframe-shadow-3dp;
+.md-whiteframe-z3 {
+  box-shadow: $whiteframe-shadow-z3;
 }
 
-.md-whiteframe-4dp, .md-whiteframe-z2 {
-  box-shadow: $whiteframe-shadow-4dp;
+.md-whiteframe-z4 {
+  box-shadow: $whiteframe-shadow-z4;
 }
 
-.md-whiteframe-5dp {
-  box-shadow: $whiteframe-shadow-5dp;
-}
-
-.md-whiteframe-6dp {
-  box-shadow: $whiteframe-shadow-6dp;
-}
-
-.md-whiteframe-7dp, .md-whiteframe-z3 {
-  box-shadow: $whiteframe-shadow-7dp;
-}
-
-.md-whiteframe-8dp {
-  box-shadow: $whiteframe-shadow-8dp;
-}
-
-.md-whiteframe-9dp {
-  box-shadow: $whiteframe-shadow-9dp;
-}
-
-.md-whiteframe-10dp, .md-whiteframe-z4 {
-  box-shadow: $whiteframe-shadow-10dp;
-}
-
-.md-whiteframe-11dp {
-  box-shadow: $whiteframe-shadow-11dp;
-}
-
-.md-whiteframe-12dp {
-  box-shadow: $whiteframe-shadow-12dp;
-}
-
-.md-whiteframe-13dp, .md-whiteframe-z5 {
-  box-shadow: $whiteframe-shadow-13dp;
-}
-
-.md-whiteframe-14dp {
-  box-shadow: $whiteframe-shadow-14dp;
-}
-
-.md-whiteframe-15dp {
-  box-shadow: $whiteframe-shadow-15dp;
-}
-
-.md-whiteframe-16dp {
-  box-shadow: $whiteframe-shadow-16dp;
-}
-
-.md-whiteframe-17dp {
-  box-shadow: $whiteframe-shadow-17dp;
-}
-
-.md-whiteframe-18dp {
-  box-shadow: $whiteframe-shadow-18dp;
-}
-
-.md-whiteframe-19dp {
-  box-shadow: $whiteframe-shadow-19dp;
-}
-
-.md-whiteframe-20dp {
-  box-shadow: $whiteframe-shadow-20dp;
-}
-
-.md-whiteframe-21dp {
-  box-shadow: $whiteframe-shadow-21dp;
-}
-
-.md-whiteframe-22dp {
-  box-shadow: $whiteframe-shadow-22dp;
-}
-
-.md-whiteframe-23dp {
-  box-shadow: $whiteframe-shadow-23dp;
-}
-
-.md-whiteframe-24dp {
-  box-shadow: $whiteframe-shadow-24dp;
+.md-whiteframe-z5 {
+  box-shadow: $whiteframe-shadow-z5;
 }
 
 @media screen and (-ms-high-contrast: active) {

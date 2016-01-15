@@ -2,27 +2,28 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.2
+ * v0.10.1
  */
-md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) {
-    background-color: '{{primary-color}}';
-    color: '{{primary-contrast}}';
+/* mixin definition ; sets LTR and RTL within the same style call */
+md-toolbar.md-THEME_NAME-theme {
+  background-color: '{{primary-color}}';
+  color: '{{primary-contrast}}';
 }
 
-md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) md-icon {
-    color: '{{primary-contrast}}';
+md-toolbar.md-THEME_NAME-theme md-icon {
+  color: '{{primary-contrast}}';
 }
 
-md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) .md-button:not(.md-raised) {
-    color: '{{primary-contrast}}';
+md-toolbar.md-THEME_NAME-theme .md-button {
+  color: '{{primary-contrast}}';
 }
 
-md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent {
+md-toolbar.md-THEME_NAME-theme.md-accent {
     background-color: '{{accent-color}}';
-    color: '{{accent-contrast}}';
+  color: '{{accent-contrast}}';
 }
 
-md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-warn {
+md-toolbar.md-THEME_NAME-theme.md-warn {
     background-color: '{{warn-color}}';
-    color: '{{warn-contrast}}';
+  color: '{{warn-contrast}}';
 }

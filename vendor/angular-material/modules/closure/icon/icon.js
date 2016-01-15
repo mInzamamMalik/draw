@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.2
+ * v0.10.1
  */
 goog.provide('ng.material.components.icon');
 goog.require('ng.material.core');
@@ -14,11 +14,8 @@ goog.require('ng.material.core');
  */
 angular.module('material.components.icon', [
     'material.core'
-]);
-
-angular
-    .module('material.components.icon')
-    .directive('mdIcon', ['$mdIcon', '$mdTheming', '$mdAria', mdIconDirective]);
+    ])
+    .directive('mdIcon', mdIconDirective);
 
 /**
  * @ngdoc directive
@@ -39,7 +36,7 @@ angular
  * your icons instead of text. Benefits include a straightforward way to bundle everything into a
  * single HTTP request, simple scaling, easy color changing, and more.
  *
- * `md-icon` lets you consume an icon font by letting you reference specific icons in that font
+ * `md-icon` let's you consume an icon font by letting you reference specific icons in that font
  * by name rather than character code.
  *
  * ### SVG
@@ -49,7 +46,7 @@ angular
  *
  * `md-icon` makes it easier to use SVG icons by *inlining* the SVG into an `<svg>` element in the
  * document. The most straightforward way of referencing an SVG icon is via URL, just like a
- * traditional `<img>`. `$mdIconProvider`, as a convenience, lets you _name_ an icon so you can
+ * traditional `<img>`. `$mdIconProvider`, as a convenience, let's you _name_ an icon so you can
  * reference it by name instead of URL throughout your templates.
  *
  * Additionally, you may not want to make separate HTTP requests for every icon, so you can bundle
@@ -118,8 +115,7 @@ angular
  * nor a label on the parent element, a warning will be logged to the console.
  * @param {string=} alt Labels icon for accessibility. If an empty string is provided, icon
  * will be hidden from accessibility layer with `aria-hidden="true"`. If there's no alt on the icon
- * nor a label on the parent element, a warning will be logged to the console.
- *
+ * nor a label on the parent element, a warning will be logged to the console. *
  * @usage
  * When using SVGs:
  * <hljs lang="html">
@@ -182,83 +178,97 @@ angular
  */
 function mdIconDirective($mdIcon, $mdTheming, $mdAria) {
 
-    return {
-        scope: {
-            fontSet: '@mdFontSet',
-            fontIcon: '@mdFontIcon',
-            svgIcon: '@mdSvgIcon',
-            svgSrc: '@mdSvgSrc'
-        },
-        restrict: 'E',
-        link: postLink
-    };
+  return {
+    scope: {
+      fontSet: '@mdFontSet',
+      fontIcon: '@mdFontIcon',
+      svgIcon: '@mdSvgIcon',
+      svgSrc: '@mdSvgSrc'
+    },
+    restrict: 'E',
+    link: postLink
+  };
 
 
-    /**
-     * Directive postLink
-     * Supports embedded SVGs, font-icons, & external SVGs
-     */
-    function postLink(scope, element, attr) {
-        $mdTheming(element);
+  /**
+   * Directive postLink
+   * Supports embedded SVGs, font-icons, & external SVGs
+   */
+  function postLink(scope, element, attr) {
+    $mdTheming(element);
 
-        prepareForFontIcon();
+    prepareForFontIcon();
 
-        // If using a font-icon, then the textual name of the icon itself
-        // provides the aria-label.
+    // If using a font-icon, then the textual name of the icon itself
+    // provides the aria-label.
 
-        var label = attr.alt || scope.fontIcon || scope.svgIcon || element.text();
-        var attrName = attr.$normalize(attr.$attr.mdSvgIcon || attr.$attr.mdSvgSrc || '');
+    var label = attr.alt || scope.fontIcon || scope.svgIcon || element.text();
+    var attrName = attr.$normalize(attr.$attr.mdSvgIcon || attr.$attr.mdSvgSrc || '');
 
-        if (!attr['aria-label']) {
+    if (!attr['aria-label']) {
 
-            if (label != '' && !parentsHaveText()) {
+      if (label != '' && !parentsHaveText()) {
 
-                $mdAria.expect(element, 'aria-label', label);
-                $mdAria.expect(element, 'role', 'img');
+        $mdAria.expect(element, 'aria-label', label);
+        $mdAria.expect(element, 'role', 'img');
 
-            } else if (!element.text()) {
-                // If not a font-icon with ligature, then
-                // hide from the accessibility layer.
+      } else if (!element.text()) {
+        // If not a font-icon with ligature, then
+        // hide from the accessibility layer.
 
-                $mdAria.expect(element, 'aria-hidden', 'true');
-            }
-        }
-
-        if (attrName) {
-            // Use either pre-configured SVG or URL source, respectively.
-            attr.$observe(attrName, function (attrVal) {
-
-                element.empty();
-                if (attrVal) {
-                    $mdIcon(attrVal).then(function (svg) {
-                        element.append(svg);
-                    });
-                }
-
-            });
-        }
-
-        function parentsHaveText() {
-            var parent = element.parent();
-            if (parent.attr('aria-label') || parent.text()) {
-                return true;
-            }
-            else if (parent.parent().attr('aria-label') || parent.parent().text()) {
-                return true;
-            }
-            return false;
-        }
-
-        function prepareForFontIcon() {
-            if (!scope.svgIcon && !scope.svgSrc) {
-                if (scope.fontIcon) {
-                    element.addClass('md-font ' + scope.fontIcon);
-                }
-                element.addClass($mdIcon.fontSet(scope.fontSet));
-            }
-        }
+        $mdAria.expect(element, 'aria-hidden', 'true');
+      }
     }
+
+    if (attrName) {
+      // Use either pre-configured SVG or URL source, respectively.
+      attr.$observe(attrName, function (attrVal) {
+
+        element.empty();
+        if (attrVal) {
+          $mdIcon(attrVal).then(function (svg) {
+            element.append(svg);
+          });
+        }
+
+      });
+    }
+
+    function parentsHaveText() {
+      var parent = element.parent();
+      if (parent.attr('aria-label') || parent.text()) {
+        return true;
+      }
+      else if (parent.parent().attr('aria-label') || parent.parent().text()) {
+        return true;
+      }
+      return false;
+    }
+
+    function prepareForFontIcon() {
+      if (!scope.svgIcon && !scope.svgSrc) {
+
+        if (scope.fontIcon) {
+          element.addClass('md-font ' + scope.fontIcon);
+        }
+
+        if (scope.fontSet) {
+          element.addClass($mdIcon.fontSet(scope.fontSet));
+        }
+
+        if (shouldUseDefaultFontSet()) {
+          element.addClass($mdIcon.fontSet());
+        }
+
+      }
+
+      function shouldUseDefaultFontSet() {
+        return !scope.fontIcon && !scope.fontSet && !attr.hasOwnProperty('class');
+      }
+    }
+  }
 }
+mdIconDirective.$inject = ["$mdIcon", "$mdTheming", "$mdAria"];
 
 angular
     .module('material.components.icon')
@@ -268,13 +278,13 @@ angular
  * @ngdoc service
  * @name $mdIconProvider
  * @module material.components.icon
- *
+    *
  * @description
  * `$mdIconProvider` is used only to register icon IDs with URLs. These configuration features allow
  * icons and icon sets to be pre-registered and associated with source URLs **before** the `<md-icon />`
  * directives are compiled.
  *
- * If using font-icons, the developer is responsible for loading the fonts.
+ * If using font-icons, the developer is repsonsible for loading the fonts.
  *
  * If using SVGs, loading of the actual svg files are deferred to on-demand requests and are loaded
  * internally by the `$mdIcon` service using the `$http` service. When an SVG is requested by name/ID,
@@ -295,7 +305,7 @@ angular
     *          .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
     *   });
  * </hljs>
- *
+    *
  * SVG icons and icon sets can be easily pre-loaded and cached using either (a) a build process or (b) a runtime
  * **startup** process (shown below):
  *
@@ -328,7 +338,7 @@ angular
 /**
  * @ngdoc method
  * @name $mdIconProvider#icon
- *
+    *
  * @description
  * Register a source URL for a specific icon name; the name may include optional 'icon set' name prefix.
  * These icons  will later be retrieved from the cache using `$mdIcon( <icon name> )`
@@ -352,7 +362,7 @@ angular
     *          .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
     *   });
  * </hljs>
- *
+    *
  */
 /**
  * @ngdoc method
@@ -383,7 +393,7 @@ angular
     *          .iconSet('social', 'my/app/social.svg')   // Register a named icon set
     *   });
  * </hljs>
- *
+    *
  */
 /**
  * @ngdoc method
@@ -449,7 +459,7 @@ angular
 /**
  * @ngdoc method
  * @name $mdIconProvider#defaultViewBoxSize
- *
+    *
  * @description
  * While `<md-icon />` markup can also be style with sizing CSS, this method configures
  * the default width **and** height used for all icons; unless overridden by specific CSS.
@@ -473,116 +483,111 @@ angular
  */
 
 var config = {
-    defaultViewBoxSize: 24,
-    defaultFontSet: 'material-icons',
-    fontSets: []
+  defaultViewBoxSize: 24,
+  defaultFontSet: 'material-icons',
+  fontSets: []
 };
 
 function MdIconProvider() {
 }
 
 MdIconProvider.prototype = {
-    icon: function (id, url, viewBoxSize) {
-        if (id.indexOf(':') == -1) id = '$default:' + id;
+  icon: function (id, url, viewBoxSize) {
+    if (id.indexOf(':') == -1) id = '$default:' + id;
 
-        config[id] = new ConfigurationItem(url, viewBoxSize);
-        return this;
-    },
+    config[id] = new ConfigurationItem(url, viewBoxSize);
+    return this;
+  },
 
-    iconSet: function (id, url, viewBoxSize) {
-        config[id] = new ConfigurationItem(url, viewBoxSize);
-        return this;
-    },
+  iconSet: function (id, url, viewBoxSize) {
+    config[id] = new ConfigurationItem(url, viewBoxSize);
+    return this;
+  },
 
-    defaultIconSet: function (url, viewBoxSize) {
-        var setName = '$default';
+  defaultIconSet: function (url, viewBoxSize) {
+    var setName = '$default';
 
-        if (!config[setName]) {
-            config[setName] = new ConfigurationItem(url, viewBoxSize);
-        }
+    if (!config[setName]) {
+      config[setName] = new ConfigurationItem(url, viewBoxSize);
+    }
 
-        config[setName].viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
+    config[setName].viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
 
-        return this;
-    },
+    return this;
+  },
 
-    defaultViewBoxSize: function (viewBoxSize) {
-        config.defaultViewBoxSize = viewBoxSize;
-        return this;
-    },
+  defaultViewBoxSize: function (viewBoxSize) {
+    config.defaultViewBoxSize = viewBoxSize;
+    return this;
+  },
 
-    /**
-     * Register an alias name associated with a font-icon library style ;
-     */
-    fontSet: function fontSet(alias, className) {
-        config.fontSets.push({
-            alias: alias,
-            fontSet: className || alias
-        });
-        return this;
-    },
+  /**
+   * Register an alias name associated with a font-icon library style ;
+   */
+  fontSet: function fontSet(alias, className) {
+    config.fontSets.push({
+      alias: alias,
+      fontSet: className || alias
+    });
+    return this;
+  },
 
-    /**
-     * Specify a default style name associated with a font-icon library
-     * fallback to Material Icons.
-     *
-     */
-    defaultFontSet: function defaultFontSet(className) {
-        config.defaultFontSet = !className ? '' : className;
-        return this;
-    },
+  /**
+   * Specify a default style name associated with a font-icon library
+   * fallback to Material Icons.
+   *
+   */
+  defaultFontSet: function defaultFontSet(className) {
+    config.defaultFontSet = !className ? '' : className;
+    return this;
+  },
 
-    defaultIconSize: function defaultIconSize(iconSize) {
-        config.defaultIconSize = iconSize;
-        return this;
-    },
+  defaultIconSize: function defaultIconSize(iconSize) {
+    config.defaultIconSize = iconSize;
+    return this;
+  },
 
-    preloadIcons: function ($templateCache) {
-        var iconProvider = this;
-        var svgRegistry = [
-            {
-                id: 'md-tabs-arrow',
-                url: 'md-tabs-arrow.svg',
-                svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 24 24"><g><polygon points="15.4,7.4 14,6 8,12 14,18 15.4,16.6 10.8,12 "/></g></svg>'
-            },
-            {
-                id: 'md-close',
-                url: 'md-close.svg',
-                svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 24 24"><g><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/></g></svg>'
-            },
-            {
-                id: 'md-cancel',
-                url: 'md-cancel.svg',
-                svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 24 24"><g><path d="M12 2c-5.53 0-10 4.47-10 10s4.47 10 10 10 10-4.47 10-10-4.47-10-10-10zm5 13.59l-1.41 1.41-3.59-3.59-3.59 3.59-1.41-1.41 3.59-3.59-3.59-3.59 1.41-1.41 3.59 3.59 3.59-3.59 1.41 1.41-3.59 3.59 3.59 3.59z"/></g></svg>'
-            },
-            {
-                id: 'md-menu',
-                url: 'md-menu.svg',
-                svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>'
-            },
-            {
-                id: 'md-toggle-arrow',
-                url: 'md-toggle-arrow-svg',
-                svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 48 48"><path d="M24 16l-12 12 2.83 2.83 9.17-9.17 9.17 9.17 2.83-2.83z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>'
-            },
-            {
-                id: 'md-calendar',
-                url: 'md-calendar.svg',
-                svg: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/></svg>'
-            }
-        ];
+  preloadIcons: function ($templateCache) {
+    var iconProvider = this;
+    var svgRegistry = [
+      {
+        id: 'md-tabs-arrow',
+        url: 'md-tabs-arrow.svg',
+        svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 24 24"><g><polygon points="15.4,7.4 14,6 8,12 14,18 15.4,16.6 10.8,12 "/></g></svg>'
+      },
+      {
+        id: 'md-close',
+        url: 'md-close.svg',
+        svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 24 24"><g><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"/></g></svg>'
+      },
+      {
+        id: 'md-cancel',
+        url: 'md-cancel.svg',
+        svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 24 24"><g><path d="M12 2c-5.53 0-10 4.47-10 10s4.47 10 10 10 10-4.47 10-10-4.47-10-10-10zm5 13.59l-1.41 1.41-3.59-3.59-3.59 3.59-1.41-1.41 3.59-3.59-3.59-3.59 1.41-1.41 3.59 3.59 3.59-3.59 1.41 1.41-3.59 3.59 3.59 3.59z"/></g></svg>'
+      },
+      {
+        id: 'md-menu',
+        url: 'md-menu.svg',
+        svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>'
+      },
+      {
+        id: 'md-toggle-arrow',
+        url: 'md-toggle-arrow-svg',
+        svg: '<svg version="1.1" x="0px" y="0px" viewBox="0 0 48 48"><path d="M24 16l-12 12 2.83 2.83 9.17-9.17 9.17 9.17 2.83-2.83z"/><path d="M0 0h48v48h-48z" fill="none"/></svg>'
+      }
+    ];
 
-        svgRegistry.forEach(function (asset) {
-            iconProvider.icon(asset.id, asset.url);
-            $templateCache.put(asset.url, asset.svg);
-        });
+    svgRegistry.forEach(function (asset) {
+      iconProvider.icon(asset.id, asset.url);
+      $templateCache.put(asset.url, asset.svg);
+    });
 
-    },
+  },
 
-    $get: ['$http', '$q', '$log', '$templateCache', function ($http, $q, $log, $templateCache) {
-        this.preloadIcons($templateCache);
-        return MdIconService(config, $http, $q, $log, $templateCache);
-    }]
+  $get: ['$http', '$q', '$log', '$templateCache', function ($http, $q, $log, $templateCache) {
+    this.preloadIcons($templateCache);
+    return MdIconService(config, $http, $q, $log, $templateCache);
+  }]
 };
 
 /**
@@ -590,15 +595,15 @@ MdIconProvider.prototype = {
  *  to load if not already cached in the `loaded` cache
  */
 function ConfigurationItem(url, viewBoxSize) {
-    this.url = url;
-    this.viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
+  this.url = url;
+  this.viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
 }
 
 /**
  * @ngdoc service
  * @name $mdIcon
  * @module material.components.icon
- *
+  *
  * @description
  * The `$mdIcon` service is a function used to lookup SVG icons.
  *
@@ -634,179 +639,187 @@ function ConfigurationItem(url, viewBoxSize) {
  * NOTE: The `<md-icon />  ` directive internally uses the `$mdIcon` service to query, loaded, and instantiate
  * SVG DOM elements.
  */
-
-/* ngInject */
 function MdIconService(config, $http, $q, $log, $templateCache) {
-    var iconCache = {};
-    var urlRegex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/i;
+  var iconCache = {};
+  var urlRegex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/i;
 
-    Icon.prototype = {clone: cloneSVG, prepare: prepareAndStyle};
-    getIcon.fontSet = findRegisteredFontSet;
+  Icon.prototype = {clone: cloneSVG, prepare: prepareAndStyle};
+  getIcon.fontSet = findRegisteredFontSet;
 
-    // Publish service...
-    return getIcon;
+  // Publish service...
+  return getIcon;
 
-    /**
-     * Actual $mdIcon service is essentially a lookup function
-     */
-    function getIcon(id) {
-        id = id || '';
+  /**
+   * Actual $mdIcon service is essentially a lookup function
+   */
+  function getIcon(id) {
+    id = id || '';
 
-        // If already loaded and cached, use a clone of the cached icon.
-        // Otherwise either load by URL, or lookup in the registry and then load by URL, and cache.
+    // If already loaded and cached, use a clone of the cached icon.
+    // Otherwise either load by URL, or lookup in the registry and then load by URL, and cache.
 
-        if (iconCache[id]) return $q.when(iconCache[id].clone());
-        if (urlRegex.test(id)) return loadByURL(id).then(cacheIcon(id));
-        if (id.indexOf(':') == -1) id = '$default:' + id;
+    if (iconCache[id]) return $q.when(iconCache[id].clone());
+    if (urlRegex.test(id)) return loadByURL(id).then(cacheIcon(id));
+    if (id.indexOf(':') == -1) id = '$default:' + id;
 
-        var load = config[id] ? loadByID : loadFromIconSet;
-        return load(id)
-            .then(cacheIcon(id));
+    return loadByID(id)
+        .catch(loadFromIconSet)
+        .catch(announceIdNotFound)
+        .catch(announceNotFound)
+        .then(cacheIcon(id));
+  }
+
+  /**
+   * Lookup registered fontSet style using its alias...
+   * If not found,
+   */
+  function findRegisteredFontSet(alias) {
+    var useDefault = angular.isUndefined(alias) || !(alias && alias.length);
+    if (useDefault) return config.defaultFontSet;
+
+    var result = alias;
+    angular.forEach(config.fontSets, function (it) {
+      if (it.alias == alias) result = it.fontSet || result;
+    });
+
+    return result;
+  }
+
+  /**
+   * Prepare and cache the loaded icon for the specified `id`
+   */
+  function cacheIcon(id) {
+
+    return function updateCache(icon) {
+      iconCache[id] = isIcon(icon) ? icon : new Icon(icon, config[id]);
+
+      return iconCache[id].clone();
+    };
+  }
+
+  /**
+   * Lookup the configuration in the registry, if !registered throw an error
+   * otherwise load the icon [on-demand] using the registered URL.
+   *
+   */
+  function loadByID(id) {
+    var iconConfig = config[id];
+
+    return !iconConfig ? $q.reject(id) : loadByURL(iconConfig.url).then(function (icon) {
+      return new Icon(icon, iconConfig);
+    });
+  }
+
+  /**
+   *    Loads the file as XML and uses querySelector( <id> ) to find
+   *    the desired node...
+   */
+  function loadFromIconSet(id) {
+    var setName = id.substring(0, id.lastIndexOf(':')) || '$default';
+    var iconSetConfig = config[setName];
+
+    return !iconSetConfig ? $q.reject(id) : loadByURL(iconSetConfig.url).then(extractFromSet);
+
+    function extractFromSet(set) {
+      var iconName = id.slice(id.lastIndexOf(':') + 1);
+      var icon = set.querySelector('#' + iconName);
+      return !icon ? $q.reject(id) : new Icon(icon, iconSetConfig);
     }
+  }
 
-    /**
-     * Lookup registered fontSet style using its alias...
-     * If not found,
-     */
-    function findRegisteredFontSet(alias) {
-        var useDefault = angular.isUndefined(alias) || !(alias && alias.length);
-        if (useDefault) return config.defaultFontSet;
-
-        var result = alias;
-        angular.forEach(config.fontSets, function (it) {
-            if (it.alias == alias) result = it.fontSet || result;
+  /**
+   * Load the icon by URL (may use the $templateCache).
+   * Extract the data for later conversion to Icon
+   */
+  function loadByURL(url) {
+    return $http
+        .get(url, {cache: $templateCache})
+        .then(function (response) {
+          return angular.element('<div>').append(response.data).find('svg')[0];
         });
+  }
 
-        return result;
+  /**
+   * User did not specify a URL and the ID has not been registered with the $mdIcon
+   * registry
+   */
+  function announceIdNotFound(id) {
+    var msg;
+
+    if (angular.isString(id)) {
+      msg = 'icon ' + id + ' not found';
+      $log.warn(msg);
     }
 
-    /**
-     * Prepare and cache the loaded icon for the specified `id`
-     */
-    function cacheIcon(id) {
+    return $q.reject(msg || id);
+  }
 
-        return function updateCache(icon) {
-            iconCache[id] = isIcon(icon) ? icon : new Icon(icon, config[id]);
+  /**
+   * Catch HTTP or generic errors not related to incorrect icon IDs.
+   */
+  function announceNotFound(err) {
+    var msg = angular.isString(err) ? err : (err.message || err.data || err.statusText);
+    $log.warn(msg);
 
-            return iconCache[id].clone();
-        };
+    return $q.reject(msg);
+  }
+
+  /**
+   * Check target signature to see if it is an Icon instance.
+   */
+  function isIcon(target) {
+    return angular.isDefined(target.element) && angular.isDefined(target.config);
+  }
+
+  /**
+   *  Define the Icon class
+   */
+  function Icon(el, config) {
+    if (el.tagName != 'svg') {
+      el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">').append(el)[0];
     }
 
-    /**
-     * Lookup the configuration in the registry, if !registered throw an error
-     * otherwise load the icon [on-demand] using the registered URL.
-     *
-     */
-    function loadByID(id) {
-        var iconConfig = config[id];
-        return loadByURL(iconConfig.url).then(function (icon) {
-            return new Icon(icon, iconConfig);
-        });
+    // Inject the namespace if not available...
+    if (!el.getAttribute('xmlns')) {
+      el.setAttribute('xmlns', "http://www.w3.org/2000/svg");
     }
 
-    /**
-     *    Loads the file as XML and uses querySelector( <id> ) to find
-     *    the desired node...
-     */
-    function loadFromIconSet(id) {
-        var setName = id.substring(0, id.lastIndexOf(':')) || '$default';
-        var iconSetConfig = config[setName];
+    this.element = el;
+    this.config = config;
+    this.prepare();
+  }
 
-        return !iconSetConfig ? announceIdNotFound(id) : loadByURL(iconSetConfig.url).then(extractFromSet);
+  /**
+   *  Prepare the DOM element that will be cached in the
+   *  loaded iconCache store.
+   */
+  function prepareAndStyle() {
+    var viewBoxSize = this.config ? this.config.viewBoxSize : config.defaultViewBoxSize;
+    angular.forEach({
+      'fit': '',
+      'height': '100%',
+      'width': '100%',
+      'preserveAspectRatio': 'xMidYMid meet',
+      'viewBox': this.element.getAttribute('viewBox') || ('0 0 ' + viewBoxSize + ' ' + viewBoxSize)
+    }, function (val, attr) {
+      this.element.setAttribute(attr, val);
+    }, this);
 
-        function extractFromSet(set) {
-            var iconName = id.slice(id.lastIndexOf(':') + 1);
-            var icon = set.querySelector('#' + iconName);
-            return !icon ? announceIdNotFound(id) : new Icon(icon, iconSetConfig);
-        }
+    angular.forEach({
+      'pointer-events': 'none',
+      'display': 'block'
+    }, function (val, style) {
+      this.element.style[style] = val;
+    }, this);
+  }
 
-        function announceIdNotFound(id) {
-            var msg = 'icon ' + id + ' not found';
-            $log.warn(msg);
-
-            return $q.reject(msg || id);
-        }
-    }
-
-    /**
-     * Load the icon by URL (may use the $templateCache).
-     * Extract the data for later conversion to Icon
-     */
-    function loadByURL(url) {
-        return $http
-            .get(url, {cache: $templateCache})
-            .then(function (response) {
-                return angular.element('<div>').append(response.data).find('svg')[0];
-            }).catch(announceNotFound);
-    }
-
-    /**
-     * Catch HTTP or generic errors not related to incorrect icon IDs.
-     */
-    function announceNotFound(err) {
-        var msg = angular.isString(err) ? err : (err.message || err.data || err.statusText);
-        $log.warn(msg);
-
-        return $q.reject(msg);
-    }
-
-    /**
-     * Check target signature to see if it is an Icon instance.
-     */
-    function isIcon(target) {
-        return angular.isDefined(target.element) && angular.isDefined(target.config);
-    }
-
-    /**
-     *  Define the Icon class
-     */
-    function Icon(el, config) {
-        if (el && el.tagName != 'svg') {
-            el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">').append(el)[0];
-        }
-
-        // Inject the namespace if not available...
-        if (!el.getAttribute('xmlns')) {
-            el.setAttribute('xmlns', "http://www.w3.org/2000/svg");
-        }
-
-        this.element = el;
-        this.config = config;
-        this.prepare();
-    }
-
-    /**
-     *  Prepare the DOM element that will be cached in the
-     *  loaded iconCache store.
-     */
-    function prepareAndStyle() {
-        var viewBoxSize = this.config ? this.config.viewBoxSize : config.defaultViewBoxSize;
-        angular.forEach({
-            'fit': '',
-            'height': '100%',
-            'width': '100%',
-            'preserveAspectRatio': 'xMidYMid meet',
-            'viewBox': this.element.getAttribute('viewBox') || ('0 0 ' + viewBoxSize + ' ' + viewBoxSize)
-        }, function (val, attr) {
-            this.element.setAttribute(attr, val);
-        }, this);
-
-        angular.forEach({
-            'pointer-events': 'none',
-            'display': 'block'
-        }, function (val, style) {
-            this.element.style[style] = val;
-        }, this);
-    }
-
-    /**
-     * Clone the Icon DOM element.
-     */
-    function cloneSVG() {
-        return this.element.cloneNode(true);
-    }
+  /**
+   * Clone the Icon DOM element.
+   */
+  function cloneSVG() {
+    return this.element.cloneNode(true);
+  }
 
 }
-MdIconService.$inject = ["config", "$http", "$q", "$log", "$templateCache"];
 
 ng.material.components.icon = angular.module("material.components.icon");
