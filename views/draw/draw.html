@@ -96,7 +96,7 @@
 
         </thead>
         <tbody>
-        <tr ng-repeat="item in guests | orderBy: order">
+        <tr ng-repeat="item in guests | orderBy: order:true">
 
             <td><b>{{item.name}}</b></td>
             <td>{{item.number}}</td>
