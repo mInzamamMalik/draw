@@ -112,14 +112,15 @@ So kindly use your own mobile number "
 
         </thead>
         <tbody>
-        <tr ng-repeat="item in guests | orderBy: order">
+        <tr ng-repeat="item in guests | orderBy: order:true ">
 
             <td><b>{{item.name}}</b></td>
             <td>{{item.number}}</td>
             <td>{{item.mobile}}</td>
             <td>
 
-                <md-button disabled="true" class="md-icon-button md-primary" aria-label="Settings" ><!--ng-click="del(item)"-->
+                <md-button disabled="true" class="md-icon-button md-primary" aria-label="Settings" >
+                    <!--ng-click="del(item)"-->
                         <img class="png-icon" src="png/512/ios7-close-empty.png" width="30px">
                 </md-button>
                 <!--<img src="png/512/ios7-close-empty.png" width="28px " ng-click="alert('dhgds');">-->
